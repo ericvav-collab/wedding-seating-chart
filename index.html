@@ -61,6 +61,7 @@
     background: var(--card); border: 1px solid var(--border); border-radius: 12px;
     padding: 14px;
   }
+  .plan-card svg { max-width: 560px; margin: 0 auto; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
   .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 8px; }
   .grid-stats .cellstat {
@@ -80,6 +81,7 @@
     font-weight: 600; font-size: 14px;
   }
   .card-b { padding: 12px 14px 14px; }
+  .card.wide { grid-column: 1 / -1; }
   .pill {
     font-size: 11.5px; padding: 2px 9px; border-radius: 999px; white-space: nowrap;
     border: 1px solid var(--border); color: var(--text-2); background: var(--bg);
@@ -87,7 +89,6 @@
   .pill.full { background: var(--accent); border-color: var(--accent); color: #fff; }
   .flag { font-size: 12.5px; color: var(--text-3); font-style: italic; margin-top: 6px; }
   .cp { font-size: 12.5px; color: var(--text-3); margin-top: 6px; }
-  .cp.miss { font-weight: 600; color: #a2761f; }
   .callout { border-radius: 10px; padding: 12px 14px; margin: 8px 0; font-size: 13.5px; border: 1px solid; }
   .callout .t { font-weight: 650; margin-bottom: 3px; font-size: 13.5px; }
   .callout.success { background: var(--accent-soft); border-color: #c8d2bc; }
@@ -108,21 +109,24 @@
 <div class="wrap">
   <h1>Reception seating — The Milano, Monza Ballroom</h1>
   <p class="sub">Meighan &amp; Eric · October 10, 2026 · The Milano Event Center, 16555 Creekbend Dr, Sugar Land.
-  Monza ballroom: 3,000+ sq ft, 20-ft ceiling, adjustable stage. Seated capacity 220 with dance floor — comfortable headroom for this plan.</p>
+  Room corrected to the vendor's floor plan (Sep 2026): Monza interior is ~38 × 48 ft, drawn to true scale below.
+  Decor drop-off 1:00 pm · everyone out 10:00 am. Milano provides ivory velvet linen, the stage (up),
+  a rectangle photo table, and a low cocktail cake table.</p>
   <p class="live-note"><span class="live-dot"></span>Live copy — this page updates whenever Eric edits the plan. Last updated <span id="updated"></span>.</p>
 
   <div class="stats" id="stats"></div>
 
-  <h2>Floor plan</h2>
+  <h2>Floor plan — true scale (vendor CAD, Sep 2026)</h2>
   <p class="note">
-    Approximate scale — Monza's exact wall dimensions are not published; drawn at ~62 × 50 ft (~3,100 sq ft).
     Every chair is drawn: solid dots are assigned seats, dashed circles are open seats.
-    The U-shaped head table is a dais pulled ~5 ft off the east wall: 4 six-footers on the wall side plus 3 per leg,
-    25 chairs all facing the stage. Eric &amp; Meg sit dead center of the wall side — best man Andrew at Eric's right hand,
-    maid of honor Mabelle at Meg's — with Eric's people wrapping the north half and Meg's the south.
-    The parents' tables hold the rounds nearest the U: Table 1 (Eric's) north, Table 7 (Meg's elders) south.
-    Photo booth NE corner, boba SE corner, catering door mid-way along the top wall.
-    The strip between the U's mouth and the dance floor stays table-free.
+    The U dais sits on the east wall between the two main entry doors: 5 six-footers on the wall side
+    (Eric &amp; Meg dead center, 15 chairs) plus a 2-table leg per side — 25 chairs, all facing the stage.
+    The dance floor attaches to the stage and nests into the U's mouth, the same trick the venue's own plan
+    uses: the room is only 38 ft on that axis, so the floor and the U share it.
+    Table 7 (the elders) sits inside the mouth, front and center of the couple, with the cake on Milano's
+    low cocktail table beside it. Two 24-ft long tables take the pockets north (A&amp;M + Table-5 friends)
+    and south (Gudes/Yus, Pimentels/Oculams &amp; guests) of the stage.
+    Parents' Table 1 is the round nearest the U on Eric's side; the Palarcas are nearest on Meg's.
     <strong>Tap any table to see its roster.</strong>
   </p>
   <div class="plan-card">
@@ -132,51 +136,55 @@
 
   <h2>6-ft banquet table count</h2>
   <div class="grid-stats">
-    <div class="cellstat"><div class="v">10</div><div class="l">Head table U (4 wall side + 3 per leg)</div></div>
-    <div class="cellstat"><div class="v">2</div><div class="l">A&amp;M long table (end to end)</div></div>
-    <div class="cellstat"><div class="v">1</div><div class="l">Cake table (stage wall, north side)</div></div>
-    <div class="cellstat"><div class="v">1</div><div class="l">Boba table (SE corner)</div></div>
+    <div class="cellstat"><div class="v">9</div><div class="l">Head table U (5 wall side + 2 per leg)</div></div>
+    <div class="cellstat"><div class="v">4</div><div class="l">North long table (A&amp;M + friends)</div></div>
+    <div class="cellstat"><div class="v">4</div><div class="l">South long table</div></div>
   </div>
-  <p class="note">14 total six-footers inside the room. Bar and gift tables are outside and not counted.
-  Add a 15th if you want a dessert spread separate from the cake.</p>
+  <p class="note">17 total six-footers — up from 14; confirm the count with Milano. The cake uses Milano's low
+  cocktail table and the boba is a cart, so neither needs a banquet table. Bar and gift tables are in the lobby,
+  outside the room.</p>
 
   <h2>Meal counts — from the RSVP course column</h2>
   <div class="grid-stats" id="meals"></div>
   <p class="note">Each seat in the detail views carries its meal letter: O = Osso Bucco, C = Chicken Wellington,
   V = Vegetarian, VG = Vegan, ? = no course on file. Miranda's vegan meal needs its own flag to the caterer —
   it's not the same as the vegetarian course. The TBDs: Eric &amp; Meg (not in the RSVP list), Jason &amp; Haley
-  (RSVP'd attending but skipped the course question), Quan, Gerry, Letty, and the other four at Table 14.</p>
+  (RSVP'd attending but skipped the course question), Quan, Gerry, Letty, and Reina, Mahmoud, Pablo, Meli.</p>
 
-  <h2>Notes &amp; open items</h2>
-  <div class="callout success"><div class="t">Eric &amp; Meg centered; U split by side</div>
-    The couple sits dead center of the wall side. Best man Andrew V. is at Eric's right hand (with Angela, the Glenns,
-    and Edward filling the north half); maid of honor Mabelle is at Meg's side (with Maddy &amp; Jesus and Camille &amp; Drake).
-    North leg = Eric's friends, with PJ &amp; Anna nearest the couple and Jason &amp; Haley at the stage end.
-    South leg = Meg's people, with the Messina siblings nearest the couple and Vivian &amp; Tony at the stage end.
-    Couples were kept together; swap within a side freely.</div>
-  <div class="callout success"><div class="t">Mabelle on the U — legs extended to 3 tables</div>
-    Maid of honor Mabelle is at the head table, making 25. Each leg is 3 six-footers (18 ft per leg), so 25 chairs fit
-    with generous spacing. Table 7 sits at 5 of 8 — three open seats. The corridor in front of the U narrows to ~11.5 ft
-    but stays completely table-free.</div>
-  <div class="callout success"><div class="t">Sam &amp; Adelia sit together</div>
-    The A&amp;M table seats 4 chairs per side plus 2 end seats: Sam takes the west end wrapping the corner to Adelia,
-    and every couple at the table (Trey &amp; Lauren, Taylor &amp; John, April &amp; Baley, Danielle &amp; Matt W.) is adjacent.</div>
-  <div class="callout warning"><div class="t">Miranda is VEGAN — flag the caterer</div>
-    Marked VG at Table 14, tracked separately from the vegetarian course (Diane, Talia, Adelia).
-    Confirmed counts: 72 Osso Bucco, 33 Chicken Wellington, 3 Vegetarian, 1 Vegan.</div>
+  <h2>What changed with the real floor plan — and what needs a decision</h2>
+  <div class="callout info"><div class="t">Room is 38 × 48 ft, not ~62 × 50</div>
+    Calibrated off the vendor CAD's own 6-ft tables. The stage-to-head-table axis is just 38 ft, so the old
+    layout (stage + 16-ft dance floor + clear corridor + 18-ft U legs) could not physically fit. The U's legs
+    shortened to 2 tables, its wall side grew to 5, and the dance floor now nests into the U's mouth — exactly
+    how the venue's own (outdated) sketch handles it. Real door positions are drawn: both main entries at the
+    far corners of the east wall, a service door and a patio door by the stage corners.</div>
+  <div class="callout info"><div class="t">Tables 5, 12, 13, 14 folded into two long tables</div>
+    Only 4 rounds fit per band at true scale. Table 5 (Gallaghers, VandenBushes, Robertsons) joins the A&amp;M crew
+    on a 24-ft north long table; Gudes/Yus (12), Pimentels/Oculams (13) and the Table-14 guests share the 24-ft
+    south long table. Maynard &amp; Miko (Mercados) moved from old Table 13 to the elders' round. No couples were
+    split, and every family group stayed together.</div>
+  <div class="callout success"><div class="t">Elders get the best seat in the house</div>
+    Table 7 is now a round inside the U's mouth — directly in front of Eric &amp; Meg, shortest walk in the room,
+    with the cake table beside it. One seat open (7 of 8).</div>
+  <div class="callout success"><div class="t">Centerpieces now cover everything</div>
+    2 large + 4 compote + 6 taper trios = 12 for 9 rounds, with 3 trios spare. Garland for the head table.
+    Both long tables need runners — have 1, get a 2nd.</div>
+  <div class="callout warning"><div class="t">Decisions needed</div>
+    1) Photo booth: no in-room spot survives true scale — suggest the corridor or lobby (Milano's own plan keeps
+    its memory table in the entry hall). 2) Boba cart moved to the NE pocket; the SE pocket is the south door's
+    egress lane. 3) Six-footers rise to 17 — confirm Milano has them. 4) Table 1 sits close to the NE entry lane
+    and the north rounds sit snug to the long table's chairs (venue-standard tight; the vendor's own plan packs
+    tighter). 5) Confirm the north service door stays usable — Table 4 leaves it ~2 ft of swing.</div>
   <div class="callout warning"><div class="t">Courses to chase — 11 unknowns</div>
-    Jason and Haley RSVP'd yes but never picked a course. Quan, Gerry, Letty, and four at Table 14
-    (Reina, Mahmoud, Pablo, Meli) have no RSVP course either, and Eric &amp; Meg aren't in the list.</div>
-  <div class="callout warning"><div class="t">Centerpieces: 1 short</div>
-    Inventory is 2 large + 4 compote + 6 taper trios = 12 for 13 round tables — Table 14 is unassigned.
-    Head table gets the garland; the A&amp;M table gets a runner with votives.</div>
+    Jason and Haley RSVP'd yes but never picked a course. Quan, Gerry, Letty, Reina, Mahmoud, Pablo and Meli have
+    no RSVP course either, and Eric &amp; Meg aren't in the list.</div>
 
   <h2>Head table — 25 seats, 25 people</h2>
-  <p class="note">Wall side, north to south (12): Edward, Jacob G., Mallory, Angela, Andrew V. (best man), Eric, Meg,
-  Mabelle (maid of honor), Maddy, Jesus, Camille, Drake. North leg — Eric's friends (6), stage end to wall corner:
-  Jason, Haley, Austin, Talia, PJ, Anna. South leg — Meg's people (7), stage end to wall corner: Vivian, Tony, Lorraine,
-  Fortune, Merielle (MM), James, Oliver. The detail view matches the floor plan's orientation: north on the right,
-  south on the left.</p>
+  <p class="note">Wall side, north to south (15): PJ, Anna, Jacob G., Mallory, Angela, Andrew V. (best man), Eric, Meg,
+  Mabelle (maid of honor), Maddy, Jesus, Camille, Drake, Merielle (MM), James. North leg — Eric's friends (5), stage end
+  to wall corner: Jason, Haley, Austin, Talia, Edward. South leg — Meg's people (5), stage end to wall corner: Vivian,
+  Tony, Lorraine, Fortune, Oliver. The Messinas (MM, James, Oliver) cluster at the south wall corner. The detail view
+  matches the floor plan's orientation: north on the right, south on the left.</p>
   <div id="headCard"></div>
 
   <h2>Eric side — north of the dance floor</h2>
@@ -186,17 +194,17 @@
   <div class="grid" id="megCards"></div>
 
   <div class="footer">
-    Source: guest list 083026.csv (110 attending, incl. RSVP meal courses) + additions from the coaster order,
+    Source: guest list 083026.csv (incl. RSVP meal courses) + additions from the coaster order,
     minus Natalia &amp; Stella (coasters only) = 120 seated. Coaster order: 129 pieces (124 named + 5 blank,
-    incl. Joe &amp; Diane Messina as maybes). Venue facts: themilanoevents.com FAQ. Assumptions: MM = Merielle;
-    head-table side split for the shared couple friends (Cherns/Jones north, Trans/De la Puentes south) is a guess — shuffle freely.
+    incl. Joe &amp; Diane Messina as maybes). Room geometry: vendor floor plan PDF (Sep 2026), calibrated at
+    11.2 pt/ft from its 6-ft tables.
   </div>
 </div>
 
 <script>
 "use strict";
 
-const LAST_UPDATED = "August 30, 2026";
+const LAST_UPDATED = "September 4, 2026";
 
 // ---------- Data (mirrors canvases/milano-seating-chart.canvas.tsx) ----------
 
@@ -208,8 +216,9 @@ const TABLES = [
     label: "Head table (U-shape dais, all chairs face the stage)",
     side: "shared", kind: "head", capacity: 25, centerpiece: "Garland",
     guests: [
-      // wall side, north -> south (12): Eric & Meg dead center
-      { name: "Edward", meal: "C" },
+      // wall side, north -> south (15): Eric & Meg dead center
+      { name: "PJ", meal: "O" },
+      { name: "Anna", meal: "C" },
       { name: "Jacob G.", meal: "O" },
       { name: "Mallory", meal: "C" },
       { name: "Angela", meal: "O" },
@@ -221,21 +230,35 @@ const TABLES = [
       { name: "Jesus", meal: "O" },
       { name: "Camille", meal: "O" },
       { name: "Drake", meal: "C" },
-      // north leg — Eric's friends (6), stage end -> wall corner
+      { name: "Merielle (MM)", meal: "O" },
+      { name: "James", meal: "O" },
+      // north leg — Eric's friends (5), stage end -> wall corner
       { name: "Jason", meal: "?", flag: "RSVP'd attending, no course picked" },
       { name: "Haley", meal: "?", flag: "RSVP'd attending, no course picked" },
       { name: "Austin", meal: "O" },
       { name: "Talia", meal: "V" },
-      { name: "PJ", meal: "O" },
-      { name: "Anna", meal: "C" },
-      // south leg — Meg's people (7), stage end -> wall corner
+      { name: "Edward", meal: "C" },
+      // south leg — Meg's people (5), stage end -> wall corner
       { name: "Vivian", meal: "C" },
       { name: "Tony", meal: "O" },
       { name: "Lorraine", meal: "C" },
       { name: "Fortune", meal: "O" },
-      { name: "Merielle (MM)", meal: "O" },
-      { name: "James", meal: "O" },
-      { name: "Oliver", meal: "O" },
+      { name: "Oliver", meal: "O", flag: "Messinas cluster at the S wall corner" },
+    ],
+  },
+  {
+    id: "longN", label: "North long table — Texas A&M + Table-5 family friends",
+    side: "eric", kind: "long", capacity: 16, centerpiece: "Runner",
+    // [0] east end (Sam), [1..8] north side W->E, [9..15] south side W->E
+    // (Adelia at the SE corner, next to Sam).
+    guests: [
+      { name: "Sam", meal: "C", flag: "east end seat — next to Adelia (couple)" },
+      { name: "April", meal: "O" }, { name: "Baley", meal: "O" }, { name: "Danielle", meal: "O" },
+      { name: "Matt W.", meal: "O" }, { name: "Trey", meal: "O" }, { name: "Lauren", meal: "O" },
+      { name: "Taylor", meal: "C" }, { name: "John", meal: "C" },
+      { name: "Matt G.", meal: "O" }, { name: "Nancy", meal: "C" }, { name: "Sarah", meal: "C" },
+      { name: "Nick", meal: "O" }, { name: "Pam", meal: "O" }, { name: "Frank", meal: "O" },
+      { name: "Adelia", meal: "V" },
     ],
   },
   {
@@ -271,27 +294,12 @@ const TABLES = [
     ],
   },
   {
-    id: "t5", label: "Table 5 — Family friends", side: "eric", kind: "round", capacity: 8, centerpiece: "Compote",
-    guests: [
-      { name: "Matt G.", meal: "O" }, { name: "Nancy", meal: "C" }, { name: "Sarah", meal: "C" },
-      { name: "Nick", meal: "O" }, { name: "Pam", meal: "O" }, { name: "Frank", meal: "O" },
-    ],
-  },
-  {
-    id: "am", label: "Table 6 — Texas A&M long table", side: "eric", kind: "long", capacity: 10, centerpiece: "Runner",
-    // Order encodes seats: [0] west end, [1..4] north side, [5] east end, [6..9] south side.
-    guests: [
-      { name: "Sam", meal: "C", flag: "west end seat — next to Adelia (couple)" },
-      { name: "Adelia", meal: "V" }, { name: "April", meal: "O" }, { name: "Baley", meal: "O" },
-      { name: "Danielle", meal: "O" }, { name: "Matt W.", meal: "O" }, { name: "Trey", meal: "O" },
-      { name: "Lauren", meal: "O" }, { name: "Taylor", meal: "C" }, { name: "John", meal: "C" },
-    ],
-  },
-  {
-    id: "t7", label: "Table 7 — Nadela & Mercado elders", side: "meg", kind: "round", capacity: 8, centerpiece: "Large",
+    id: "t7", label: "Table 7 — Elders (round inside the U's mouth)", side: "meg", kind: "round", capacity: 8, centerpiece: "Large",
     guests: [
       { name: "Noli", meal: "C" }, { name: "Nelia", meal: "O" }, { name: "Roy", meal: "O" },
       { name: "Belinda", meal: "O" }, { name: "Pits", meal: "O" },
+      { name: "Maynard", meal: "O", flag: "moved from old Table 13 — Mercados together" },
+      { name: "Miko", meal: "C", flag: "moved from old Table 13 — Mercados together" },
     ],
   },
   {
@@ -303,7 +311,7 @@ const TABLES = [
     ],
   },
   {
-    id: "t9", label: "Table 9 — Friends", side: "meg", kind: "round", capacity: 8, centerpiece: "Taper trio",
+    id: "t9", label: "Table 9 — Friends", side: "meg", kind: "round", capacity: 8, centerpiece: "Compote",
     guests: [
       { name: "Reana", meal: "O" }, { name: "Alfred", meal: "C" }, { name: "Wincy", meal: "O" },
       { name: "Erika", meal: "O" }, { name: "Christian", meal: "O" }, { name: "Michelle", meal: "C" },
@@ -311,7 +319,7 @@ const TABLES = [
     ],
   },
   {
-    id: "t10", label: "Table 10 — Drawers & Nadela uncles", side: "meg", kind: "round", capacity: 8, centerpiece: "Taper trio",
+    id: "t10", label: "Table 10 — Drawers & Nadela uncles", side: "meg", kind: "round", capacity: 8, centerpiece: "Compote",
     guests: [
       { name: "Maria", meal: "O" }, { name: "William", meal: "O" }, { name: "Andrew D.", meal: "O" },
       { name: "Cristino", meal: "O" }, { name: "Loven", meal: "O" }, { name: "Hannah", meal: "C" },
@@ -327,41 +335,35 @@ const TABLES = [
     ],
   },
   {
-    id: "t12", label: "Table 12 — Gudes & Yus", side: "meg", kind: "round", capacity: 8, centerpiece: "Taper trio",
+    id: "longS", label: "South long table — Gudes & Yus, Pimentels & Oculams, guests",
+    side: "meg", kind: "long", capacity: 16, centerpiece: "Runner",
+    // [0] east end (Pablo), [1..8] north side W->E, [9..15] south side W->E
     guests: [
-      { name: "Arby", meal: "C" }, { name: "JP", meal: "O" }, { name: "Elber", meal: "C" },
-      { name: "Arnulfo", meal: "C" }, { name: "Paterno", meal: "O" }, { name: "Leonita", meal: "O" },
-    ],
-  },
-  {
-    id: "t13", label: "Table 13 — Pimentels & Oculams", side: "meg", kind: "round", capacity: 8, centerpiece: "Compote",
-    guests: [
+      { name: "Pablo", meal: "?", flag: "east end seat" },
       { name: "Nathan", meal: "C" }, { name: "Neal", meal: "C" }, { name: "Mae", meal: "O" },
-      { name: "Joseph O.", meal: "O" }, { name: "Lan", meal: "C" }, { name: "Miko", meal: "C" },
-      { name: "Maynard", meal: "O" },
-    ],
-  },
-  {
-    id: "t14", label: "Table 14 — Late RSVPs & guests", side: "meg", kind: "round", capacity: 8,
-    guests: [
+      { name: "Joseph O.", meal: "O" }, { name: "Lan", meal: "C" },
       { name: "Miranda", meal: "VG", flag: "VEGAN — flag the caterer (not just vegetarian)" },
-      { name: "Reina", meal: "?" }, { name: "Mahmoud", meal: "?" }, { name: "Pablo", meal: "?" },
-      { name: "Meli", meal: "?" },
+      { name: "Reina", meal: "?" }, { name: "Mahmoud", meal: "?" },
+      { name: "Meli", meal: "?" }, { name: "Arby", meal: "C" }, { name: "JP", meal: "O" },
+      { name: "Elber", meal: "C" }, { name: "Arnulfo", meal: "C" }, { name: "Paterno", meal: "O" },
+      { name: "Leonita", meal: "O" },
     ],
   },
 ];
 
+// True scale: 10 px per foot; room interior 38 x 48 ft -> (10,10)-(390,490).
 const ROUND_POS = {
-  t3: { x: 104, y: 54 }, t4: { x: 186, y: 78 }, t5: { x: 268, y: 54 },
-  t2: { x: 390, y: 64 }, t1: { x: 490, y: 64 },
-  t8: { x: 134, y: 378 }, t9: { x: 228, y: 378 }, t10: { x: 105, y: 450 },
-  t11: { x: 187, y: 466 }, t12: { x: 269, y: 450 }, t13: { x: 351, y: 466 },
-  t14: { x: 433, y: 450 }, t7: { x: 515, y: 466 },
+  // Eric side — north band, parents (t1) nearest the U
+  t4: { x: 108, y: 50 }, t3: { x: 180, y: 50 }, t2: { x: 252, y: 50 }, t1: { x: 324, y: 50 },
+  // Meg side — south band, Palarcas (t8) nearest the U
+  t11: { x: 108, y: 450 }, t10: { x: 180, y: 450 }, t9: { x: 252, y: 450 }, t8: { x: 324, y: 450 },
+  // Elders — round inside the U's mouth
+  t7: { x: 275, y: 250 },
 };
 
 const SHORT_LABEL = {
-  head: "Head", am: "A&M", t1: "1", t2: "2", t3: "3", t4: "4", t5: "5",
-  t7: "7", t8: "8", t9: "9", t10: "10", t11: "11", t12: "12", t13: "13", t14: "14",
+  head: "Head", longN: "A&M+", longS: "Long S", t1: "1", t2: "2", t3: "3", t4: "4",
+  t7: "7", t8: "8", t9: "9", t10: "10", t11: "11",
 };
 
 const FLOWER_NOTE = {
@@ -385,7 +387,9 @@ function esc(s) {
 const totalSeated = TABLES.reduce((sum, t) => sum + t.guests.length, 0);
 const roundTables = TABLES.filter((t) => t.kind === "round");
 const openSeats = roundTables.reduce((sum, t) => sum + (t.capacity - t.guests.length), 0);
-const SIX_FT_COUNT = 14;
+// 9 in the U + 4 per long table. Cake is Milano's low cocktail table;
+// boba is a cart — neither needs a 6-ft.
+const SIX_FT_COUNT = 17;
 const mealCounts = { O: 0, C: 0, V: 0, VG: 0, "?": 0 };
 for (const t of TABLES) for (const g of t.guests) mealCounts[g.meal] += 1;
 
@@ -409,90 +413,107 @@ function floorPlanSVG(selected) {
     }
     rounds += `<g class="clickable" data-table="${id}">
       ${chairs}
-      <circle cx="${pos.x}" cy="${pos.y}" r="27" fill="${isSel ? C.selFill : C.tableFill}" stroke="${isSel ? C.accent : C.tableStroke}" stroke-width="${isSel ? 2 : 1}"/>
-      <text x="${pos.x}" y="${pos.y - 2}" text-anchor="middle" font-size="12" font-weight="600" fill="${C.name}">${esc(SHORT_LABEL[id])}</text>
-      <text x="${pos.x}" y="${pos.y + 12}" text-anchor="middle" font-size="9" fill="${C.fixtureText}">${t.guests.length}/${t.capacity}</text>
+      <circle cx="${pos.x}" cy="${pos.y}" r="25" fill="${isSel ? C.selFill : C.tableFill}" stroke="${isSel ? C.accent : C.tableStroke}" stroke-width="${isSel ? 2 : 1}"/>
+      <text x="${pos.x}" y="${pos.y + 1}" text-anchor="middle" font-size="11" font-weight="600" fill="${C.name}">${esc(SHORT_LABEL[id])}</text>
+      <text x="${pos.x}" y="${pos.y + 12}" text-anchor="middle" font-size="8" fill="${C.fixtureText}">${t.guests.length}/${t.capacity}</text>
     </g>`;
   }
 
   const headSel = selected === "head";
-  const amSel = selected === "am";
+  const lnSel = selected === "longN";
+  const lsSel = selected === "longS";
   const headFill = headSel ? C.selFill : C.tableFill;
   const headStroke = headSel ? C.accent : C.tableStroke;
   const headSw = headSel ? 2 : 1;
-  const amFill = amSel ? C.selFill : C.tableFill;
-  const amStroke = amSel ? C.accent : C.tableStroke;
-  const amSw = amSel ? 2 : 1;
 
+  // U dais on the east wall: 5 x 6-ft wall side + 2 x 6-ft per leg.
   const uSegments = [
-    { x: 555, y: 140, w: 25, h: 60 }, { x: 555, y: 200, w: 25, h: 60 },
-    { x: 555, y: 260, w: 25, h: 60 }, { x: 555, y: 320, w: 25, h: 60 },
-    { x: 375, y: 140, w: 60, h: 25 }, { x: 435, y: 140, w: 60, h: 25 }, { x: 495, y: 140, w: 60, h: 25 },
-    { x: 375, y: 355, w: 60, h: 25 }, { x: 435, y: 355, w: 60, h: 25 }, { x: 495, y: 355, w: 60, h: 25 },
+    { x: 325, y: 100, w: 20, h: 60 }, { x: 325, y: 160, w: 20, h: 60 },
+    { x: 325, y: 220, w: 20, h: 60 }, { x: 325, y: 280, w: 20, h: 60 },
+    { x: 325, y: 340, w: 20, h: 60 },
+    { x: 205, y: 100, w: 60, h: 20 }, { x: 265, y: 100, w: 60, h: 20 },
+    { x: 205, y: 380, w: 60, h: 20 }, { x: 265, y: 380, w: 60, h: 20 },
   ];
   const headChairPos = [];
-  for (let i = 0; i < 12; i++) headChairPos.push({ x: 592, y: 150 + i * 20 });
-  for (let i = 0; i < 6; i++) headChairPos.push({ x: 390 + i * 30, y: 132 });
-  for (let i = 0; i < 7; i++) headChairPos.push({ x: 387 + i * 26, y: 388 });
+  for (let i = 0; i < 15; i++) headChairPos.push({ x: 357, y: 110 + i * 20 });
+  for (let i = 0; i < 5; i++) headChairPos.push({ x: 217 + i * 24, y: 92 });
+  for (let i = 0; i < 5; i++) headChairPos.push({ x: 217 + i * 24, y: 408 });
 
-  const amSegments = [{ x: 130, y: 138, w: 60, h: 25 }, { x: 190, y: 138, w: 60, h: 25 }];
-  const amChairPos = [];
-  for (let i = 0; i < 4; i++) amChairPos.push({ x: 145 + i * 30, y: 130 });
-  for (let i = 0; i < 4; i++) amChairPos.push({ x: 145 + i * 30, y: 171 });
-  amChairPos.push({ x: 122, y: 150 });
-  amChairPos.push({ x: 258, y: 150 });
+  // Long tables: 4 x 6-ft each in the stage-wall pockets.
+  const longNSegs = [
+    { x: 12, y: 122, w: 60, h: 20 }, { x: 72, y: 122, w: 60, h: 20 },
+    { x: 132, y: 122, w: 60, h: 20 }, { x: 192, y: 122, w: 60, h: 20 },
+  ];
+  const longSSegs = [
+    { x: 12, y: 358, w: 60, h: 20 }, { x: 72, y: 358, w: 60, h: 20 },
+    { x: 132, y: 358, w: 60, h: 20 }, { x: 192, y: 358, w: 60, h: 20 },
+  ];
+  const longNChairs = [{ x: 260, y: 132 }];
+  for (let i = 0; i < 8; i++) longNChairs.push({ x: 26 + i * 28, y: 114 });
+  for (let i = 0; i < 7; i++) longNChairs.push({ x: 30 + i * 30, y: 150 });
+  const longSChairs = [{ x: 260, y: 368 }];
+  for (let i = 0; i < 8; i++) longSChairs.push({ x: 26 + i * 28, y: 350 });
+  for (let i = 0; i < 7; i++) longSChairs.push({ x: 30 + i * 30, y: 386 });
 
-  return `<svg viewBox="0 0 640 520" style="width:100%;height:auto;display:block">
-    <rect x="10" y="10" width="620" height="500" fill="none" stroke="${C.wall}" stroke-width="2" rx="4"/>
+  return `<svg viewBox="0 0 410 505" style="width:100%;height:auto;display:block">
+    <rect x="10" y="10" width="380" height="480" fill="none" stroke="${C.wall}" stroke-width="2"/>
 
-    <rect x="10" y="160" width="80" height="200" fill="${C.fixture}" stroke="${C.tableStroke}"/>
-    <text x="44" y="266" text-anchor="middle" font-size="11" fill="${C.fixtureText}" transform="rotate(-90 44 266)">STAGE</text>
-    <text x="62" y="266" text-anchor="middle" font-size="8" fill="${C.fixtureText}" transform="rotate(-90 62 266)">LIVE BAND</text>
+    <rect x="10" y="162" width="95" height="177" fill="${C.fixture}" stroke="${C.tableStroke}"/>
+    <text x="45" y="252" text-anchor="middle" font-size="11" fill="${C.fixtureText}" transform="rotate(-90 45 252)">STAGE</text>
+    <text x="63" y="252" text-anchor="middle" font-size="8" fill="${C.fixtureText}" transform="rotate(-90 63 252)">LIVE BAND · 17.7 × 9.5 ft</text>
 
-    <rect x="90" y="180" width="170" height="160" fill="none" stroke="${C.tableStroke}" stroke-dasharray="6 4"/>
-    <text x="175" y="255" text-anchor="middle" font-size="11" fill="${C.fixtureText}">DANCE FLOOR</text>
-    <text x="175" y="269" text-anchor="middle" font-size="9" fill="${C.fixtureText}">~17 x 16 ft · attached to stage</text>
+    <rect x="105" y="160" width="120" height="180" fill="none" stroke="${C.tableStroke}" stroke-dasharray="6 4"/>
+    <text x="165" y="245" text-anchor="middle" font-size="10" fill="${C.fixtureText}">DANCE</text>
+    <text x="165" y="258" text-anchor="middle" font-size="10" fill="${C.fixtureText}">FLOOR</text>
+    <text x="165" y="272" text-anchor="middle" font-size="7.5" fill="${C.fixtureText}">12 × 18 ft · at stage</text>
 
-    <text x="317" y="122" text-anchor="middle" font-size="10" font-weight="600" fill="${C.fixtureText}" letter-spacing="2">ERIC SIDE</text>
-    <text x="317" y="422" text-anchor="middle" font-size="10" font-weight="600" fill="${C.fixtureText}" letter-spacing="2">MEG SIDE</text>
+    <text x="200" y="30" text-anchor="middle" font-size="9" font-weight="600" fill="${C.fixtureText}" letter-spacing="2">ERIC SIDE</text>
+    <text x="200" y="475" text-anchor="middle" font-size="9" font-weight="600" fill="${C.fixtureText}" letter-spacing="2">MEG SIDE</text>
 
-    <rect x="15" y="95" width="25" height="60" fill="${C.fixture}" stroke="${C.tableStroke}"/>
-    <text x="31" y="125" text-anchor="middle" font-size="9" fill="${C.fixtureText}" transform="rotate(-90 31 125)">CAKE 6ft</text>
+    <circle cx="297" cy="333" r="13" fill="${C.fixture}" stroke="${C.tableStroke}"/>
+    <text x="297" y="331" text-anchor="middle" font-size="6.5" fill="${C.fixtureText}">CAKE</text>
+    <text x="297" y="339" text-anchor="middle" font-size="5.5" fill="${C.fixtureText}">low tbl</text>
 
-    <rect x="560" y="25" width="60" height="60" fill="${C.fixture}" stroke="${C.tableStroke}"/>
-    <text x="590" y="52" text-anchor="middle" font-size="9" fill="${C.fixtureText}">PHOTO</text>
-    <text x="590" y="64" text-anchor="middle" font-size="9" fill="${C.fixtureText}">BOOTH</text>
+    <rect x="356" y="80" width="26" height="24" fill="${C.fixture}" stroke="${C.tableStroke}"/>
+    <text x="369" y="90" text-anchor="middle" font-size="6.5" fill="${C.fixtureText}">BOBA</text>
+    <text x="369" y="98" text-anchor="middle" font-size="5.5" fill="${C.fixtureText}">cart</text>
 
-    <rect x="558" y="472" width="60" height="25" fill="${C.fixture}" stroke="${C.tableStroke}"/>
-    <text x="588" y="488" text-anchor="middle" font-size="9" fill="${C.fixtureText}">BOBA 6ft</text>
+    <line x1="390" y1="12" x2="390" y2="69" stroke="${C.doorGap}" stroke-width="6"/>
+    <line x1="390" y1="12" x2="390" y2="69" stroke="${C.fixtureText}" stroke-width="1"/>
+    <text x="382" y="30" text-anchor="end" font-size="7.5" fill="${C.fixtureText}">MAIN ENTRY</text>
+    <line x1="390" y1="428" x2="390" y2="487" stroke="${C.doorGap}" stroke-width="6"/>
+    <line x1="390" y1="428" x2="390" y2="487" stroke="${C.fixtureText}" stroke-width="1"/>
+    <text x="382" y="478" text-anchor="end" font-size="7.5" fill="${C.fixtureText}">MAIN ENTRY</text>
+    <text x="399" y="250" text-anchor="middle" font-size="8" fill="${C.fixtureText}" transform="rotate(90 399 250)">corridor · restrooms · lobby bar &amp; gifts</text>
 
-    <line x1="300" y1="10" x2="340" y2="10" stroke="${C.doorGap}" stroke-width="6"/>
-    <line x1="300" y1="10" x2="340" y2="10" stroke="${C.fixtureText}" stroke-width="1" stroke-dasharray="4 3"/>
-    <text x="320" y="24" text-anchor="middle" font-size="8" fill="${C.fixtureText}">catering</text>
-
-    <line x1="630" y1="90" x2="630" y2="135" stroke="${C.doorGap}" stroke-width="6"/>
-    <line x1="630" y1="90" x2="630" y2="135" stroke="${C.fixtureText}" stroke-width="1"/>
-    <text x="622" y="104" text-anchor="end" font-size="8" fill="${C.fixtureText}">MAIN</text>
-    <text x="622" y="115" text-anchor="end" font-size="8" fill="${C.fixtureText}">ENTRY</text>
-    <line x1="630" y1="385" x2="630" y2="430" stroke="${C.doorGap}" stroke-width="6"/>
-    <line x1="630" y1="385" x2="630" y2="430" stroke="${C.fixtureText}" stroke-width="1"/>
-    <text x="622" y="399" text-anchor="end" font-size="8" fill="${C.fixtureText}">MAIN</text>
-    <text x="622" y="410" text-anchor="end" font-size="8" fill="${C.fixtureText}">ENTRY</text>
-    <text x="636" y="265" text-anchor="middle" font-size="8" fill="${C.fixtureText}" transform="rotate(90 636 265)">corridor · bar &amp; gifts outside</text>
+    <line x1="36" y1="10" x2="66" y2="10" stroke="${C.doorGap}" stroke-width="6"/>
+    <line x1="36" y1="10" x2="66" y2="10" stroke="${C.fixtureText}" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="51" y="22" text-anchor="middle" font-size="7" fill="${C.fixtureText}">service</text>
+    <line x1="10" y1="490" x2="57" y2="490" stroke="${C.doorGap}" stroke-width="6"/>
+    <line x1="10" y1="490" x2="57" y2="490" stroke="${C.fixtureText}" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="34" y="484" text-anchor="middle" font-size="7" fill="${C.fixtureText}">to patio</text>
+    <text x="4" y="250" text-anchor="middle" font-size="8" fill="${C.fixtureText}" transform="rotate(-90 4 250)">patio behind the stage wall</text>
+    <text x="200" y="7" text-anchor="middle" font-size="7" fill="${C.fixtureText}">north wall: windows (blinds side-up, center-up)</text>
 
     <g class="clickable" data-table="head">
       ${headChairPos.map((p) => chairSvg(p.x, p.y, true)).join("")}
       ${uSegments.map((s) => `<rect x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" fill="${headFill}" stroke="${headStroke}" stroke-width="${headSw}"/>`).join("")}
-      <text x="465" y="238" text-anchor="middle" font-size="11" font-weight="600" fill="${C.name}">HEAD 25</text>
-      <text x="465" y="254" text-anchor="middle" font-size="8.5" fill="${C.fixtureText}">4 x 6ft wall side (5 ft off wall)</text>
-      <text x="465" y="266" text-anchor="middle" font-size="8.5" fill="${C.fixtureText}">+ 3 x 6ft per leg</text>
-      <text x="465" y="278" text-anchor="middle" font-size="8.5" fill="${C.fixtureText}">Eric &amp; Meg center · Eric N · Meg S</text>
+      <text x="302" y="165" text-anchor="middle" font-size="10" font-weight="600" fill="${C.name}">HEAD 25</text>
+      <text x="302" y="177" text-anchor="middle" font-size="7.5" fill="${C.fixtureText}">5 × 6ft wall side</text>
+      <text x="302" y="187" text-anchor="middle" font-size="7.5" fill="${C.fixtureText}">+ 2 × 6ft per leg</text>
+      <text x="302" y="197" text-anchor="middle" font-size="7.5" fill="${C.fixtureText}">Eric N · Meg S</text>
     </g>
 
-    <g class="clickable" data-table="am">
-      ${amChairPos.map((p) => chairSvg(p.x, p.y, true)).join("")}
-      ${amSegments.map((s) => `<rect x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" fill="${amFill}" stroke="${amStroke}" stroke-width="${amSw}"/>`).join("")}
-      <text x="190" y="154" text-anchor="middle" font-size="9" font-weight="600" fill="${C.name}">A&amp;M 10</text>
+    <g class="clickable" data-table="longN">
+      ${longNChairs.map((p) => chairSvg(p.x, p.y, true)).join("")}
+      ${longNSegs.map((s) => `<rect x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" fill="${lnSel ? C.selFill : C.tableFill}" stroke="${lnSel ? C.accent : C.tableStroke}" stroke-width="${lnSel ? 2 : 1}"/>`).join("")}
+      <text x="132" y="136" text-anchor="middle" font-size="9" font-weight="600" fill="${C.name}">A&amp;M + FRIENDS 16</text>
+    </g>
+
+    <g class="clickable" data-table="longS">
+      ${longSChairs.map((p) => chairSvg(p.x, p.y, true)).join("")}
+      ${longSSegs.map((s) => `<rect x="${s.x}" y="${s.y}" width="${s.w}" height="${s.h}" fill="${lsSel ? C.selFill : C.tableFill}" stroke="${lsSel ? C.accent : C.tableStroke}" stroke-width="${lsSel ? 2 : 1}"/>`).join("")}
+      <text x="132" y="372" text-anchor="middle" font-size="9" font-weight="600" fill="${C.name}">SOUTH LONG 16</text>
     </g>
 
     ${rounds}
@@ -531,50 +552,50 @@ function seatMapSVG(t) {
   }
 
   if (t.kind === "long") {
-    const westEnd = t.guests[0];
-    const north = t.guests.slice(1, 5);
-    const eastEnd = t.guests[5];
-    const south = t.guests.slice(6, 10);
-    let out = `<svg viewBox="0 0 470 140" style="width:100%;display:block">
-      <rect x="115" y="60" width="120" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-      <rect x="235" y="60" width="120" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-      <text x="235" y="77" text-anchor="middle" font-size="8" fill="${C.sub}">${esc(t.centerpiece ? FLOWER_NOTE[t.centerpiece] : "florals TBD")}</text>`;
+    // 4 x 6-ft: [0] east end, [1..8] north side W->E, [9..15] south side W->E
+    const eastEnd = t.guests[0];
+    const north = t.guests.slice(1, 9);
+    const south = t.guests.slice(9, 16);
+    let out = `<svg viewBox="0 0 470 150" style="width:100%;display:block">
+      <rect x="40" y="64" width="95" height="22" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+      <rect x="135" y="64" width="95" height="22" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+      <rect x="230" y="64" width="95" height="22" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+      <rect x="325" y="64" width="95" height="22" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+      <text x="230" y="79" text-anchor="middle" font-size="8" fill="${C.sub}">${esc(t.centerpiece ? FLOWER_NOTE[t.centerpiece] : "florals TBD")} — 4 × 6-ft, west end at the wall</text>`;
     north.forEach((g, i) => {
-      const x = 163 + i * 48;
-      out += `<g>${seatSvg(x, 47, g)}<text x="${x}" y="30" text-anchor="middle" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
+      const x = 62 + i * 48;
+      out += `<g>${seatSvg(x, 50, g)}<text x="${x}" y="33" text-anchor="middle" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
     });
     south.forEach((g, i) => {
-      const x = 163 + i * 48;
-      out += `<g>${seatSvg(x, 98, g)}<text x="${x}" y="120" text-anchor="middle" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
+      const x = 70 + i * 52;
+      out += `<g>${seatSvg(x, 100, g)}<text x="${x}" y="122" text-anchor="middle" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
     });
-    out += `<g>${seatSvg(103, 72, westEnd)}<text x="91" y="75" text-anchor="end" font-size="9" fill="${C.name}">${esc(westEnd.name)}</text></g>`;
-    out += `<g>${seatSvg(367, 72, eastEnd)}<text x="379" y="75" text-anchor="start" font-size="9" fill="${C.name}">${esc(eastEnd.name)}</text></g>`;
+    out += `<g>${seatSvg(434, 75, eastEnd)}<text x="446" y="78" text-anchor="start" font-size="9" fill="${C.name}">${esc(eastEnd.name)}</text></g>`;
     return out + "</svg>";
   }
 
   // head table U — opening upward (open side = stage side). Matches the floor
-  // plan orientation: room-NORTH on the RIGHT, so Eric's north leg is the
-  // right leg, Meg's south leg is the left leg, wall side runs south -> north
-  // left to right. Leg index 0 = stage (mouth) end.
-  const wallSide = t.guests.slice(0, 12);
-  const northLeg = t.guests.slice(12, 18);
-  const southLeg = t.guests.slice(18, 25);
-  let out = `<svg viewBox="0 0 470 275" style="width:100%;display:block">
-    <text x="210" y="12" text-anchor="middle" font-size="9" fill="${C.sub}">open side of the U — faces the stage</text>
-    <rect x="90" y="20" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="90" y="70" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="90" y="120" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="305" y="20" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="305" y="70" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="305" y="120" width="25" height="50" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="90" y="170" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="150" y="170" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="210" y="170" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <rect x="270" y="170" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
-    <text x="210" y="95" text-anchor="middle" font-size="9" fill="${C.sub}">${esc(t.centerpiece ? FLOWER_NOTE[t.centerpiece] : "florals TBD")} along the U</text>
-    <text x="210" y="110" text-anchor="middle" font-size="8" fill="${C.sub}">Meg's side south (left) · Eric's side north (right)</text>`;
+  // plan orientation: room-NORTH on the RIGHT, so Eric's leg is the right leg,
+  // Meg's the left, wall side runs south -> north left to right.
+  // Leg index 0 = stage (mouth) end.
+  const wallSide = t.guests.slice(0, 15);
+  const northLeg = t.guests.slice(15, 20);
+  const southLeg = t.guests.slice(20, 25);
+  let out = `<svg viewBox="0 0 470 300" style="width:100%;display:block">
+    <text x="210" y="12" text-anchor="middle" font-size="9" fill="${C.sub}">open side of the U — faces the stage; dance floor nests here</text>
+    <rect x="90" y="20" width="25" height="60" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="90" y="80" width="25" height="60" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="305" y="20" width="25" height="60" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="305" y="80" width="25" height="60" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="90" y="190" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="150" y="190" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="210" y="190" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="270" y="190" width="60" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <rect x="330" y="190" width="25" height="25" fill="${C.tableFill}" stroke="${C.tableStroke}"/>
+    <text x="210" y="110" text-anchor="middle" font-size="9" fill="${C.sub}">${esc(t.centerpiece ? FLOWER_NOTE[t.centerpiece] : "florals TBD")} along the U</text>
+    <text x="210" y="125" text-anchor="middle" font-size="8" fill="${C.sub}">Meg's side south (left) · Eric's side north (right)</text>`;
   southLeg.forEach((g, i) => {
-    const y = 29 + i * 23;
+    const y = 32 + i * 25;
     out += `<g>${seatSvg(78, y, g)}<text x="66" y="${y + 3}" text-anchor="end" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
   });
   northLeg.forEach((g, i) => {
@@ -582,10 +603,10 @@ function seatMapSVG(t) {
     out += `<g>${seatSvg(342, y, g)}<text x="354" y="${y + 3}" text-anchor="start" font-size="9" fill="${C.name}">${esc(g.name)}</text></g>`;
   });
   wallSide.forEach((g, i) => {
-    const x = 320 - i * 20;
+    const x = 334 - i * 19;
     const isCouple = g.name === "Eric" || g.name === "Meg";
-    out += `<g>${seatSvg(x, 207, g)}
-      <text x="${x + 3}" y="228" text-anchor="end" font-size="8.5" font-weight="${isCouple ? 700 : 400}" fill="${C.name}" transform="rotate(-42 ${x + 3} 228)">${esc(g.name)}</text></g>`;
+    out += `<g>${seatSvg(x, 227, g)}
+      <text x="${x + 3}" y="248" text-anchor="end" font-size="8.5" font-weight="${isCouple ? 700 : 400}" fill="${C.name}" transform="rotate(-42 ${x + 3} 248)">${esc(g.name)}</text></g>`;
   });
   return out + "</svg>";
 }
@@ -598,8 +619,9 @@ function cardHTML(t, selected) {
     .map((g) => `<div class="flag">${esc(g.name)}: ${esc(g.flag)}</div>`).join("");
   const cp = t.centerpiece
     ? `<div class="cp">Centerpiece: ${esc(t.centerpiece)}</div>`
-    : `<div class="cp miss">Centerpiece: none assigned — 1 short</div>`;
-  return `<div class="card${selected === t.id ? " selected" : ""}" id="card-${t.id}">
+    : `<div class="cp">Centerpiece: florals TBD</div>`;
+  const wide = t.kind !== "round" ? " wide" : "";
+  return `<div class="card${wide}${selected === t.id ? " selected" : ""}" id="card-${t.id}">
     <div class="card-h"><span>${esc(t.label)}</span><span class="pill${full ? " full" : ""}">${t.guests.length}/${t.capacity}</span></div>
     <div class="card-b">${seatMapSVG(t)}${flags}${cp}</div>
   </div>`;
@@ -627,7 +649,7 @@ function renderAll() {
 
   document.getElementById("stats").innerHTML = [
     [String(totalSeated), "Guests seated"],
-    ["15", "Tables (13 round + head U + long)"],
+    ["12", "Tables (9 round + head U + 2 long)"],
     [String(SIX_FT_COUNT), "6-ft banquet tables needed"],
     [String(openSeats), "Open seats on rounds"],
   ].map(([v, l]) => `<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
