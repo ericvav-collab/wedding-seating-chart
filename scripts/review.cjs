@@ -1,8 +1,8 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const root=path.join(__dirname,'..'),M=require('../model.js');
+const root=path.join(__dirname,'..'),M=require('../model.js'),V=require('../venue.js');
 const d=JSON.parse(fs.readFileSync(path.join(root,'seating-data.json')));
 const layouts=JSON.parse(fs.readFileSync(path.join(root,'layout-options.json')));
-const ctx=vm.createContext({SeatingModel:M,document:{},console,inputData:d});
+const ctx=vm.createContext({SeatingModel:M,VenuePlan:V,document:{},console,inputData:d});
 vm.runInContext(fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().catch')[0],ctx);
 vm.runInContext('DATA=inputData;',ctx);
 const lines=[
@@ -29,9 +29,19 @@ const lines=[
 'catering-prep wall. Reserve the 6 x 8-ft apron, the 4-ft serving route along that',
 'wall, and the 5-ft route behind the head table shown in blue.',
 'The stage-attached dance floor and the centre of the U remain clear of guest tables.',
-'Boba: front lobby, below the bar and near the building entrance; keep the queue clear.',
-'Jazz trio: opposite lobby pocket for cocktails. Reception band: Monza stage.',
-'Cake: stage wall on the lower/front-lobby side. Photo booth: proposed rear lobby.',
+'Rear building entry is the MAIN entrance. Welcome table with seating assignments',
+'and a few photos; greeting mirror; separate memorial table and guest-book table',
+'with Polaroid and photos. Boba is beside this arrival lobby, with its own queue.',
+'Jazz trio: Alba. Bar: existing front-lobby position. Reception band: Monza stage.',
+'Photo booth: front-lobby fallback near the bar, with separate queue space.',
+'An assumed 8 x 8-ft booth in the requested Monza corner conflicts with Table 1.',
+'Cake: unchanged beside the stage, on the lower/front-lobby side.',
+'Doria, Alba and patio are available for cocktail hour.',
+...Object.entries(V.counts).map(([id,c])=>`${V.rooms[id].name}: ${c.high} high + ${c.low} low cocktail tables; ${c.low*4} chairs.`),
+'Cocktail total: 12 high, 10 low, 40 chairs. These are separate from dinner seating.',
+'Display furniture: three 6-ft tables for welcome, guest book and memorial; mirror.',
+'Booth working area: 8 x 8 ft plus a 4 x 6-ft queue. Trio starting area: 10 x 8 ft.',
+'Confirm supplier footprints and outdoor weather arrangements before setup.',
 '',
 'FURNITURE OPTIONS — SAME GUEST GROUPS',
 'A: Compact U. Four 6-ft sections along the back and one per arm = 6 head sections.',
@@ -47,7 +57,8 @@ const lines=[
 '',
 'SCALE AND REMAINING SPACING',
 'No numerical scale is printed on the vendor PDF. The shape is about 520:635.',
-'The website’s default 50 x 61.1-ft setting is a working estimate, not a measurement.',
+'One fixed footprint: approximately 50 x 61 ft, preserving the vendor proportions.',
+'No room-size selector. Photos inform the arrangement; wall lengths are approximate.',
 'Rounds assume 60-inch tops and 2-ft chair space; banquet sections are 6 x 2.5 ft.',
 'Guest rectangular-table chairs are only on the long sides, leaving table ends free.',
 'The 3-ft gap target is between occupied spaces, not between tabletop edges.',

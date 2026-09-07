@@ -34,5 +34,13 @@ function optimize(W,opt,previous){
  const check=M.audit(W,opt,positions);console.log(opt,W,'hard',check.hard,'tight',check.tight,'route',check.routeClear,'gap',check.minGap.toFixed(1));
  return {width:W,depth:D,positions,audit:check};
 }
-const dest=require('path').join(__dirname,'../layout-options.json');const limited=process.argv[2];let out=limited?JSON.parse(fs.readFileSync(dest)):{};for(const opt of (limited?[limited]:['u','wide','mixed'])){out[opt]||={};let prev=limited?out[opt][+process.argv[3]]:null;for(const W of (limited?[+process.argv[3]]:[58,54,50,46,42,38])){const res=optimize(W,opt,prev);out[opt][W]=res;prev=res;fs.writeFileSync(require('path').join(__dirname,'../layout-options.json'),JSON.stringify(out));}}
+const dest=require('path').join(__dirname,'../layout-options.json'),limited=process.argv[2];
+if(process.argv[3])throw Error('Room size is fixed. Pass only an option name.');
+if(limited&&!M.options[limited])throw Error('Unknown layout option.');
+const out=JSON.parse(fs.readFileSync(dest));
+for(const opt of limited?[limited]:Object.keys(M.options)){
+ const W=M.ROOM_WIDTH,res=optimize(W,opt,out[opt][W]);
+ out[opt]={[W]:res};
+ fs.writeFileSync(dest,JSON.stringify(out));
+}
 

@@ -6,6 +6,7 @@ const root = path.join(__dirname, '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'seating-data.json')));
 const layouts = JSON.parse(fs.readFileSync(path.join(root, 'layout-options.json')));
 const M = require('../model.js');
+const V = require('../venue.js');
 const guests = data.groups.flatMap(t => t.guests);
 assert.equal(guests.length, 118);
 assert.equal(new Set(guests.map(g => g.id)).size, 118);
@@ -15,7 +16,7 @@ assert.deepEqual(mealCounts, {C:33,O:74,'?':7,V:3,VG:1});
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
 assert.equal(guests.find(g=>g.name==='Miranda').meal,'VG');
 assert(!guests.some(g=>['Quan','Natalia','Stella','Gerry N.','Letty','Mahmoud'].includes(g.name)));
-const context = vm.createContext({SeatingModel:M,document:{},console});
+const context = vm.createContext({SeatingModel:M,VenuePlan:V,document:{},console});
 // Load the actual drawing helpers without booting a browser or fetching data.
 const source = fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().catch')[0];
 vm.runInContext(source,context);
@@ -56,7 +57,7 @@ for (const opt of ['u','wide','mixed']) {
       }
     }
   }
-  assert(layouts[opt][38].audit.hard>0);
+  assert.deepEqual(Object.keys(layouts[opt]),[String(M.ROOM_WIDTH)]);
 }
 
 const atTable=id=>data.groups.find(t=>t.id===id);
@@ -86,4 +87,20 @@ for(const opt of ['u','wide','mixed']){
   assert(!(a.l<b.r&&a.r>b.l&&a.t<b.b&&a.b>b.t),'Head chairs must not overlap');
  }
 }
-console.log('PASS: 118 unique guests; corrected groups and meals; 18 geometry audits; 25 head seats; couple and Neri placements; kitchen routes; 6-ft sections; vendor orientation.');
+// Check the new cocktail furniture and actual drawn routes, not just the table counts.
+assert.equal(V.tables.filter(t=>t.kind==='high').length,12);
+assert.equal(V.tables.filter(t=>t.kind==='low').length,10);
+const asRect=a=>({...a,type:'rect'});
+const routeBlocks=V.routes.flatMap(r=>{const p=r.points.split(' ').map(s=>s.split(',').map(Number));return p.slice(1).map(([x,y],i)=>asRect({x:Math.min(x,p[i][0])-r.width/2,y:Math.min(y,p[i][1])-r.width/2,w:Math.abs(x-p[i][0])+r.width,h:Math.abs(y-p[i][1])+r.width}));});
+// Flat path ends stop at door thresholds; do not extend them into neighbouring rooms.
+for(const t of V.tables){const r=V.rooms[t.room],s={type:'circle',x:t.x,y:t.y,r:(t.kind==='low'?3.5:3)*V.scale},b=M.bounds(s);assert(b.l>=r.x&&b.r<=r.x+r.w&&b.t>=r.y&&b.b<=r.y+r.h);for(const route of routeBlocks)assert(M.distance(s,route)>=0,'Cocktail space blocks a drawn walking route: '+t.id);}
+for(let i=0;i<V.tables.length;i++)for(const b of V.tables.slice(i+1)){
+ const a=V.tables[i],shape=t=>({type:'circle',x:t.x,y:t.y,r:(t.kind==='low'?3.5:3)*V.scale});
+ assert(M.distance(shape(a),shape(b))>=0,'Cocktail occupied spaces overlap');
+}
+for(const a of V.stations)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Station blocks a walking route: '+a.id);
+for(const a of V.queues)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Queue blocks a walking route: '+a.id);
+assert.equal(V.stations.find(s=>s.id==='boba').y<350,true);
+assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);
+assert.equal(V.stations.find(s=>s.id==='bar').x,792);
+console.log('PASS: 118 guests; fixed room size across 3 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');

@@ -1,0 +1,43 @@
+/* Vendor drawing coordinates. Furniture uses the 50-ft working scale, not surveyed dimensions. */
+(function(root){
+ const scale=520/50;
+ const rooms={
+  doria:{name:'Doria',x:270,y:205,w:285,h:375},
+  alba:{name:'Alba',x:270,y:705,w:285,h:440},
+  patio:{name:'Patio',x:1428,y:390,w:205,h:560}
+ };
+ const tables=[];
+ function add(room,kind,points){for(const [x,y] of points)tables.push({room,kind,x,y,id:room+'-'+kind+'-'+(tables.length+1)});}
+ add('doria','high',[[326,238],[498,238],[326,342],[498,342]]);
+ add('doria','low',[[326,436],[498,436],[326,536],[498,536]]);
+ add('alba','high',[[326,760],[326,878],[498,878],[326,988]]);
+ add('alba','low',[[498,988],[326,1105],[498,1105]]);
+ add('patio','high',[[1475,448],[1586,448],[1475,760],[1586,760]]);
+ add('patio','low',[[1475,604],[1586,604],[1586,898]]);
+ const stations=[
+  {id:'welcome',n:1,x:807,y:304,w:26,h:62,title:'WELCOME',lines:['Seating assignments','A few framed photos'],detail:'One 6-ft table for seating assignments and a few framed photos. Guests approach from the centre of the lobby.'},
+  {id:'mirror',n:2,x:746,y:214,w:13,h:29,title:'MIRROR',lines:['Welcome greeting'],detail:'Welcome mirror just inside the main entrance, beside the welcome display; allow for its stand.'},
+  {id:'memorial',n:3,x:608,y:410,w:62,h:26,title:'MEMORIAL',lines:['Quiet remembrance'],detail:'One 6-ft memorial table in the quieter lower corner of the arrival lobby.'},
+  {id:'guestbook',n:4,x:571,y:335,w:26,h:62,title:'GUEST BOOK',lines:['Polaroid + photos'],detail:'One 6-ft side table for the guest book, Polaroid camera, spare film, pens and photos.'},
+  {id:'boba',n:5,x:772,y:218,w:62,h:26,title:'BOBA',lines:['Near main entrance'],detail:'Boba cart beside the rear main entrance. Its queue stays in the upper-right pocket, away from the welcome table and doorway.'},
+  {id:'booth',n:6,x:568,y:916,w:83.2,h:83.2,title:'PHOTO BOOTH',lines:['8 × 8 ft working area'],detail:'Photo booth in the front lobby near the bar. Reserve an 8 × 8-ft working area and a separate 4 × 6-ft queue; confirm the actual booth footprint.'},
+  {id:'bar',n:7,x:792,y:992,w:43,h:86,title:'BAR',lines:['Existing location'],detail:'Bar stays in its current front-lobby position. Keep its queue against this side of the lobby.'},
+  {id:'trio',n:8,x:420,y:716,w:104,h:83.2,title:'JAZZ TRIO',lines:['Alba · cocktail hour'],detail:'Jazz trio at the upper end of Alba, facing into the room. Reserve an initial 10 × 8-ft area; confirm instruments, power and sound needs.'}
+ ];
+ // Blue routes and amber queues are kept separate from station furniture.
+ const routes=[
+  {id:'arrival',points:'697,205 697,395 840,395',width:42},
+  {id:'doria-entry',points:'555,290 410,290 410,577',width:40},
+  {id:'alba-entry',points:'555,1046 410,1046 410,836',width:40},
+  {id:'bar-lobby',points:'555,1046 726,1046 726,940 840,940',width:40}
+ ];
+ const queues=[
+  {id:'boba-queue',x:772,y:248,w:62,h:42},
+  {id:'booth-queue',x:662,y:936,w:41.6,h:62.4},
+  {id:'bar-queue',x:750,y:992,w:38,h:86}
+ ];
+ const counts=Object.fromEntries(Object.keys(rooms).map(id=>[id,{high:tables.filter(t=>t.room===id&&t.kind==='high').length,low:tables.filter(t=>t.room===id&&t.kind==='low').length}]));
+ const views={all:{label:'Whole venue',box:'225 155 1440 1045'},arrival:{label:'Welcome lobby',box:'540 170 320 290'},alba:{label:'Alba & bar',box:'245 675 660 525'}};
+ const api={scale,rooms,tables,stations,routes,queues,counts,views};
+ if(typeof module!=='undefined')module.exports=api;else root.VenuePlan=api;
+})(globalThis);

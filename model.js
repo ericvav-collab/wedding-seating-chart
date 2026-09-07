@@ -1,6 +1,6 @@
 /* Vendor orientation: stage right, front lobby below. Distances in feet are planning assumptions. */
 (function(root){
-const ASPECT=635/520,R=4.5,GAP=3;
+const ASPECT=635/520,ROOM_WIDTH=50,R=4.5,GAP=3;
 const mix=new Set(['t3','t5','t12','t13']);
 const long=new Set(['t6','t10','t11']);
 const usesU=option=>option!=='mixed';
@@ -34,9 +34,8 @@ function fixed(W,option){
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
- const boba=rect('boba',-extra+.5,D-2.7,3,2,'Boba cart');
  const protectedAreas=[catering,serviceLane,wallRoute,...doors];
- return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,boba,kitchenX,catering,serviceLane,wallRoute,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
+ return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
 }
 function shape(id,option,x,y,rot=0){
  const k=kind(id,option);
@@ -70,6 +69,6 @@ function audit(W,option,positions){
  const routeClear=!issues.some(i=>i.hard&&['catering-apron','service-lane','wall-route','front-entry','rear-entry'].includes(i.b));
  return {hard:issues.filter(x=>x.hard).length,tight:issues.filter(x=>!x.hard).length,minGap,routeClear,issues};
 }
-const api={ASPECT,R,GAP,options,mix,long,usesU,kind,fixed,shape,bounds,distance,audit};
+const api={ASPECT,ROOM_WIDTH,R,GAP,options,mix,long,usesU,kind,fixed,shape,bounds,distance,audit};
 if(typeof module!=='undefined')module.exports=api;else root.SeatingModel=api;
 })(globalThis);
