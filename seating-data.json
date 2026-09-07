@@ -1,6 +1,6 @@
 {
-  "updated": "September 6, 2026",
-  "guests": 119,
+  "updated": "September 7, 2026",
+  "guests": 118,
   "groups": [
     {
       "id": "head",
@@ -372,19 +372,9 @@
           "id": "danielle"
         },
         {
-          "name": "Matt W.",
-          "meal": "O",
-          "id": "matt-w"
-        },
-        {
-          "name": "Trey",
-          "meal": "O",
-          "id": "trey"
-        },
-        {
-          "name": "Lauren",
-          "meal": "O",
-          "id": "lauren"
+          "name": "John",
+          "meal": "C",
+          "id": "john"
         },
         {
           "name": "Taylor",
@@ -392,27 +382,37 @@
           "id": "taylor"
         },
         {
-          "name": "John",
-          "meal": "C",
-          "id": "john"
+          "name": "Lauren",
+          "meal": "O",
+          "id": "lauren"
+        },
+        {
+          "name": "Trey",
+          "meal": "O",
+          "id": "trey"
+        },
+        {
+          "name": "Matt W.",
+          "meal": "O",
+          "id": "matt-w"
         }
       ]
     },
     {
       "id": "t7",
-      "label": "Nadela & Mercado parents",
+      "label": "Parents & Messinas",
       "side": "meg",
       "flowers": "Large",
       "guests": [
         {
-          "name": "Noli",
-          "meal": "C",
-          "id": "noli"
-        },
-        {
           "name": "Nelia",
           "meal": "O",
           "id": "nelia"
+        },
+        {
+          "name": "Noli",
+          "meal": "C",
+          "id": "noli"
         },
         {
           "name": "Roy",
@@ -428,6 +428,16 @@
           "name": "Pits",
           "meal": "O",
           "id": "pits"
+        },
+        {
+          "name": "Joe M.",
+          "id": "joe-messina",
+          "meal": "?"
+        },
+        {
+          "name": "Diane M.",
+          "id": "diane-messina",
+          "meal": "?"
         }
       ]
     },
@@ -519,7 +529,7 @@
     },
     {
       "id": "t10",
-      "label": "Drawers & Nadelas",
+      "label": "Drawers, Flores & Katadas",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -549,29 +559,6 @@
           "id": "loven"
         },
         {
-          "name": "Hannah",
-          "meal": "C",
-          "id": "hannah"
-        },
-        {
-          "name": "Gerry N.",
-          "meal": "?",
-          "id": "gerry"
-        },
-        {
-          "name": "Letty",
-          "meal": "?",
-          "id": "letty"
-        }
-      ]
-    },
-    {
-      "id": "t11",
-      "label": "Flores, Katadas & Neris",
-      "side": "meg",
-      "flowers": "Taper trio",
-      "guests": [
-        {
           "name": "Sue Ellen",
           "meal": "O",
           "id": "ellen"
@@ -592,6 +579,19 @@
           "id": "paulo"
         },
         {
+          "name": "Hannah",
+          "meal": "C",
+          "id": "hannah"
+        }
+      ]
+    },
+    {
+      "id": "t11",
+      "label": "Pimentels, Oculams, Mercados & Neris",
+      "side": "meg",
+      "flowers": "Taper trio",
+      "guests": [
+        {
           "name": "Joseph N.",
           "meal": "O",
           "id": "joseph-n"
@@ -600,6 +600,41 @@
           "name": "Phung",
           "meal": "C",
           "id": "phung"
+        },
+        {
+          "name": "Neal",
+          "meal": "C",
+          "id": "neal"
+        },
+        {
+          "name": "Mae",
+          "meal": "O",
+          "id": "mae"
+        },
+        {
+          "name": "Lan",
+          "meal": "C",
+          "id": "lan"
+        },
+        {
+          "name": "Miko",
+          "meal": "C",
+          "id": "miko"
+        },
+        {
+          "name": "Maynard",
+          "meal": "O",
+          "id": "maynard"
+        },
+        {
+          "name": "Nathan",
+          "meal": "C",
+          "id": "nathan"
+        },
+        {
+          "name": "Joseph O.",
+          "meal": "O",
+          "id": "joseph-o"
         }
       ]
     },
@@ -643,52 +678,9 @@
     },
     {
       "id": "t13",
-      "label": "Pimentels, Oculams & Mercados",
-      "side": "meg",
-      "flowers": "Taper trio",
-      "guests": [
-        {
-          "name": "Nathan",
-          "meal": "C",
-          "id": "nathan"
-        },
-        {
-          "name": "Neal",
-          "meal": "C",
-          "id": "neal"
-        },
-        {
-          "name": "Mae",
-          "meal": "O",
-          "id": "mae"
-        },
-        {
-          "name": "Joseph O.",
-          "meal": "O",
-          "id": "joseph-o"
-        },
-        {
-          "name": "Lan",
-          "meal": "C",
-          "id": "lan"
-        },
-        {
-          "name": "Miko",
-          "meal": "C",
-          "id": "miko"
-        },
-        {
-          "name": "Maynard",
-          "meal": "O",
-          "id": "maynard"
-        }
-      ]
-    },
-    {
-      "id": "t14",
       "label": "Miranda & friends",
       "side": "meg",
-      "flowers": "To choose",
+      "flowers": "Taper trio",
       "guests": [
         {
           "name": "Miranda",
@@ -701,11 +693,6 @@
           "id": "reina"
         },
         {
-          "name": "Mahmoud",
-          "meal": "?",
-          "id": "mahmoud"
-        },
-        {
           "name": "Pablo",
           "meal": "?",
           "id": "pablo"
@@ -716,6 +703,20 @@
           "id": "meli"
         }
       ]
+    }
+  ],
+  "unseated": [
+    {
+      "name": "Gerry N.",
+      "reason": "Not included in Meg’s revised seating list; left unseated for now."
+    },
+    {
+      "name": "Letty",
+      "reason": "Not included in Meg’s revised seating list; left unseated for now."
+    },
+    {
+      "name": "Mahmoud",
+      "reason": "Not included in Meg’s revised seating list; left unseated for now."
     }
   ]
 }

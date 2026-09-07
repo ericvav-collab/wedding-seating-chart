@@ -8,4 +8,6 @@ This is a static GitHub Pages site. Updates to `main` publish to the same addres
 
 Run `node scripts/check.cjs` to check guest totals, corrections, group capacities, head seats, and the saved geometry audits. Run `node scripts/review.cjs` after guest changes to refresh the downloadable review. Preview with a local HTTP server before publishing.
 
-The full-venue schematic traces architecture from the vendor reference, rotated 180 degrees to keep the stage left. Bar position comes from that reference; jazz trio, boba, and photo booth are proposed placements. The old furniture and scheduling notes have been removed.
+The full-venue schematic traces architecture from the vendor reference, in the vendor’s original orientation (stage right, front lobby below). The kitchen doorway is traced on the shared lower wall with catering prep. Protected areas include its turning apron and connected serving routes. Bar position comes from that reference; jazz trio, boba, and photo booth are proposed placements. The old furniture and scheduling notes have been removed.
+
+September 7: 118 named guests, 13 guest groups plus the head table. Options A/B/C have compact U / longer-arm U / straight heads, with the same 6 rounds, 4 small guest rectangles and 3 joined guest rectangles. Guest rectangles use long-side seating. `node scripts/optimize.cjs` regenerates candidates; an option and width argument (for example `u 50`) refines one candidate. Run the checks afterward. Never increase the advertised room size simply to hide clashes.
