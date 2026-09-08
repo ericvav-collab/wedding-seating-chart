@@ -1,6 +1,6 @@
 'use strict';
 const M=SeatingModel, $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const MEALS={O:'Beef · Osso Bucco',C:'Chicken Wellington',V:'Vegetarian',VG:'Vegan',S:'Special meal submitted','?':'Meal pending'};
+const MEALS={O:'Beef · Osso Bucco',C:'Chicken Wellington',V:'Vegetarian',VG:'Vegan',S:'Special meal','?':'Meal pending'};
 const width=M.ROOM_WIDTH;
 let DATA,LAYOUTS,option='u',selected='head',space=true,venueView='all';
 const colors={eric:'#edf3ec',meg:'#f1ebe1',shared:'#e0e9de'};

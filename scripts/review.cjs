@@ -13,8 +13,8 @@ const lines=[
 'Review website: https://ericvav-collab.github.io/wedding-seating-chart/',
 '',
 `${guests.length} guests: ${data.groups[0].guests.length} at the head table; ${guests.length-data.groups[0].guests.length} at 13 guest tables.`,
-`Meals: ${meals.O} beef (O), ${meals.C} chicken (C), ${meals.V} vegetarian (V), ${meals.VG} vegan (VG), ${meals.S} special meals submitted (S), ${meals['?']} pending (?).`,
-'Eric and Meg have submitted their special selections; details are held separately.',
+`Meals: ${meals.O} beef (O), ${meals.C} chicken (C), ${meals.V} vegetarian (V), ${meals.VG} vegan (VG), ${meals.S} special meals (S), ${meals['?']} pending (?).`,
+'Eric and Meg: special meal (S).',
 'Seat references use first names and distinguishing initials.',
 '',
 'VENUE ORIENTATION & SERVICE',
@@ -78,7 +78,7 @@ lines.push('Preserve the displayed seat order. Keep Tables 11 and 13 nearby.',
 '','REVIEW CHECKLIST',
 'Coordinator: selected option, usable dimensions, all chairs, door swings, service routes, boba operations and supplier needs.',
 'Florist: quantities, styles, head coverage, runner coverage, sightlines, candles and additional display flowers.',
-'Catering: final meal counts and receipt of submitted special selections.',
+'Catering: final meal counts and pending choices.',
 'Planning basis: vendor floor plan, supplied venue photos and current seating instructions.','');
 fs.writeFileSync(path.join(root,'seating-review.txt'),lines.join('\n'));
 console.log('Vendor review notes generated.');

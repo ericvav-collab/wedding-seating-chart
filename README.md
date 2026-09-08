@@ -4,7 +4,7 @@ Live website: https://ericvav-collab.github.io/wedding-seating-chart/
 
 This is a static GitHub Pages site. Updates to `main` publish to the same address. Visitors can compare options; their selections do not edit the shared guest list.
 
-`seating-data.json` contains setup references using first names, distinguishing initials, table assignments and meal codes. Keep contact details, RSVP history, surname-based group labels and private planning notes out of this repository. Special selections use code `S` for submitted; specific details are held separately. `model.js` contains furniture assumptions and clearance checks. All three options use one fixed approximate 50 × 61-ft footprint, preserving the vendor outline. `layout-options.json` holds only this footprint. Keep dimensions marked approximate until confirmed by the venue.
+`seating-data.json` contains setup references using first names, distinguishing initials, table assignments and meal codes. Keep contact details, RSVP history, surname-based group labels and private planning notes out of this repository. Eric and Meg use code `S` for Special meal. All guest meal-choice information remains part of the review website. `model.js` contains furniture assumptions and clearance checks. All three options use one fixed approximate 50 × 61-ft footprint, preserving the vendor outline. `layout-options.json` holds only this footprint. Keep dimensions marked approximate until confirmed by the venue.
 
 Run `node scripts/check.cjs` to check guest totals, corrections, group capacities, head seats, and the saved geometry audits. Run `node scripts/review.cjs` after guest changes to refresh the downloadable review. Preview with a local HTTP server before publishing.
 
