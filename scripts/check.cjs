@@ -12,10 +12,10 @@ assert.equal(guests.length, 118);
 assert.equal(new Set(guests.map(g => g.id)).size, 118);
 assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,10,7,6,6]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
-assert.deepEqual(mealCounts, {C:33,O:74,'?':7,V:3,VG:1});
+assert.deepEqual(mealCounts, {C:33,O:74,S:2,V:3,VG:1,'?':5});
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
 assert.equal(guests.find(g=>g.name==='Miranda').meal,'VG');
-assert(!guests.some(g=>['Quan','Natalia','Stella','Gerry N.','Letty','Mahmoud'].includes(g.name)));
+for(const id of ['eric','meg'])assert.equal(guests.find(g=>g.id===id).meal,'S');
 const context = vm.createContext({SeatingModel:M,VenuePlan:V,document:{},console});
 // Load the actual drawing helpers without booting a browser or fetching data.
 const source = fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().catch')[0];
@@ -61,9 +61,9 @@ for (const opt of ['u','wide','mixed']) {
 }
 
 const atTable=id=>data.groups.find(t=>t.id===id);
-assert(atTable('t7').guests.some(g=>g.id==='joe-messina'));
-assert(atTable('t7').guests.some(g=>g.id==='diane-messina'));
-assert.equal(data.unseated.length,3);
+assert(atTable('t7').guests.some(g=>g.id==='joe-m'));
+assert(atTable('t7').guests.some(g=>g.id==='diane-m'));
+assert(!Object.hasOwn(data,'unseated'));
 for(const id of ['t6','t10']){
  const t=atTable(id),ss=vm.runInContext(`partySeats(group('${id}'),'long')`,context);
  assert(t.guests.length<=10);
@@ -107,7 +107,11 @@ for(let i=0;i<V.tables.length;i++)for(const b of V.tables.slice(i+1)){
 }
 for(const a of V.stations)for(const r of routeBlocks){const shape=a.shape==='round'?{type:'circle',x:a.x+a.w/2,y:a.y+a.h/2,r:a.w/2}:asRect(a);assert(M.distance(shape,r)>=0,'Station blocks a walking route: '+a.id);}
 for(const a of V.queues)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Queue blocks a walking route: '+a.id);
-assert.equal(V.stations.find(s=>s.id==='boba').y<350,true);
+const boba=V.stations.find(s=>s.id==='boba'),f=M.fixed(M.ROOM_WIDTH,'u');
+assert.equal(boba.x,900+f.boba.x*V.scale);
+assert.equal(boba.y,350+f.boba.y*V.scale);
+assert(boba.x>=900&&boba.y>=350);
+for(const opt of Object.keys(M.options)){const fixed=M.fixed(M.ROOM_WIDTH,opt);for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.wallRoute,fixed.serviceLane,fixed.catering,...fixed.doors])assert(M.distance(b,route)>=0,'Boba must not block an entrance or service route');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
 assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);
 assert.equal(V.stations.find(s=>s.id==='bar').x,792);
 console.log('PASS: 118 guests; fixed room size across 3 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');

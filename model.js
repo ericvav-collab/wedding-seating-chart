@@ -33,9 +33,13 @@ function fixed(W,option){
  const catering=rect('catering-apron',kitchenX-3,D-8,6,8,'Kitchen door / turning space');
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
+ const boba=rect('boba',5.5,10,6,2.5,'Boba cart');
+ const bobaService=rect('boba-service',5.5,7.5,6,2.5,'Boba staff space');
+ const bobaQueue=rect('boba-queue',5.5,12.5,6,3.5,'Boba queue');
+ const bobaArea=rect('boba-working',5.5,7.5,6,8.5,'Boba cart, staff and queue');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
- const protectedAreas=[catering,serviceLane,wallRoute,...doors];
- return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
+ const protectedAreas=[catering,serviceLane,wallRoute,bobaArea,...doors];
+ return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,boba,bobaService,bobaQueue,bobaArea,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
 }
 function shape(id,option,x,y,rot=0){
  const k=kind(id,option);
@@ -66,7 +70,7 @@ function audit(W,option,positions){
  }
  for(const h of f.headBlocks)for(const ob of [f.dance,...f.protectedAreas]){const d=distance(h,ob);if(d<-.05)issues.push({a:h.id,b:ob.id,gap:d,hard:true});}
  const minGap=Math.min(...items.flatMap((a,i)=>items.slice(i+1).map(b=>distance(a,b))));
- const routeClear=!issues.some(i=>i.hard&&['catering-apron','service-lane','wall-route','front-entry','rear-entry'].includes(i.b));
+ const routeClear=!issues.some(i=>i.hard&&['catering-apron','service-lane','wall-route','front-entry','rear-entry','boba-working'].includes(i.b));
  return {hard:issues.filter(x=>x.hard).length,tight:issues.filter(x=>!x.hard).length,minGap,routeClear,issues};
 }
 const api={ASPECT,ROOM_WIDTH,R,GAP,options,mix,long,usesU,kind,fixed,shape,bounds,distance,audit};

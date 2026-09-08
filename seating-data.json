@@ -4,7 +4,7 @@
   "groups": [
     {
       "id": "head",
-      "label": "Wedding party & partners",
+      "label": "Wedding party",
       "side": "shared",
       "flowers": "Garland",
       "guests": [
@@ -35,12 +35,12 @@
         },
         {
           "name": "Eric",
-          "meal": "?",
+          "meal": "S",
           "id": "eric"
         },
         {
           "name": "Meg",
-          "meal": "?",
+          "meal": "S",
           "id": "meg"
         },
         {
@@ -137,7 +137,7 @@
     },
     {
       "id": "t1",
-      "label": "Parents & family friends",
+      "label": "Family table",
       "side": "eric",
       "flowers": "Large",
       "guests": [
@@ -180,7 +180,7 @@
     },
     {
       "id": "t2",
-      "label": "Vavra family",
+      "label": "Guest table",
       "side": "eric",
       "flowers": "Compote",
       "guests": [
@@ -223,7 +223,7 @@
     },
     {
       "id": "t3",
-      "label": "Hendersons",
+      "label": "Guest table",
       "side": "eric",
       "flowers": "Taper trio",
       "guests": [
@@ -261,7 +261,7 @@
     },
     {
       "id": "t4",
-      "label": "Doctor friends",
+      "label": "Guest table",
       "side": "eric",
       "flowers": "Taper trio",
       "guests": [
@@ -304,7 +304,7 @@
     },
     {
       "id": "t5",
-      "label": "Gallaghers, VandenBushes & Robertsons",
+      "label": "Guest table",
       "side": "eric",
       "flowers": "Compote",
       "guests": [
@@ -342,7 +342,7 @@
     },
     {
       "id": "t6",
-      "label": "Texas A&M friends",
+      "label": "Joined guest table",
       "side": "eric",
       "flowers": "Runner",
       "guests": [
@@ -400,7 +400,7 @@
     },
     {
       "id": "t7",
-      "label": "Parents & Messinas",
+      "label": "Family table",
       "side": "meg",
       "flowers": "Large",
       "guests": [
@@ -431,19 +431,19 @@
         },
         {
           "name": "Joe M.",
-          "id": "joe-messina",
+          "id": "joe-m",
           "meal": "?"
         },
         {
           "name": "Diane M.",
-          "id": "diane-messina",
+          "id": "diane-m",
           "meal": "?"
         }
       ]
     },
     {
       "id": "t8",
-      "label": "Palarcas",
+      "label": "Guest table",
       "side": "meg",
       "flowers": "Compote",
       "guests": [
@@ -486,7 +486,7 @@
     },
     {
       "id": "t9",
-      "label": "Friends",
+      "label": "Guest table",
       "side": "meg",
       "flowers": "Compote",
       "guests": [
@@ -529,7 +529,7 @@
     },
     {
       "id": "t10",
-      "label": "Drawers, Flores & Katadas",
+      "label": "Joined guest table",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -587,7 +587,7 @@
     },
     {
       "id": "t11",
-      "label": "Pimentels, Oculams & Mercados",
+      "label": "Guest table",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -630,7 +630,7 @@
     },
     {
       "id": "t12",
-      "label": "Gudes & Yus",
+      "label": "Guest table",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -668,7 +668,7 @@
     },
     {
       "id": "t13",
-      "label": "Miranda, friends & Neris",
+      "label": "Guest table",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -703,20 +703,6 @@
           "id": "phung"
         }
       ]
-    }
-  ],
-  "unseated": [
-    {
-      "name": "Gerry N.",
-      "reason": "Not included in Meg’s revised seating list; left unseated for now."
-    },
-    {
-      "name": "Letty",
-      "reason": "Not included in Meg’s revised seating list; left unseated for now."
-    },
-    {
-      "name": "Mahmoud",
-      "reason": "Not included in Meg’s revised seating list; left unseated for now."
     }
   ]
 }
