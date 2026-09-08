@@ -105,7 +105,7 @@ for(let i=0;i<V.tables.length;i++)for(const b of V.tables.slice(i+1)){
  const a=V.tables[i],shape=t=>({type:'circle',x:t.x,y:t.y,r:(t.kind==='low'?3.5:3)*V.scale});
  assert(M.distance(shape(a),shape(b))>=0,'Cocktail occupied spaces overlap');
 }
-for(const a of V.stations)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Station blocks a walking route: '+a.id);
+for(const a of V.stations)for(const r of routeBlocks){const shape=a.shape==='round'?{type:'circle',x:a.x+a.w/2,y:a.y+a.h/2,r:a.w/2}:asRect(a);assert(M.distance(shape,r)>=0,'Station blocks a walking route: '+a.id);}
 for(const a of V.queues)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Queue blocks a walking route: '+a.id);
 assert.equal(V.stations.find(s=>s.id==='boba').y<350,true);
 assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);

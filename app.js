@@ -98,7 +98,6 @@ function venueSVG(){
  const box=(x,y,w,h,fill='#f2f1eb')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="#899b8c" stroke-width="2"/>`;
  let s=box(270,205,285,375)+box(270,705,285,440)+box(270,580,116,126,'#e7e7e1')+box(555,438,112,143,'#eeeee8')+box(555,581,112,102,'#eeeee8')+box(555,683,112,222,'#eeeee8')+box(667,438,83,467,'#fcfaf4')+box(750,438,150,467,'#e6e7df')+box(840,990,298,153,'#e7e7df')+box(1428,390,205,560,'#f3f0e7')+box(558,905,282,240,'#fcfaf4')+box(558,205,282,233,'#fcfaf4');
  for(const route of VenuePlan.routes)s+=`<polyline points="${route.points}" fill="none" stroke="#e4eff1" stroke-width="${route.width}" stroke-linejoin="round"/>`;
- s+=`<path d="M697 395V438" stroke="#e4eff1" stroke-width="42"/>`;
  for(const q of VenuePlan.queues)s+=`<rect x="${q.x}" y="${q.y}" width="${q.w}" height="${q.h}" fill="#f8eedc" stroke="#b79861" stroke-dasharray="4 3"/><title>${esc(q.id)}</title>`;
  s+=tx(412,192,'DORIA · 4 HIGH + 4 LOW',16)+tx(410,698,'ALBA · 4 HIGH + 3 LOW',16)+tx(1530,378,'PATIO · 4 HIGH + 3 LOW',15)+tx(608,631,'BRIDAL',14)+tx(608,651,'SUITE',14)+tx(708,667,'CORRIDOR',12)+tx(825,667,'RESTROOMS',17)+tx(327,646,'Catering',14)+tx(987,1070,'CATERING PREP',18);
  s+=VenuePlan.tables.map(cocktailDrawing).join('');
@@ -106,17 +105,18 @@ function venueSVG(){
  s+='<path d="M840 365v62 M840 914v62 M665 1145h74 M655 205h77 M556 1029v60 M556 250v62" stroke="#fffdf8" stroke-width="7"/>';
  for(const a of VenuePlan.stations){
   const fill=a.id==='mirror'?'#f9f6ee':a.id==='trio'?'#d9e7e9':a.id==='booth'?'#ece4d6':'#e3e9dc';
-  s+=`<g data-station="${a.id}"><title>${esc(a.detail)}</title>`+box(a.x,a.y,a.w,a.h,fill);
+  s+=`<g data-station="${a.id}"><title>${esc(a.detail)}</title>`+(a.shape==='round'?`<circle cx="${a.x+a.w/2}" cy="${a.y+a.h/2}" r="${a.w/2}" fill="${fill}" stroke="#899b8c" stroke-width="2"/>`:box(a.x,a.y,a.w,a.h,fill));
   if(a.id==='mirror')s+=`<path d="M${a.x+3} ${a.y+24}l7-17" stroke="#b9c9c7" stroke-width="2"/>`;
+  if(a.id==='boba')for(const x of [a.x+10,a.x+a.w-10])s+=`<circle cx="${x}" cy="${a.y+a.h+2}" r="2" fill="#617567"/>`;
   const large=a.id==='booth'||a.id==='trio';
   if(large)s+=tx(a.x+a.w/2,a.y+a.h/2,a.title,11)+tx(a.x+a.w/2,a.y+a.h/2+17,a.id==='booth'?'8 × 8 ft':'ALBA',10);
   else if(a.id==='bar')s+=tx(a.x+a.w/2,a.y+a.h/2+12,'BAR',11);
   const cx=a.x+a.w/2,cy=large||a.id==='bar'?a.y+14:a.y+a.h/2;
   s+=`<circle cx="${cx}" cy="${cy}" r="9" fill="#47695a"/>`+tx(cx,cy+3.6,a.n,10,'#fff')+'</g>';
  }
- s+=tx(691,327,'WELCOME',12)+tx(691,344,'LOBBY',12)+tx(692,368,'Rear main entrance',8);
+ s+=tx(686,366,'WELCOME LOBBY',10)+tx(686,380,'3 tables + welcome mirror',8);
  s+=tx(699,1110,'FRONT LOBBY',17)+tx(711,1178,'FRONT BUILDING ENTRY',13)+tx(699,183,'MAIN ENTRANCE · REAR OF BUILDING',12);
- s+='<path d="M697 214V293 M735 395H838" fill="none" stroke="#628a96" stroke-width="2" stroke-dasharray="6 4"/><path d="M697 293l-5-9h10z M838 395l-9-5v10z" fill="#628a96"/>';
+ s+='<path d="M697 214V279H747V395H838" fill="none" stroke="#628a96" stroke-width="2" stroke-dasharray="6 4"/><path d="M697 258l-5-9h10z M838 395l-9-5v10z" fill="#628a96"/>';
  s+=tx(1160,326,'MONZA · RECEPTION',19);
  const view=VenuePlan.views[venueView].box,[vx,vy,vw,vh]=view.split(' ').map(Number);
  return `<svg viewBox="${view}" style="overflow:hidden" role="img" aria-label="${esc(VenuePlan.views[venueView].label)}: rear main entrance with welcome displays and boba; cocktail tables in Doria, Alba and patio; jazz trio in Alba; photo booth near the unchanged bar"><defs><clipPath id="venue-crop"><rect x="${vx}" y="${vy}" width="${vw}" height="${vh}"/></clipPath></defs><g clip-path="url(#venue-crop)">${s}</g></svg>`;
