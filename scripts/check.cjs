@@ -10,7 +10,7 @@ const V = require('../venue.js');
 const guests = data.groups.flatMap(t => t.guests);
 assert.equal(guests.length, 118);
 assert.equal(new Set(guests.map(g => g.id)).size, 118);
-assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,10,9,6,4]);
+assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,10,7,6,6]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
 assert.deepEqual(mealCounts, {C:33,O:74,'?':7,V:3,VG:1});
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
@@ -64,18 +64,25 @@ const atTable=id=>data.groups.find(t=>t.id===id);
 assert(atTable('t7').guests.some(g=>g.id==='joe-messina'));
 assert(atTable('t7').guests.some(g=>g.id==='diane-messina'));
 assert.equal(data.unseated.length,3);
-for(const id of ['t6','t10','t11']){
+for(const id of ['t6','t10']){
  const t=atTable(id),ss=vm.runInContext(`partySeats(group('${id}'),'long')`,context);
  assert(t.guests.length<=10);
  assert(ss.every(s=>Math.abs(s.y)===2.3&&Math.abs(s.x)<6));
  const names=Object.fromEntries(t.guests.map((g,i)=>[g.name,ss.find(s=>s.index===i)]));
  if(id==='t6')assert.equal(Math.abs(names.Sam.x-names.Adelia.x),2.4);
- if(id==='t11'){
-  assert.equal(names['Joseph N.'].y,names.Phung.y);
-  assert.equal(names['Joseph N.'].x,names.Miko.x);
-  assert.equal(names.Phung.x,names.Maynard.x);
-  assert(names.Miko.y>names['Joseph N.'].y);
- }
+}
+assert.deepEqual(atTable('t11').guests.map(g=>g.id),['nathan','neal','mae','joseph-o','lan','miko','maynard']);
+assert.deepEqual(new Set(atTable('t13').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
+assert.equal(M.kind('t11','u'),'round');
+assert.deepEqual(data.groups.filter(g=>g.side==='meg'&&M.kind(g.id,'u')==='long').map(g=>g.id),['t10']);
+const neriSeats=vm.runInContext("partySeats(group('t13'),'small')",context);
+const neriSeat=id=>neriSeats.find(s=>atTable('t13').guests[s.index].id===id);
+assert.equal(neriSeat('joseph-n').y,neriSeat('phung').y);
+assert.equal(Math.abs(neriSeat('joseph-n').x-neriSeat('phung').x),2);
+for(const opt of Object.keys(M.options)){
+ const pos=layouts[opt][M.ROOM_WIDTH].positions;
+ const gap=M.distance(M.shape('t11',opt,pos.t11.x,pos.t11.y,pos.t11.rot),M.shape('t13',opt,pos.t13.x,pos.t13.y,pos.t13.rot));
+ assert(gap>=0&&gap<=4.2,'Tables 11 and 13 should be nearby without overlapping');
 }
 for(const opt of ['u','wide','mixed']){
  const head=vm.runInContext(`headSeatPositions('${opt}',7,15)`,context);

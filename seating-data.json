@@ -1,5 +1,5 @@
 {
-  "updated": "September 7, 2026",
+  "updated": "September 8, 2026",
   "guests": 118,
   "groups": [
     {
@@ -587,19 +587,14 @@
     },
     {
       "id": "t11",
-      "label": "Pimentels, Oculams, Mercados & Neris",
+      "label": "Pimentels, Oculams & Mercados",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
         {
-          "name": "Joseph N.",
-          "meal": "O",
-          "id": "joseph-n"
-        },
-        {
-          "name": "Phung",
+          "name": "Nathan",
           "meal": "C",
-          "id": "phung"
+          "id": "nathan"
         },
         {
           "name": "Neal",
@@ -610,6 +605,11 @@
           "name": "Mae",
           "meal": "O",
           "id": "mae"
+        },
+        {
+          "name": "Joseph O.",
+          "meal": "O",
+          "id": "joseph-o"
         },
         {
           "name": "Lan",
@@ -625,16 +625,6 @@
           "name": "Maynard",
           "meal": "O",
           "id": "maynard"
-        },
-        {
-          "name": "Nathan",
-          "meal": "C",
-          "id": "nathan"
-        },
-        {
-          "name": "Joseph O.",
-          "meal": "O",
-          "id": "joseph-o"
         }
       ]
     },
@@ -678,7 +668,7 @@
     },
     {
       "id": "t13",
-      "label": "Miranda & friends",
+      "label": "Miranda, friends & Neris",
       "side": "meg",
       "flowers": "Taper trio",
       "guests": [
@@ -701,6 +691,16 @@
           "name": "Meli",
           "meal": "?",
           "id": "meli"
+        },
+        {
+          "name": "Joseph N.",
+          "meal": "O",
+          "id": "joseph-n"
+        },
+        {
+          "name": "Phung",
+          "meal": "C",
+          "id": "phung"
         }
       ]
     }

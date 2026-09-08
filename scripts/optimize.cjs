@@ -3,17 +3,25 @@ const groups=JSON.parse(fs.readFileSync(require('path').join(__dirname,'../seati
 let seed=372897;function rand(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
 function optimize(W,opt,previous){
  const f=M.fixed(W,opt),D=f.D;
- const prefs={t1:[14,D/2+20],t2:[W*.5,D-7],t3:[W*.76,D-7],t4:[W-7,D/2+17],t5:[W*.52,D/2+19],t6:[W*.75,D/2+25],t7:[14,D/2-20],t8:[11,7],t9:[W*.47,6],t10:[W*.52,D/2-17],t11:[W*.72,7],t12:[W-7,D/2-18],t13:[W*.32,6]};
+ const prefs={t1:[11,D-9],t2:[24,D-6],t3:[20,D-15],t4:[38,D-13],t5:[29,D-16],t6:[38,D-3.5],t7:[11,9],t8:[24,6],t9:[25,16],t10:[38,3.5],t11:[36,14],t12:[18,4],t13:[47,14]};
+ const partners={t1:'t7',t7:'t1',t2:'t8',t8:'t2',t3:'t12',t12:'t3',t4:'t9',t9:'t4',t5:'t13',t13:'t5',t6:'t10',t10:'t6'};
  function init(k){return groups.map((g,i)=>{let p=prefs[g.id];if(previous&&k===0){const q=previous.positions[g.id],r=W/previous.width;return {id:g.id,x:q.x*r,y:q.y*r,rot:q.rot||0,side:g.side};}return {id:g.id,x:p[0]+(rand()-.5)*(k?10:2),y:p[1]+(rand()-.5)*(k?6:1),rot:0,side:g.side};});}
  function single(a,others){
   let sh=M.shape(a.id,opt,a.x,a.y,a.rot),b=M.bounds(sh),cost=0;
   for(const v of [b.l,W-b.r,b.t,D-b.b])if(v<1)cost+=20000*Math.max(0,-v)**2+3*Math.max(0,1-v)**2;
   const cross=a.side==='meg'?b.b-(f.cy-9):f.cy+9-b.t;
   if(cross>0)cost+=160*cross*cross;
-  function penalty(gap,target){return 20000*Math.max(0,-gap)**2+4*Math.max(0,target-gap)**2+80*Math.max(0,Math.min(1.6,target)-gap)**2;}
+  function penalty(gap,target){return 30000*Math.max(0,-gap)**2+4*Math.max(0,target-gap)**2+200*Math.max(0,Math.min(1.7,target)-gap)**2;}
   for(const fixed of f.blocks)cost+=penalty(M.distance(sh,fixed),['view-lane',...f.protectedAreas.map(x=>x.id)].includes(fixed.id)?0:3);
   for(const o of others)if(o!==a)cost+=penalty(M.distance(sh,M.shape(o.id,opt,o.x,o.y,o.rot)),3);
   const pref=prefs[a.id];cost+=((a.x-pref[0])**2+(a.y-pref[1])**2)*(['t1','t7'].includes(a.id)?.08:.007);
+  const partner=others.find(p=>p.id===partners[a.id]);
+  if(partner){const weight=['t1','t7','t6','t10'].includes(a.id)?.12:.016;cost+=weight*((a.x-partner.x)**2+(a.y+partner.y-D)**2);}
+  if(a.id==='t11'||a.id==='t13'){
+   const friend=others.find(p=>p.id===(a.id==='t11'?'t13':'t11'));
+   const gap=M.distance(sh,M.shape(friend.id,opt,friend.x,friend.y,friend.rot));
+   cost+=25*Math.max(0,gap-4)**2;
+  }
   return cost;
  }
  let best=null,bc=Infinity;

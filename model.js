@@ -2,12 +2,12 @@
 (function(root){
 const ASPECT=635/520,ROOM_WIDTH=50,R=4.5,GAP=3;
 const mix=new Set(['t3','t5','t12','t13']);
-const long=new Set(['t6','t10','t11']);
+const long=new Set(['t6','t10']);
 const usesU=option=>option!=='mixed';
 const kind=(id,option)=>long.has(id)?'long':mix.has(id)?'small':'round';
 const options={
  u:{name:'A · Compact U + mixed guest tables',short:'Compact U + mixed tables',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
- wide:{name:'B · Longer-arm U + mixed tables',short:'Longer-arm U',six:8,trade:'The U from the previous option A, now paired with smaller guest tables. No head-table guests have their backs to the band; it needs six more feet of arm length.'},
+ wide:{name:'B · Longer-arm U + mixed tables',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A.'},
  mixed:{name:'C · Straight + mixed guest tables',short:'Straight + mixed tables',six:4,trade:'Smallest head-table footprint. The opposite row has its back toward the band. Guest groups and their table shapes stay the same.'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
