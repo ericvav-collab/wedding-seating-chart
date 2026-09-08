@@ -11,7 +11,7 @@ const options={
  mixed:{name:'C · Straight + mixed guest tables',short:'Straight + mixed tables',six:4,trade:'Smallest head-table footprint. The opposite row has its back toward the band. Guest groups and their table shapes stay the same.'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
-function fixed(W,option){
+function fixed(W,option,settings={}){
  const D=W*ASPECT,cy=D/2,stageDepth=W*.246,extra=W*60/520;
  const stage=rect('stage',W-stageDepth,D*.321,stageDepth,D*.369,'Band stage');
  const dance=rect('dance',stage.x-12,cy-9,12,18,'Dance floor');
@@ -33,16 +33,16 @@ function fixed(W,option){
  const catering=rect('catering-apron',kitchenX-3,D-8,6,8,'Kitchen door / turning space');
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
- const boba=rect('boba',5.5,10,6,2.5,'Boba cart');
- const bobaService=rect('boba-service',5.5,7.5,6,2.5,'Boba staff space');
- const bobaQueue=rect('boba-queue',5.5,12.5,6,3.5,'Boba queue');
- const bobaArea=rect('boba-working',5.5,7.5,6,8.5,'Boba cart, staff and queue');
+ const boba=settings.bobaAtEntry?rect('boba',9,0,2.5,6,'Boba cart'):rect('boba',5.5,10,6,2.5,'Boba cart');
+ const bobaService=settings.bobaAtEntry?rect('boba-service',11.5,0,2.5,6,'Boba staff space'):rect('boba-service',5.5,7.5,6,2.5,'Boba staff space');
+ const bobaQueue=settings.bobaAtEntry?rect('boba-queue',5.5,0,3.5,6,'Boba queue'):rect('boba-queue',5.5,12.5,6,3.5,'Boba queue');
+ const bobaArea=settings.bobaAtEntry?rect('boba-working',5.5,0,8.5,6,'Boba cart, staff and queue'):rect('boba-working',5.5,7.5,6,8.5,'Boba cart, staff and queue');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
  const protectedAreas=[catering,serviceLane,wallRoute,bobaArea,...doors];
  return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,boba,bobaService,bobaQueue,bobaArea,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
 }
-function shape(id,option,x,y,rot=0){
- const k=kind(id,option);
+function shape(id,option,x,y,rot=0,settings={}){
+ const k=settings.roundGuests&&!long.has(id)?'round':kind(id,option);
  // Banquet guests sit on long sides only. No chairs project past the table ends.
  if(k!=='round'){const w=k==='long'?12:6,h=6.5;return rect(id,x-(rot?h:w)/2,y-(rot?w:h)/2,rot?h:w,rot?w:h,'Table '+id.slice(1)+' + chairs');}
  return {id,type:'circle',x,y,r:R,label:'Table '+id.slice(1)+' + chairs'};
@@ -59,8 +59,8 @@ function distance(a,b){
  const A=bounds(a),B=bounds(b),dx=Math.max(A.l-B.r,B.l-A.r),dy=Math.max(A.t-B.b,B.t-A.b);
  return dx>0||dy>0?Math.hypot(Math.max(dx,0),Math.max(dy,0)):Math.max(dx,dy);
 }
-function audit(W,option,positions){
- const f=fixed(W,option),items=Object.entries(positions).map(([id,p])=>shape(id,option,p.x,p.y,p.rot)),issues=[];
+function audit(W,option,positions,settings={}){
+ const f=fixed(W,option,settings),items=Object.entries(positions).map(([id,p])=>shape(id,option,p.x,p.y,p.rot,settings)),issues=[];
  const protectedIds=new Set([...f.protectedAreas.map(x=>x.id),'view-lane']);
  for(let i=0;i<items.length;i++){
   const a=items[i],b=bounds(a),edge=Math.min(b.l,W-b.r,b.t,f.D-b.b);
