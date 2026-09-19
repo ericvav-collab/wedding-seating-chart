@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Final Countdown · Meighan &amp; Eric · 10.10.26</title>
+<style>
+:root{--blue:#5b7a9d;--blue-d:#3f5a78;--blue-l:#e8eef5;--ink:#2b2f36;--mut:#6b7280;--bg:#faf8f4;--card:#fff;--ok:#3e7d55;--warn:#a15c2f;--line:#e3ddd2}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.55 Georgia,'Times New Roman',serif;color:var(--ink);background:var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+header{background:var(--blue-d);color:#fff;padding:28px 0 22px}
+header .eyebrow{font:600 12px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#c7d5e4}
+header h1{margin:.25em 0 .1em;font-weight:normal;font-size:30px}
+header p{margin:.2em 0;color:#dce6f0;font-size:14px}
+header a{color:#fff}
+.days{display:inline-block;background:#fff;color:var(--blue-d);border-radius:20px;padding:4px 14px;font:700 14px system-ui,sans-serif;margin-top:8px}
+.progress{background:#2e4257;border-radius:8px;height:10px;margin-top:14px;overflow:hidden}
+.progress i{display:block;height:100%;background:#9fc3a8;width:0;transition:width .3s}
+.pnote{font:12px system-ui,sans-serif;color:#c7d5e4;margin-top:4px}
+nav{position:sticky;top:0;background:#fffdf9;border-bottom:1px solid var(--line);z-index:5;overflow-x:auto;white-space:nowrap}
+nav .wrap{display:flex;gap:18px;padding:10px 16px}
+nav a{font:600 13px system-ui,sans-serif;color:var(--blue-d);text-decoration:none}
+section{margin:26px 0}
+h2{font-weight:normal;font-size:22px;color:var(--blue-d);border-bottom:2px solid var(--blue);padding-bottom:6px}
+h2 .due{font:600 12px system-ui,sans-serif;color:var(--mut);margin-left:8px;letter-spacing:.05em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+.item{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line)}
+.item:last-child{border-bottom:0}
+.item input{margin-top:4px;width:18px;height:18px;accent-color:var(--blue);flex:none}
+.item label{cursor:pointer}
+.item.done label{color:var(--mut);text-decoration:line-through;text-decoration-color:#b8c4d0}
+.item .who{display:inline-block;background:var(--blue-l);color:var(--blue-d);font:600 11px system-ui,sans-serif;border-radius:10px;padding:1px 8px;margin-right:6px;vertical-align:1px}
+.info{font-size:15px}
+.info b{color:var(--blue-d)}
+.note{background:#f4efe6;border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14px;margin:10px 0}
+.resolved{color:var(--ok);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
+.time{font:700 13px system-ui,sans-serif;color:var(--blue-d);white-space:nowrap}
+footer{margin:40px 0 30px;color:var(--mut);font-size:13px;text-align:center}
+footer a{color:var(--blue-d)}
+.reset{font:600 12px system-ui,sans-serif;color:var(--mut);background:none;border:1px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+@media print{nav,.reset{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Final countdown · updated September 18, 2026</div>
+<h1>Meighan &amp; Eric — October 10, 2026</h1>
+<p>St. Laurence Catholic Church 2:00 pm · Milano Event Center (Monza) 12:30–10:30 · 125 guests · sunset 6:56 pm</p>
+<p>Layout source of truth: <a href="index.html">the seating &amp; table plan</a> — Fay confirmed 60&Prime; rounds, 6-ft long tables</p>
+<div class="days" id="days"></div>
+<div class="progress"><i id="bar"></i></div>
+<div class="pnote" id="pnote">Checkboxes save on THIS device/browser only — Eric and Meg each keep their own copy.</div>
+</div></header>
+<nav><div class="wrap">
+<a href="#countdown">Countdown</a><a href="#dayof">Day-of</a><a href="#packing">Packing</a><a href="#bar">Bar order</a><a href="#printing">Printing</a><a href="#tips">Tips</a><a href="#gaps">Gaps</a><a href="#open">Open items</a>
+</div></nav>
+<main class="wrap">
+
+<section id="countdown"><h2>Date-by-date countdown</h2><div id="checklists"></div></section>
+
+<section id="dayof"><h2>Saturday Oct 10 — run sheet</h2><div class="card"><table>
+<tr><td class="time">7:30a</td><td>Blooming Beauty (3 artists) starts at the hotel; bride's hair+makeup last slot, ends ~11:45</td></tr>
+<tr><td class="time">11:30a</td><td>Photographer main shooter starts (10-hr window → 9:30p); details box flat-lay first, then getting-ready</td></tr>
+<tr><td class="time">12:00p</td><td>Jesus collects venue bins from the hotel</td></tr>
+<tr><td class="time">12:30p</td><td>Jesus at Milano — bins in; Katy directs setup (coaster ON TOP of folded bag at every setting)</td></tr>
+<tr><td class="time">1:00p</td><td>Elite Limo (paid): wedding party hotel → church</td></tr>
+<tr><td class="time">1:15p</td><td>Second shooter starts (4-hr window → 5:15p)</td></tr>
+<tr><td class="time">2:00p</td><td><b>CEREMONY — Wedding Mass, St. Laurence</b> (~75 min)</td></tr>
+<tr><td class="time">3:15p</td><td>Family photos at church — 9 sets per the shot list; photo wranglers keep Sets 5–6 moving</td></tr>
+<tr><td class="time">4:00p</td><td>Couple + bridal party portraits</td></tr>
+<tr><td class="time">4:15p</td><td>Guests arrive Milano — cocktail hour (jazz trio TBC), bar opens</td></tr>
+<tr><td class="time">5:15p</td><td>Grand entrance → first dance → dinner service</td></tr>
+<tr><td class="time">6:00p</td><td>Photo booth opens (→9) · toasts during/after dinner</td></tr>
+<tr><td class="time">6:30p</td><td>Golden hour — sunset portraits (sunset 6:56)</td></tr>
+<tr><td class="time">7:00p</td><td>Boba opens (→9) · cake cutting ~7:15 · parent dances</td></tr>
+<tr><td class="time">8:45p</td><td><b>Glow drop</b> — foam sticks handed out in one burst as the band opens a high-energy set</td></tr>
+<tr><td class="time">9:30p</td><td>Photographer wraps</td></tr>
+<tr><td class="time">9:40p</td><td>Last dance</td></tr>
+<tr><td class="time">9:45p</td><td><b>Bubble-gun exit</b> — Andrew on gun #1; guests bring their lit foam sticks</td></tr>
+<tr><td class="time">10:00p</td><td>Guests out · teardown by assigned crew</td></tr>
+<tr><td class="time">10:30p</td><td>Everything and everyone out of Milano</td></tr>
+</table></div></section>
+
+<section id="packing"><h2>Packing map — what goes where, when</h2>
+<div class="note">Everything travels WITH MEG'S GROUP to the hotel Friday Oct 9. Jesus collects the venue bins from the hotel Saturday ~noon. Tape an inventory list to each container.</div>
+<div class="card info"><b>A. Meg's hotel bag</b> — dress (steamed, hanging), veil, wedding shoes, jewelry, perfume, second dress, undergarments, getting-ready outfit, emergency kit (fashion tape, sewing kit, stain pen, bobby pins, hairspray, blister pads, ibuprofen, clear straws, lash glue, blot sheets, mints, chargers), HMU inspo, suite snacks + water.</div>
+<div class="card info"><b>B. Details box</b> (photographer shoots it first) — both wedding bands + engagement ring, ring box, hard-copy invitation suite + wax seal sample, vow books with vows written in, wedding jewelry, perfume bottle, dusty-blue ribbon swatch, old/new/borrowed/blue. After the flat-lay, rings go to Andrew (best man).</div>
+<div class="card info"><b>C. Venue bins</b> (Jesus, 12:30 drop) —<br>
+<b>Bin 1 · Guest tables:</b> coaster + folded-bag pairs by table in labeled zips — folded bag flat on the menu, coaster ON TOP, name up (bags are take-home wrappers, coasters never go inside) · meal-ID key card for CityView taped in the lid · menus.<br>
+<b>Bin 2 · Entry &amp; signage:</b> seating chart display · welcome mirror (Maddy's stickers applied — verify!) · bar sign · card box · 5 framed photos · memory photos · easels.<br>
+<b>Bin 3 · Guestbook table:</b> Polaroid sign-in book · Instax camera · all film (105) · markers (tested) · tape · instruction sign.<br>
+<b>Bin 4 · Party &amp; cake:</b> cake topper (Maddy — confirm finished) · cake cutting set · toasting flutes · foam light sticks (boxed until 8:45!) · bubble guns ×2 + batteries + solution · Ollie's suit · spare organza bags.</div>
+<div class="card info"><b>D. Church box</b> (to Friday rehearsal, NOT Milano) — programs (100, stapled), marriage license (in hand ✓), reserved-row signs, church musician/server envelopes, tissues, reader copies.</div>
+<div class="card info"><b>E. End-of-night assignments</b> (fill in names!) — card box + gifts: ____ · leftover cake + top tier: ____ · teardown crew ×2: ____ ____ · dress #1 + details box to hotel: ____ · leftover coasters (needed at Sunday's house party): ____ · centerpieces: ____ · Ollie home: ____</div>
+</section>
+
+<section id="bar"><h2>Final bar order — submit with the Sep 26 headcount</h2>
+<div class="card info">Format: beer &amp; wine + mocktails, plus signature drinks. Per Andrew's review:<br>
+1. <b>Confirm</b> exactly how CityView makes the espresso martini<br>
+2. <b>Swap</b> Stella Artois → Heineken<br>
+3. <b>Swap</b> Cupcake moscato → regular La Marca prosecco<br>
+4. <b>Add</b> St. Arnold Oktoberfest (seasonal)<br>
+5. Signature candidates (pick 1 hers + 1 his): cranberry Paloma · apple cider ranch water · Aperol apple spritz<br>
+<span class="resolved">Pending:</span> Meg's drink recipes from the Samsung note (Meg Mimosa, vodka-lime-ginger) — re-send the note text.<br>
+Also submit the mocktail list; boba is separate (Kung Fu Tea, 7–9).</div>
+</section>
+
+<section id="printing"><h2>Programs &amp; menus — printing plan</h2>
+<div class="card info">
+<b>Programs (booklet):</b> 1) Fill every bracket in Canva (church line, parents, Mabelle's last name, 8 party names, celebrant; lyrics only if the parish confirms its OneLicense/CCLI number). 2) Pad to 12 pages (multiple of 4). 3) Export "PDF Print." 4) <b>Recommended:</b> FedEx Office saddle-stitch booklet — 8.5×11 folded to 5.5×8.5, 32 lb text + 65 lb cover, ~$1–2 each, order 100. They handle page ordering. 5) DIY alt: Acrobat Reader "Booklet" mode, duplex short-edge, fold, long-reach saddle stapler (two staples on the fold). 6) Box labeled CHURCH.<br><br>
+<b>Menus:</b> flat card (4×9 or 5×7), 80–100 lb cardstock, print 130, no fold/staple. Box labeled VENUE (Bin 1).<br><br>
+<b>Meal ID (solved):</b> wax-seal color per meal on each folded bag or menu corner — gold = Osso Bucco · silver/blue = Chicken Wellington · green = Veg/Vegan (Miranda's TRUE vegan flagged separately). Key card + per-table counts to CityView.<br><br>
+<b>Final matrix (all resolved Sep 18):</b> 76 beef · 36 chicken · 3 vegetarian · 1 vegan · 2 special (Eric &amp; Meg) = 118 plates + vendor meals.
+</div></section>
+
+<section id="tips"><h2>Tip envelopes (~$1,625 cash — Katy distributes)</h2>
+<div class="card"><table>
+<tr><th>Envelope</th><th>Amount</th></tr>
+<tr><td>Katy (KNZ) — covers florals too</td><td>$150</td></tr>
+<tr><td>Band (Royal Dukes, via Jordan)</td><td>$250</td></tr>
+<tr><td>Photographer team (Ivory Grove)</td><td>$230 ($130 lead / $100 second)</td></tr>
+<tr><td>Blooming Beauty (3 artists)</td><td>$220</td></tr>
+<tr><td>Catering lead (CityView)</td><td>$200</td></tr>
+<tr><td>Photo booth attendant</td><td>$100</td></tr>
+<tr><td>Kung Fu Tea (3 staff)</td><td>$105</td></tr>
+<tr><td>Limo driver (Elite Limo — skip if gratuity was in Meg's paid booking)</td><td>$80</td></tr>
+<tr><td>Bar staff (CityView)</td><td>$625 gratuity already contracted — don't double-tip</td></tr>
+<tr><td>Officers</td><td>paid rate, no tip</td></tr>
+</table>
+<p class="info" style="margin:8px 0 0">Church box (separate): celebrant stipend, altar servers, musicians — ask St. Laurence's coordinator for customary amounts.</p></div>
+</section>
+
+<section id="gaps"><h2>Gaps &amp; watch items</h2>
+<div class="card info">
+<span class="resolved">RESOLVED:</span> security (booked, half paid — balance Oct 5) · rehearsal + dinner (Eric's parents hosting) · marriage license (in hand) · meal choices (all 118 locked) · photo shot list (9 sets, in Google Docs) · limo (Elite Limo, paid).<br><br>
+<b>Still open:</b><br>
+· Vendor COIs for Milano (ask Katy to collect from CVC, band, booth)<br>
+· Vendor meals in the Sep 26 count (~15 plates)<br>
+· Cake: delivery window, who cuts, top-tier box<br>
+· Toasting flutes + cake cutting set — buy/borrow this week<br>
+· Table numbers: pick the acrylic gold style with Katy (one text)<br>
+· Photography: 10 hrs = 11:30a–9:30p; exit is 9:45p — shift start or accept no pro at the exit · first look decision<br>
+· Ollie's handler (suit is bought, human unassigned)<br>
+· Boba stickers ordered? Drop-off due last week of Sept<br>
+· Milano $2,000 security deposit — owed at walkthrough? refundable?<br>
+· Final walkthrough with Milano + Katy week of Oct 5 (power, stage, 8 cocktail tables, officer posts)<br>
+· Who holds rings during Mass — settle at rehearsal<br>
+· Umbrellas in a car (October insurance) · bubble exit under the entry overhang<br>
+· Everything wedding-related DONE by Wed Oct 14 — Rome flight is Sat Oct 17
+</div></section>
+
+<section id="open"><h2>Open items — need answers</h2><div class="card" id="openItems"></div>
+<p style="text-align:right"><button class="reset" id="reset">Reset all checkboxes on this device</button></p>
+</section>
+
+</main>
+<footer>Meighan &amp; Eric · 10.10.26 · <a href="index.html">Seating &amp; layout plan</a> · Full text version lives in the wedding-planning folder (Final-countdown-091826.txt)</footer>
+<script>
+const SECTIONS=[
+{id:"w1",title:"Fri Sep 19 – Sun Sep 21",due:"THIS WEEKEND",items:[
+ {id:"lic",t:"Marriage license — DONE, in hand. Goes in the Church box; bring to rehearsal.",done:true},
+ {id:"meals",t:"Meal choices — ALL RESOLVED (Joe M. + Diane M. + Pablo = chicken; Meli + Reina = beef). Matrix: 76 O / 36 C / 3 V / 1 VG / 2 special.",done:true},
+ {id:"sec",t:"Security officers — BOOKED, half paid (balance Oct 5).",done:true},
+ {id:"photolist",t:"Family photo list — DONE (9 sets in Google Docs).",done:true},
+ {id:"jordan",t:"Schedule the Oct 3 call with Jordan (Royal Dukes) — not booked yet",who:"Eric"},
+ {id:"music",t:"Music selections: church + reception (must-plays, do-not-plays, first dance, parent dances, intro, last song) — needed for the Royal Dukes details page due 9/25"},
+ {id:"sendlist",t:"Send the photo-list doc to Lindsey + print 2 copies + name a photo wrangler per side",who:"Eric"},
+ {id:"canva",t:"Finalize program + menu edits in Canva (fill every bracket)",who:"Both"},
+ {id:"katy",t:"Text Katy: pick acrylic gold table numbers · confirm 8 cocktail tables · ask her to collect vendor COIs",who:"Meg"}]},
+{id:"w2",title:"Mon Sep 22 – Wed Sep 24",items:[
+ {id:"barlock",t:"Lock the final bar order (see Bar order section)"},
+ {id:"limo",t:"Confirm pickup schedule with Elite Limo Houston (paid): hotel → church → venue + end of night",who:"Meg"},
+ {id:"venuewritten",t:"Get the 12:30–10:30 venue window confirmed in writing by Milano"},
+ {id:"rddetails",t:"Royal Dukes details page filled + submitted (due 9/25)"},
+ {id:"testprint",t:"Program print-ready PDF exported + one test booklet printed"},
+ {id:"maddy",t:"MADDY ×2: finish the cake topper + print welcome-mirror stickers and apply them to the mirror",who:"Maddy"},
+ {id:"gentux",t:"GenTux delivery ~Sep 26 — everyone tries their tux ON arrival day (swaps need shipping time)",who:"Groomsmen"}]},
+{id:"w3",title:"Fri Sep 25",due:"PAYMENT DAY",items:[
+ {id:"cvcpay",t:"City View Catering final payment"},
+ {id:"knzpay",t:"KNZ final payment"},
+ {id:"bbpay",t:"Blooming Beauty final payment"},
+ {id:"rdpay",t:"Royal Dukes final payment + details page due"},
+ {id:"cake0",t:"Bavarian Cakery — already paid",done:true}]},
+{id:"w4",title:"Sat Sep 26",due:"HEADCOUNT DAY",items:[
+ {id:"headcount",t:"Final headcount to City View INCLUDING vendor meals (~15) — ask Rachel how she counts them"},
+ {id:"barsubmit",t:"Final bar choices + drinks submitted"},
+ {id:"matrix",t:"Meal matrix to Rachel: 76 O / 36 C / 3 V / 1 VG (Miranda — TRUE vegan) / 2 special = 118 plates"}]},
+{id:"w5",title:"Mon Sep 28 – Fri Oct 2",items:[
+ {id:"stickers",t:"Drop custom stickers at Kung Fu Tea (promised last week of Sept)"},
+ {id:"printrun",t:"Full print run: 100 programs + 130 menus (see Printing plan)"},
+ {id:"favorprep",t:"Favor prep party — coasters do NOT go in bags: fold each bag, wax-seal meal ID, pair with coaster, sort by table into labeled zips"},
+ {id:"cash",t:"Cash run + stuff tip envelopes (~$1,625, see Tips)"},
+ {id:"cakeconfirm",t:"Confirm cake delivery time + who cuts + top-tier box with Tara"},
+ {id:"tuxfit",t:"GenTux fit checks — request swaps NOW if anything's off",who:"Groomsmen"}]},
+{id:"w6",title:"Sat Oct 3",items:[
+ {id:"jordancall",t:"Call with Jordan (Royal Dukes): run-of-show, jazz trio, pronunciations, glow-drop timing"},
+ {id:"ivory",t:"Ivory Grove final payment — verify the autopay actually ran"},
+ {id:"teziti",t:"Teziti photo booth — already paid",done:true}]},
+{id:"w7",title:"Sun Oct 4 – Mon Oct 5",items:[
+ {id:"kft",t:"Kung Fu Tea final payment — already paid",done:true},
+ {id:"kftcount",t:"Final guest count to Kung Fu Tea (Olta) — Mon Oct 5"},
+ {id:"secpay",t:"SECURITY final payment due — Mon Oct 5"}]},
+{id:"w8",title:"Tue Oct 6 – Thu Oct 8",items:[
+ {id:"detailsbox",t:"Assemble the details box + photograph it packed"},
+ {id:"packbins",t:"Pack all four containers per the Packing map — verify Maddy's topper + stickered mirror are IN the bins"},
+ {id:"vows",t:"Write vows into the vow books (not phones)",who:"Both"},
+ {id:"charts",t:"Print 2 hard seating charts (Katy + CityView); freeze the website version"},
+ {id:"arrivals",t:"Vendor arrival times confirmed through Katy (florals, cake, band before 5, booth before 6, boba before 7, officers at 3)"},
+ {id:"batteries",t:"Batteries in bubble guns + test · foam-stick pull tabs · Instax film loaded + spares"}]},
+{id:"w9",title:"Fri Oct 9",due:"HANDOFF DAY",items:[
+ {id:"rehearsal",t:"Rehearsal at St. Laurence (scheduled ✓): bring Church box, license, rings; settle who holds rings"},
+ {id:"rehdinner",t:"Rehearsal dinner — Eric's parents hosting",done:true},
+ {id:"hotelin",t:"Meg + party check in at Courtyard Marriott WITH hotel bag + details box + ALL venue bins"},
+ {id:"jesus",t:"Brief Jesus: bin pickup at the hotel ~noon, Milano access 12:30, inventory list taped to top bin"},
+ {id:"earlynight",t:"Phones charged · tip envelopes to Katy or best man · early night"}]},
+{id:"w10",title:"Sun Oct 11 and after",items:[
+ {id:"houseparty",t:"Sunday house party — bring Natalia & Stella's coasters + leftover favors"},
+ {id:"tuxreturn",t:"GenTux returns: prepaid label, all 5 rentals mailed back BEFORE the Oct 17 flight (assign a groomsman)"},
+ {id:"liccopies",t:"Order 2–3 certified marriage-license copies once filed"},
+ {id:"reviews",t:"Vendor reviews + thank-you texts"},
+ {id:"preserve",t:"Preserve: bouquet, dress cleaning, top cake tier to freezer"},
+ {id:"registry",t:"Buy remaining registry items with the completion discount (Prime Big Deal Days!)"},
+ {id:"honeymoon",t:"Pack for Rome Mon–Wed · confirm jury-duty deferral processed · fly IAH → FCO Sat Oct 17"}]}
+];
+const OPEN=[
+ {id:"o1",t:"Paste the Samsung Notes text (screenshot came through unreadable — processional order, drink recipes, security Qs)"},
+ {id:"o2",t:"Connect thevavras2026@gmail.com in Cursor so vendor payment threads can be audited"},
+ {id:"o3",t:"Final 2 signature drinks (from the 3 candidates + Meg's recipes)"},
+ {id:"o4",t:"First look: yes / no"},
+ {id:"o5",t:"Photographer start time (11:30 vs 11:45 vs cover-the-exit)"},
+ {id:"o6",t:"End-of-night assignment names (Packing map section E)"},
+ {id:"o7",t:"Celebrant name + communion under both kinds (ask St. Laurence)"}
+];
+const KEY="mE-countdown-";
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function render(){
+ const host=document.getElementById('checklists');
+ host.innerHTML=SECTIONS.map(sec=>`<div class="card"><h3 style="margin:2px 0 6px;font:600 16px system-ui,sans-serif;color:var(--blue-d)">${sec.title}${sec.due?` <span style="color:var(--warn);font-size:12px;letter-spacing:.08em"> · ${sec.due}</span>`:''}</h3>`+
+  sec.items.map(it=>row(sec.id,it)).join('')+`</div>`).join('');
+ document.getElementById('openItems').innerHTML=OPEN.map(it=>row('open',it)).join('');
+ document.querySelectorAll('.item input').forEach(cb=>cb.addEventListener('change',e=>{
+  localStorage.setItem(KEY+e.target.dataset.k,e.target.checked?'1':'0');
+  e.target.closest('.item').classList.toggle('done',e.target.checked);progress();}));
+ progress();
+}
+function row(sid,it){
+ const k=sid+'-'+it.id,saved=localStorage.getItem(KEY+k);
+ const checked=saved===null?!!it.done:saved==='1';
+ return `<div class="item${checked?' done':''}"><input type="checkbox" id="${k}" data-k="${k}" ${checked?'checked':''}><label for="${k}">${it.who?`<span class="who">${it.who}</span>`:''}${esc(it.t)}</label></div>`;
+}
+function progress(){
+ const boxes=[...document.querySelectorAll('.item input')];
+ const done=boxes.filter(b=>b.checked).length;
+ document.getElementById('bar').style.width=(100*done/boxes.length)+'%';
+ document.getElementById('pnote').textContent=`${done} of ${boxes.length} done · checkboxes save on this device/browser only`;
+}
+(function(){
+ const days=Math.ceil((new Date(2026,9,10)-new Date())/864e5);
+ document.getElementById('days').textContent=days>0?days+" days to go":(days===0?"IT'S TODAY":"Married "+(-days)+" days!");
+})();
+document.getElementById('reset')?.addEventListener('click',()=>{if(confirm('Clear every checkbox on this device?')){Object.keys(localStorage).filter(k=>k.startsWith(KEY)).forEach(k=>localStorage.removeItem(k));render();}});
+render();
+</script>
+</body>
+</html>

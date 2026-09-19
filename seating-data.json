@@ -1,5 +1,5 @@
 {
-  "updated": "September 8, 2026",
+  "updated": "September 18, 2026",
   "guests": 118,
   "groups": [
     {
@@ -432,12 +432,12 @@
         {
           "name": "Joe M.",
           "id": "joe-m",
-          "meal": "?"
+          "meal": "C"
         },
         {
           "name": "Diane M.",
           "id": "diane-m",
-          "meal": "?"
+          "meal": "C"
         }
       ]
     },
@@ -679,17 +679,17 @@
         },
         {
           "name": "Reina",
-          "meal": "?",
+          "meal": "O",
           "id": "reina"
         },
         {
           "name": "Pablo",
-          "meal": "?",
+          "meal": "C",
           "id": "pablo"
         },
         {
           "name": "Meli",
-          "meal": "?",
+          "meal": "O",
           "id": "meli"
         },
         {

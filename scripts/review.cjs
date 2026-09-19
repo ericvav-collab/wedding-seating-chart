@@ -13,7 +13,7 @@ const lines=[
 'Review website: https://ericvav-collab.github.io/wedding-seating-chart/',
 '',
 `${guests.length} guests: ${data.groups[0].guests.length} at the head table; ${guests.length-data.groups[0].guests.length} at 13 guest tables.`,
-`Meals: ${meals.O} beef (O), ${meals.C} chicken (C), ${meals.V} vegetarian (V), ${meals.VG} vegan (VG), ${meals.S} special meals (S), ${meals['?']} pending (?).`,
+`Meals: ${meals.O} beef (O), ${meals.C} chicken (C), ${meals.V} vegetarian (V), ${meals.VG} vegan (VG), ${meals.S} special meals (S)${meals['?']?`, ${meals['?']} pending (?)`:' — all choices resolved'}.`,
 'Eric and Meg: special meal (S).',
 'Seat references use first names and distinguishing initials.',
 '',
@@ -85,7 +85,7 @@ for(const opt of Object.keys(M.options)){
 lines.push('GUEST SEATS — ALL OPTIONS');
 for(const t of data.groups.slice(1)){const k=M.kind(t.id,'u');lines.push(`TABLE ${t.id.slice(1)} — ${t.guests.length} guests`,k==='round'?'Round, up to 8':k==='small'?'One 6-ft table':'Two joined 6-ft tables',...t.guests.map((g,i)=>` ${i+1}. ${g.name} (${g.meal})`),` Proposed flowers: ${t.flowers}`,'');}
 lines.push('Preserve the displayed seat order. Keep Tables 11 and 13 nearby.',
-'Meal choices pending: '+guests.filter(g=>g.meal==='?').map(g=>g.name).join(', '),
+(guests.some(g=>g.meal==='?')?'Meal choices pending: '+guests.filter(g=>g.meal==='?').map(g=>g.name).join(', '):'Meal choices: all resolved (Sep 18, 2026).'),
 '','REVIEW CHECKLIST',
 'Coordinator: selected option, usable dimensions, all chairs, door swings, service routes, boba operations and supplier needs.',
 'Florist: quantities, styles, head coverage, runner coverage, sightlines, candles and additional display flowers.',
