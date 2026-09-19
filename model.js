@@ -3,15 +3,17 @@
 const ASPECT=635/520,ROOM_WIDTH=50,R=4.5,GAP=3;
 const mix=new Set(['t3','t5','t12','t13']);
 const long=new Set(['t6','t10']);
-const usesU=option=>option!=='mixed';
-const kind=(id,option)=>long.has(id)?'long':mix.has(id)?'small':'round';
+const usesU=option=>option==='u'||option==='wide';
+const kind=(id,option)=>long.has(id)?'long':(mix.has(id)&&option!=='rounds')?'small':'round';
 const options={
  u:{name:'A · Compact U + mixed guest tables',short:'Compact U + mixed tables',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
  wide:{name:'B · Longer-arm U + mixed tables',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A.'},
- mixed:{name:'C · Straight + mixed guest tables',short:'Straight + mixed tables',six:4,trade:'Smallest head-table footprint. The opposite row has its back toward the band. Guest groups and their table shapes stay the same.'}
+ rounds:{name:'C · Symmetrical rounds + straight head table',short:'Symmetric rounds',six:4,settings:{roundGuests:true,bobaAtEntry:true},trade:'Ten mirrored 60-inch rounds and one joined long table per side — the cleanest look at true scale. Smallest head-table footprint, but twelve head seats face away from the band, and Meg\u2019s round groups plus Table 13 must regroup into five tables of eight.'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
+const optionSettings=(option,settings={})=>Object.assign({},(options[option]||{}).settings,settings);
 function fixed(W,option,settings={}){
+ settings=optionSettings(option,settings);
  const D=W*ASPECT,cy=D/2,stageDepth=W*.246,extra=W*60/520;
  const stage=rect('stage',W-stageDepth,D*.321,stageDepth,D*.369,'Band stage');
  const dance=rect('dance',stage.x-12,cy-9,12,18,'Dance floor');
@@ -42,6 +44,7 @@ function fixed(W,option,settings={}){
  return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,boba,bobaService,bobaQueue,bobaArea,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
 }
 function shape(id,option,x,y,rot=0,settings={}){
+ settings=optionSettings(option,settings);
  const k=settings.roundGuests&&!long.has(id)?'round':kind(id,option);
  // Banquet guests sit on long sides only. No chairs project past the table ends.
  if(k!=='round'){const w=k==='long'?12:6,h=6.5;return rect(id,x-(rot?h:w)/2,y-(rot?w:h)/2,rot?h:w,rot?w:h,'Table '+id.slice(1)+' + chairs');}

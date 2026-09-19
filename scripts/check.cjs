@@ -12,7 +12,8 @@ assert.equal(guests.length, 118);
 assert.equal(new Set(guests.map(g => g.id)).size, 118);
 assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,10,7,6,6]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
-assert.deepEqual(mealCounts, {C:33,O:74,S:2,V:3,VG:1,'?':5});
+assert.deepEqual(mealCounts, {C:36,O:76,S:2,V:3,VG:1});
+for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
 assert.equal(guests.find(g=>g.name==='Miranda').meal,'VG');
 for(const id of ['eric','meg'])assert.equal(guests.find(g=>g.id===id).meal,'S');
@@ -22,7 +23,7 @@ const source = fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().c
 vm.runInContext(source,context);
 context.inputData=data;
 vm.runInContext('DATA=inputData;',context);
-for (const opt of ['u','wide','mixed']) {
+for (const opt of ['u','wide','rounds']) {
   const head=vm.runInContext(`headSeatPositions('${opt}',7,54*SeatingModel.ASPECT/2-12)`,context);
   assert.equal(head.length,25);
   assert.equal(new Set(head.map(p=>p.index)).size,25);
@@ -37,8 +38,10 @@ for (const opt of ['u','wide','mixed']) {
   assert(at('Haley').y>at('Eric').y);
   for(const name of ['Merielle (MM)','James','Oliver']) assert(at(name).y<at('Meg').y);
   for (const [w,l] of Object.entries(layouts[opt])) {
-    assert.equal(Object.keys(l.positions).length,13);
-    assert.deepEqual(Object.keys(l.positions).sort(),data.groups.filter(t=>t.id!=='head').map(t=>t.id).sort());
+    // Option C (rounds) omits Table 13: its six guests regroup into open round seats.
+    const expected=data.groups.filter(t=>t.id!=='head'&&!(opt==='rounds'&&t.id==='t13')).map(t=>t.id).sort();
+    assert.equal(Object.keys(l.positions).length,opt==='rounds'?12:13);
+    assert.deepEqual(Object.keys(l.positions).sort(),expected);
     const audit=M.audit(+w,opt,l.positions);
     assert.equal(audit.hard,l.audit.hard);
     assert.equal(audit.tight,l.audit.tight);
@@ -47,10 +50,10 @@ for (const opt of ['u','wide','mixed']) {
     assert.equal(f.tables.length,opt==='u'?6:opt==='wide'?8:4);
     assert(f.tables.every(t=>Math.max(t.w,t.h)===6 && Math.min(t.w,t.h)===2.5));
     for(const t of data.groups.filter(t=>t.id!=='head'&&!M.long.has(t.id)))
-      assert(t.guests.length<=(M.mix.has(t.id)?6:8));
+      assert(t.guests.length<=(M.kind(t.id,opt)==='small'?6:8));
     if(+w>=50) {
       assert.equal(audit.hard,0);
-      for(const t of data.groups.filter(t=>t.id!=='head')) {
+      for(const t of data.groups.filter(t=>t.id!=='head'&&l.positions[t.id])) {
         const p=l.positions[t.id], b=M.bounds(M.shape(t.id,opt,p.x,p.y,p.rot));
         if(t.side==='meg') assert(b.b<=f.cy-9+.1);
         else assert(b.t>=f.cy+9-.1);
@@ -81,10 +84,11 @@ assert.equal(neriSeat('joseph-n').y,neriSeat('phung').y);
 assert.equal(Math.abs(neriSeat('joseph-n').x-neriSeat('phung').x),2);
 for(const opt of Object.keys(M.options)){
  const pos=layouts[opt][M.ROOM_WIDTH].positions;
+ if(!pos.t13)continue; // Option C regroups Table 13.
  const gap=M.distance(M.shape('t11',opt,pos.t11.x,pos.t11.y,pos.t11.rot),M.shape('t13',opt,pos.t13.x,pos.t13.y,pos.t13.rot));
  assert(gap>=0&&gap<=4.2,'Tables 11 and 13 should be nearby without overlapping');
 }
-for(const opt of ['u','wide','mixed']){
+for(const opt of ['u','wide','rounds']){
  const head=vm.runInContext(`headSeatPositions('${opt}',7,15)`,context);
  assert.equal(head.filter(s=>s.angle===-90).length,12);
  assert.equal(head.filter(s=>s.angle===90).length,opt==='u'?2:opt==='wide'?0:12);
