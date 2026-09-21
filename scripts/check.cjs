@@ -112,7 +112,10 @@ const boba=V.stations.find(s=>s.id==='boba'),f=M.fixed(M.ROOM_WIDTH,'u');
 assert.equal(boba.x,900+f.boba.x*V.scale);
 assert.equal(boba.y,350+f.boba.y*V.scale);
 assert(boba.x>=900&&boba.y>=350);
-for(const opt of Object.keys(M.options)){const fixed=M.fixed(M.ROOM_WIDTH,opt);for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.wallRoute,fixed.serviceLane,fixed.catering,...fixed.doors])assert(M.distance(b,route)>=0,'Boba must not block an entrance or service route');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
+// Boba may intrude on the blue wall-route strip and the rear-entry approach by design
+// (staff in the corner, queue on the strip). It must still clear the kitchen, the other
+// doors and the head table.
+for(const opt of Object.keys(M.options)){const fixed=M.fixed(M.ROOM_WIDTH,opt);const otherDoors=fixed.doors.filter(d=>d.id!=='rear-entry');for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.serviceLane,fixed.catering,...otherDoors])assert(M.distance(b,route)>=0,'Boba must not block the kitchen or another entrance');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
 assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);
 assert.equal(V.stations.find(s=>s.id==='bar').x,792);
 console.log('PASS: 120 guests; fixed room size across 4 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');

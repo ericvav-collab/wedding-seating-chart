@@ -10,7 +10,7 @@ const options={
  u:{name:'A · Compact U head table + all rounds',short:'Compact U',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
  wide:{name:'B · Longer-arm U head table + all rounds',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A and squeezes the guest tables hardest.'},
  rounds:{name:'C · Straight head table + all rounds',short:'Straight head table',six:4,trade:'Smallest head-table footprint, which gives the 13 rounds the most breathing room \u2014 but twelve head seats face away from the band.'},
- d:{name:'D · Compact U + parents\u2019 rounds in the open centre',short:'U + parents centred',six:6,laneTables:['t1','t7'],trade:'Same compact U as A, but the two parents\u2019 tables (1 and 7) may sit into the keep-open lane between the head table and the dance floor \u2014 parents front and centre of the couple, and the crowded side bands get breathing room.'}
+ d:{name:'D · Compact U + parents\u2019 rounds in the open centre',short:'U + parents centred',six:6,laneTables:['t1','t7'],trade:'Same compact U as A, but BOTH parents\u2019 tables (1 and 7) sit in the keep-open lane, mirrored in front of the couple. The side bands breathe; the trade is one pinch point where Table 1\u2019s chairs pass the dance-floor edge (~0.5 ft in the model \u2014 confirm on site).'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
 const optionSettings=(option,settings={})=>Object.assign({},(options[option]||{}).settings,settings);
@@ -37,12 +37,13 @@ function fixed(W,option,settings={}){
  const catering=rect('catering-apron',kitchenX-3,D-8,6,8,'Kitchen door / turning space');
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
- // Boba: STAFF stand against the rear (top) wall; the cart sits in front of them,
- // tight to the rear-lobby doorway. The cart may intrude on the blue reserved space.
- const bobaService=rect('boba-service',5.5,0,6,2.5,'Boba staff space (against the wall)');
- const boba=rect('boba',5.5,2.5,6,2.5,'Boba cart');
- const bobaQueue=rect('boba-queue',11.5,0,3.5,6,'Boba queue');
- const bobaArea=rect('boba-working',5.5,0,9.5,6,'Boba cart, staff and queue');
+ // Boba: STAFF against the rear (top) wall in the corner by the rear-lobby door,
+ // cart in front of them (may intrude on the blue reserved space). The QUEUE runs
+ // along the blue 5-ft wall-route strip on the left wall, south of the door opening.
+ const bobaService=rect('boba-service',0,0,6,2.5,'Boba staff space (against the wall)');
+ const boba=rect('boba',0,2.5,6,2.5,'Boba cart');
+ const bobaQueue=rect('boba-queue',0,8.5,3.5,6,'Boba queue (on the wall-route strip)');
+ const bobaArea=rect('boba-working',0,0,6,5,'Boba cart and staff');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
  const protectedAreas=[catering,serviceLane,wallRoute,bobaArea,...doors];
  return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,boba,bobaService,bobaQueue,bobaArea,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};

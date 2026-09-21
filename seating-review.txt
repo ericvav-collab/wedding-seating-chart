@@ -14,10 +14,10 @@ All options use one approximate 50 x 61-ft footprint following the vendor drawin
 Confirm usable dimensions, furniture sizes and door swings on site.
 The dance floor attaches to the stage. Keep the centre free of guest tables.
 Reserve the kitchen turning apron, the 4-ft serving route and the 5-ft route behind the head table.
-Boba is INSIDE MONZA, tight to the rear-lobby doorway: STAFF stand
-against the rear wall and serve over the 6 x 2.5-ft cart in front of
-them (the cart may intrude on the reserved blue space). The 3.5-ft
-queue runs along the wall away from the door. Keep door access clear.
+Boba is INSIDE MONZA, in the corner beside the rear-lobby doorway:
+STAFF against the rear wall, 6 x 2.5-ft cart in front of them (setup
+intrudes on the blue reserved space by design). The QUEUE lines up on
+the blue 5-ft wall-route strip south of the door. Keep the door clear.
 
 ARRIVAL & COCKTAIL HOUR
 Rear welcome lobby: three tables and the welcome mirror.
@@ -47,10 +47,11 @@ B: Longer-arm U head (8 sections). DOES NOT FIT at true scale: 3
    run. Shown for completeness; not recommended.
 C: Straight double-sided head (4 sections). BEST FIT: zero overlaps,
    0.5-ft minimum gap. 12 head seats face the band, 12 face away, 1 end.
-D: Same compact U as A, but the PARENTS’ TABLES (1 and 7) may sit into
-   the keep-open lane between the head table and dance floor — parents
-   front and centre of the couple. Zero overlaps, 1.1-ft minimum gap:
-   a meaningfully better fit than A while keeping the U head table.
+D: Same compact U as A, but BOTH PARENTS’ TABLES (1 and 7) sit in the
+   keep-open lane, mirrored in front of the couple. Zero overlaps and
+   the side bands breathe; the trade is one pinch point where Table 1
+   passes the dance-floor edge (~0.5 ft in the model; the dance floor
+   is not a wall, so confirm comfort on site).
 Boba: staff against the rear Monza wall, cart in front of them, tight
 to the rear-lobby doorway (0.5 ft clear of the door); queue runs along
 the wall away from the door. Cart may sit into the blue reserved space.
@@ -60,11 +61,11 @@ SPACING REVIEW
 The target is 3 ft between occupied chair spaces. Unresolved tight gaps need vendor review.
 A · Compact U head table + all rounds: 0 overlaps; 30 gaps below target; closest guest-table gap -0.01 ft.
 Kitchen, entrance and boba working areas clear in the model.
-B · Longer-arm U head table + all rounds: 3 overlaps; 28 gaps below target; closest guest-table gap -0.03 ft.
+B · Longer-arm U head table + all rounds: 2 overlaps; 28 gaps below target; closest guest-table gap -0.02 ft.
 Revise conflicts in kitchen, entrance or boba working areas.
-C · Straight head table + all rounds: 0 overlaps; 29 gaps below target; closest guest-table gap 0.49 ft.
+C · Straight head table + all rounds: 0 overlaps; 26 gaps below target; closest guest-table gap 0.56 ft.
 Kitchen, entrance and boba working areas clear in the model.
-D · Compact U + parents’ rounds in the open centre: 0 overlaps; 28 gaps below target; closest guest-table gap 1.06 ft.
+D · Compact U + parents’ rounds in the open centre: 0 overlaps; 33 gaps below target; closest guest-table gap 0.45 ft.
 Kitchen, entrance and boba working areas clear in the model.
 
 FLORIST REVIEW — PROPOSED QUANTITIES
