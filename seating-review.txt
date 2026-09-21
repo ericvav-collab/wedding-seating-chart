@@ -1,10 +1,10 @@
 COORDINATOR & FLORIST REVIEW — ERIC & MEG
 October 10, 2026 · The Milano
-Revised September 18, 2026 · Proposals pending vendor confirmation
+Revised September 20, 2026 · Proposals pending vendor confirmation
 Review website: https://ericvav-collab.github.io/wedding-seating-chart/
 
-118 guests: 25 at the head table; 93 at 13 guest tables.
-Meals: 76 beef (O), 36 chicken (C), 3 vegetarian (V), 1 vegan (VG), 2 special meals (S) — all choices resolved.
+120 guests: 25 at the head table; 95 at 14 guest tables (Meg's regrouped chart, Sep 20).
+Meals: 75 beef (O), 38 chicken (C), 3 vegetarian (V), 1 vegan (VG), 2 special meals (S), 1 pending (?).
 Eric and Meg: special meal (S).
 Seat references use first names and distinguishing initials.
 
@@ -14,8 +14,9 @@ All options use one approximate 50 x 61-ft footprint following the vendor drawin
 Confirm usable dimensions, furniture sizes and door swings on site.
 The dance floor attaches to the stage. Keep the centre free of guest tables.
 Reserve the kitchen turning apron, the 4-ft serving route and the 5-ft route behind the head table.
-Boba is INSIDE MONZA near the rear-lobby entry: 6 x 2.5-ft cart, 2.5-ft staff depth,
-and a separate 3.5-ft-deep queue. Keep both access and service space clear.
+Boba is INSIDE MONZA: 6 x 2.5-ft cart long-side against the rear wall,
+tight to the rear-lobby doorway; staff space behind, queue along the wall
+away from the door. Keep both access and service space clear.
 
 ARRIVAL & COCKTAIL HOUR
 Rear welcome lobby: three tables and the welcome mirror.
@@ -34,33 +35,29 @@ Cocktail total: 12 high + 10 low tables + 40 chairs, additional to dinner seatin
 Booth: 8 x 8-ft working area + 4 x 6-ft queue. Trio: initial 10 x 8-ft working area.
 Confirm supplier footprints, power, sound and an indoor weather plan for patio furniture.
 
-THREE OPTIONS AT CONFIRMED TABLE SCALE (Fay, Sep 9: 60-inch rounds,
-6-ft rectangles — the only sizes Milano has)
-A: Compact U + mixed guest tables. 6 head sections (4 back + 1 per arm);
-   7 rounds + 4 single 6-ft + 2 joined 12-ft guest tables; 14 dinner 6-ft sections.
-   12 head seats face the band, 11 side-on, 2 end seats face away.
-   All current guest groups keep their tables.
-B: Longer-arm U + mixed guest tables. 8 head sections (4 back + 2 per arm);
-   same guest tables as A; 16 dinner 6-ft sections.
-   12 head seats face the band, 13 side-on. Nobody faces away.
-C: Symmetrical rounds + straight head table. 4 head sections;
-   ten 60-inch rounds (five per side, mirrored) + 2 joined 12-ft guest
-   tables; 8 dinner 6-ft sections — the smallest furniture order.
-   12 head seats face the band, 12 face away, 1 end seat.
-   REGROUPING REQUIRED: Meg’s round groups plus Table 13’s six guests
-   must reform into five tables of eight; assignments pending with Meg.
-   Boba rotates along the rear Monza wall inside the lobby entry.
-Rounds seat up to 8. Rectangular guest tables use long-side seating.
-Tables 6 and 10 each seat 10 at two joined 6-ft sections in every option.
+THREE OPTIONS — ALL-ROUND GUEST TABLES PER MEG’S SEP 20 CHART
+(Table scale confirmed by Fay, Sep 9: 60-inch rounds + 6-ft rectangles.)
+Every option seats the same 14 guest tables: 13 rounds (max 8) + the
+joined 12-ft A&M table of ten (Table 6). Only the head table changes.
+A: Compact U head (6 sections). FITS WITH ZERO OVERLAPS BUT VERY TIGHT:
+   15 gaps under 1.5 ft; two tables essentially touch. Setup-crew hard.
+B: Longer-arm U head (8 sections). DOES NOT FIT at true scale: 3
+   furniture overlaps and a blocked service route in every optimizer
+   run. Shown for completeness; not recommended.
+C: Straight double-sided head (4 sections). BEST FIT: zero overlaps,
+   0.5-ft minimum gap. 12 head seats face the band, 12 face away, 1 end.
+Boba: cart long-side against the rear Monza wall, tight to the
+rear-lobby doorway (0.5 ft clear of the door); queue runs along the
+wall away from the door.
 Display furniture is additional to these quantities.
 
 SPACING REVIEW
 The target is 3 ft between occupied chair spaces. Unresolved tight gaps need vendor review.
-A · Compact U + mixed guest tables: 0 overlaps; 25 gaps below target; closest guest-table gap 1.70 ft.
+A · Compact U head table + all rounds: 0 overlaps; 30 gaps below target; closest guest-table gap -0.01 ft.
 Kitchen, entrance and boba working areas clear in the model.
-B · Longer-arm U + mixed tables: 0 overlaps; 20 gaps below target; closest guest-table gap 1.03 ft.
-Kitchen, entrance and boba working areas clear in the model.
-C · Symmetrical rounds + straight head table: 0 overlaps; 21 gaps below target; closest guest-table gap 1.74 ft.
+B · Longer-arm U head table + all rounds: 3 overlaps; 28 gaps below target; closest guest-table gap -0.03 ft.
+Revise conflicts in kitchen, entrance or boba working areas.
+C · Straight head table + all rounds: 0 overlaps; 29 gaps below target; closest guest-table gap 0.49 ft.
 Kitchen, entrance and boba working areas clear in the model.
 
 FLORIST REVIEW — PROPOSED QUANTITIES
@@ -74,7 +71,7 @@ Table 6 runner: confirm coverage across the 12-ft surface.
 Confirm arrangement scale, sightlines, candle policy and any additional entrance/cake flowers.
 Additional display arrangements are not included in the guest-table counts.
 
-HEAD SEATS — A · Compact U + mixed guest tables
+HEAD SEATS — A · Compact U head table + all rounds
 Wall row · faces the band
  1. Edward (C)
  2. Jacob G. (O)
@@ -108,7 +105,7 @@ Rear-lobby arm · Meg · inner
 Rear-lobby end · beside Lorraine
  22. Fortune (O)
 
-HEAD SEATS — B · Longer-arm U + mixed tables
+HEAD SEATS — B · Longer-arm U head table + all rounds
 Wall row · faces the band
  1. Edward (C)
  2. Jacob G. (O)
@@ -140,7 +137,7 @@ Rear-lobby arm · Meg · inner
  24. James (O)
  25. Oliver (O)
 
-HEAD SEATS — C · Symmetrical rounds + straight head table
+HEAD SEATS — C · Straight head table + all rounds
 Wall row · faces the band
  1. Edward (C)
  2. Jacob G. (O)
@@ -171,12 +168,10 @@ Opposite row · Meg / rear lobby
 Rear-lobby end · Oliver beside James
  25. Oliver (O)
 
-GUEST SEATS — GROUPS AS IN OPTIONS A/B
-(In option C every guest table except 6 and 10 is a 60-inch round,
-and Table 13’s guests regroup into open round seats.)
+GUEST SEATS — SAME GROUPS IN ALL THREE OPTIONS
 
 TABLE 1 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Susan (O)
  2. Paul (C)
  3. Julie (C)
@@ -187,7 +182,7 @@ Round, up to 8
  Proposed flowers: Large
 
 TABLE 2 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Pete (O)
  2. Yvonne (O)
  3. Steve (O)
@@ -198,7 +193,7 @@ Round, up to 8
  Proposed flowers: Compote
 
 TABLE 3 — 6 guests
-One 6-ft table
+60-inch round, up to 8
  1. Dan H. (C)
  2. Teresa (O)
  3. Matt H. (O)
@@ -208,7 +203,7 @@ One 6-ft table
  Proposed flowers: Taper trio
 
 TABLE 4 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Sunny (O)
  2. Jacob M. (O)
  3. Aldo (O)
@@ -219,7 +214,7 @@ Round, up to 8
  Proposed flowers: Taper trio
 
 TABLE 5 — 6 guests
-One 6-ft table
+60-inch round, up to 8
  1. Matt G. (O)
  2. Nancy (C)
  3. Sarah (C)
@@ -243,18 +238,18 @@ Two joined 6-ft tables
  Proposed flowers: Runner
 
 TABLE 7 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Nelia (O)
  2. Noli (C)
  3. Roy (O)
  4. Belinda (O)
- 5. Pits (O)
+ 5. Irma (?)
  6. Joe M. (C)
  7. Diane M. (C)
  Proposed flowers: Large
 
 TABLE 8 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Jude (C)
  2. Cassie (O)
  3. Esme (O)
@@ -265,7 +260,7 @@ Round, up to 8
  Proposed flowers: Compote
 
 TABLE 9 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Reana (O)
  2. Alfred (C)
  3. Wincy (O)
@@ -275,22 +270,18 @@ Round, up to 8
  7. Johnathan (O)
  Proposed flowers: Compote
 
-TABLE 10 — 10 guests
-Two joined 6-ft tables
+TABLE 10 — 6 guests
+60-inch round, up to 8
  1. Maria (O)
  2. William (O)
- 3. Andrew D. (O)
- 4. Cristino (O)
- 5. Loven (O)
- 6. Sue Ellen (O)
- 7. Carlo (O)
- 8. Nina (C)
- 9. Paulo (O)
- 10. Hannah (C)
+ 3. Cristino (O)
+ 4. Loven (O)
+ 5. Gerry N. (C)
+ 6. Letty (C)
  Proposed flowers: Taper trio
 
 TABLE 11 — 7 guests
-Round, up to 8
+60-inch round, up to 8
  1. Nathan (C)
  2. Neal (C)
  3. Mae (O)
@@ -301,7 +292,7 @@ Round, up to 8
  Proposed flowers: Taper trio
 
 TABLE 12 — 6 guests
-One 6-ft table
+60-inch round, up to 8
  1. Arby (C)
  2. JP (O)
  3. Alberta (C)
@@ -311,7 +302,7 @@ One 6-ft table
  Proposed flowers: Taper trio
 
 TABLE 13 — 6 guests
-One 6-ft table
+60-inch round, up to 8
  1. Miranda (VG)
  2. Reina (O)
  3. Pablo (C)
@@ -320,8 +311,18 @@ One 6-ft table
  6. Phung (C)
  Proposed flowers: Taper trio
 
-Preserve the displayed seat order. Keep Tables 11 and 13 nearby.
-Meal choices: all resolved (Sep 18, 2026).
+TABLE 14 — 6 guests
+60-inch round, up to 8
+ 1. Andrew D. (O)
+ 2. Sue Ellen (O)
+ 3. Carlo (O)
+ 4. Nina (C)
+ 5. Paulo (O)
+ 6. Hannah (C)
+ Proposed flowers: To choose
+
+Preserve the displayed seat order.
+Meal choices pending: Irma
 
 REVIEW CHECKLIST
 Coordinator: selected option, usable dimensions, all chairs, door swings, service routes, boba operations and supplier needs.

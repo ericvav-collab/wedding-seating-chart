@@ -1,14 +1,14 @@
 /* Vendor orientation: stage right, front lobby below. Distances in feet are planning assumptions. */
 (function(root){
 const ASPECT=635/520,ROOM_WIDTH=50,R=4.5,GAP=3;
-const mix=new Set(['t3','t5','t12','t13']);
-const long=new Set(['t6','t10']);
+const mix=new Set([]);
+const long=new Set(['t6']);
 const usesU=option=>option==='u'||option==='wide';
-const kind=(id,option)=>long.has(id)?'long':(mix.has(id)&&option!=='rounds')?'small':'round';
+const kind=(id,option)=>long.has(id)?'long':'round';
 const options={
- u:{name:'A · Compact U + mixed guest tables',short:'Compact U + mixed tables',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
- wide:{name:'B · Longer-arm U + mixed tables',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A.'},
- rounds:{name:'C · Symmetrical rounds + straight head table',short:'Symmetric rounds',six:4,settings:{roundGuests:true,bobaAtEntry:true},trade:'Ten mirrored 60-inch rounds and one joined long table per side — the cleanest look at true scale. Smallest head-table footprint, but twelve head seats face away from the band, and Meg\u2019s round groups plus Table 13 must regroup into five tables of eight.'}
+ u:{name:'A · Compact U head table + all rounds',short:'Compact U',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
+ wide:{name:'B · Longer-arm U head table + all rounds',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A and squeezes the guest tables hardest.'},
+ rounds:{name:'C · Straight head table + all rounds',short:'Straight head table',six:4,trade:'Smallest head-table footprint, which gives the 13 rounds the most breathing room \u2014 but twelve head seats face away from the band.'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
 const optionSettings=(option,settings={})=>Object.assign({},(options[option]||{}).settings,settings);
@@ -35,10 +35,11 @@ function fixed(W,option,settings={}){
  const catering=rect('catering-apron',kitchenX-3,D-8,6,8,'Kitchen door / turning space');
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
- const boba=settings.bobaAtEntry?rect('boba',9,0,2.5,6,'Boba cart'):rect('boba',5.5,10,6,2.5,'Boba cart');
- const bobaService=settings.bobaAtEntry?rect('boba-service',11.5,0,2.5,6,'Boba staff space'):rect('boba-service',5.5,7.5,6,2.5,'Boba staff space');
- const bobaQueue=settings.bobaAtEntry?rect('boba-queue',5.5,0,3.5,6,'Boba queue'):rect('boba-queue',5.5,12.5,6,3.5,'Boba queue');
- const bobaArea=settings.bobaAtEntry?rect('boba-working',5.5,0,8.5,6,'Boba cart, staff and queue'):rect('boba-working',5.5,7.5,6,8.5,'Boba cart, staff and queue');
+ // Boba: cart long-side against the rear (top) wall, tight to the rear-lobby doorway.
+ const boba=rect('boba',5.5,0,6,2.5,'Boba cart');
+ const bobaService=rect('boba-service',5.5,2.5,6,2.5,'Boba staff space');
+ const bobaQueue=rect('boba-queue',11.5,0,3.5,6,'Boba queue');
+ const bobaArea=rect('boba-working',5.5,0,9.5,6,'Boba cart, staff and queue');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
  const protectedAreas=[catering,serviceLane,wallRoute,bobaArea,...doors];
  return {W,D,cy,extra,stage,dance,cake,lane,tables,headBlocks,wallX,wallTop,doors,kitchenX,catering,serviceLane,wallRoute,boba,bobaService,bobaQueue,bobaArea,protectedAreas,blocks:[stage,dance,cake,lane,...headBlocks,...protectedAreas]};
