@@ -35,9 +35,10 @@ function fixed(W,option,settings={}){
  const catering=rect('catering-apron',kitchenX-3,D-8,6,8,'Kitchen door / turning space');
  const serviceLane=rect('service-lane',0,D-4,kitchenX+3,4,'4-ft catering route');
  const wallRoute=rect('wall-route',0,0,5,D,'5-ft route behind head table');
- // Boba: cart long-side against the rear (top) wall, tight to the rear-lobby doorway.
- const boba=rect('boba',5.5,0,6,2.5,'Boba cart');
- const bobaService=rect('boba-service',5.5,2.5,6,2.5,'Boba staff space');
+ // Boba: STAFF stand against the rear (top) wall; the cart sits in front of them,
+ // tight to the rear-lobby doorway. The cart may intrude on the blue reserved space.
+ const bobaService=rect('boba-service',5.5,0,6,2.5,'Boba staff space (against the wall)');
+ const boba=rect('boba',5.5,2.5,6,2.5,'Boba cart');
  const bobaQueue=rect('boba-queue',11.5,0,3.5,6,'Boba queue');
  const bobaArea=rect('boba-working',5.5,0,9.5,6,'Boba cart, staff and queue');
  const doors=[rect('front-entry',-extra,D*.88,extra+5,D*.12,'Front lobby approach'),rect('rear-entry',-extra,0,extra+5,D*.14,'Rear lobby approach'),rect('patio-front',W-6,D-6,6,6,'Patio-side approach'),rect('patio-rear',W-6,0,6,6,'Patio-side approach')];
