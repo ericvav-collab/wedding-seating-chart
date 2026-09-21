@@ -5,15 +5,18 @@ function optimize(W,opt,previous){
  const f=M.fixed(W,opt),D=f.D;
  const prefs={t1:[11,D-9],t2:[24,D-6],t3:[20,D-15],t4:[38,D-13],t5:[29,D-16],t6:[38,D-3.5],
   t7:[11,10],t8:[19,4.5],t9:[20,13],t10:[28,4.5],t11:[29,13.5],t12:[37,4.5],t13:[38,13.5],t14:[46,8]};
+ const laneOK=new Set((M.options[opt]||{}).laneTables||[]);
+ if(laneOK.size){prefs.t1=[21.5,D/2+9];prefs.t7=[21.5,D/2-9];}
  const partners={t1:'t7',t7:'t1'};
  function init(k){return groups.map((g,i)=>{let p=prefs[g.id];if(previous&&k===0&&previous.positions[g.id]){const q=previous.positions[g.id],r=W/previous.width;return {id:g.id,x:q.x*r,y:q.y*r,rot:q.rot||0,side:g.side};}return {id:g.id,x:p[0]+(rand()-.5)*(k?10:2),y:p[1]+(rand()-.5)*(k?6:1),rot:0,side:g.side};});}
  function single(a,others){
   let sh=M.shape(a.id,opt,a.x,a.y,a.rot),b=M.bounds(sh),cost=0;
   for(const v of [b.l,W-b.r,b.t,D-b.b])if(v<1)cost+=20000*Math.max(0,-v)**2+3*Math.max(0,1-v)**2;
   const cross=a.side==='meg'?b.b-(f.cy-9):f.cy+9-b.t;
-  if(cross>0)cost+=160*cross*cross;
+  if(cross>0&&!laneOK.has(a.id))cost+=160*cross*cross;
+  if(laneOK.has(a.id)){const mid=a.side==='meg'?b.b-f.cy:f.cy-b.t;if(mid>0)cost+=160*mid*mid;}
   function penalty(gap,target){return 30000*Math.max(0,-gap)**2+4*Math.max(0,target-gap)**2+200*Math.max(0,Math.min(1.7,target)-gap)**2;}
-  for(const fixed of f.blocks)cost+=penalty(M.distance(sh,fixed),['view-lane',...f.protectedAreas.map(x=>x.id)].includes(fixed.id)?0:3);
+  for(const fixed of f.blocks){if(fixed.id==='view-lane'&&laneOK.has(a.id))continue;cost+=penalty(M.distance(sh,fixed),['view-lane',...f.protectedAreas.map(x=>x.id)].includes(fixed.id)?0:3);}
   for(const o of others)if(o!==a)cost+=penalty(M.distance(sh,M.shape(o.id,opt,o.x,o.y,o.rot)),3);
   const pref=prefs[a.id];cost+=((a.x-pref[0])**2+(a.y-pref[1])**2)*(['t1','t7'].includes(a.id)?.08:.007);
   const partner=others.find(p=>p.id===partners[a.id]);
@@ -43,7 +46,7 @@ if(process.argv[3])throw Error('Room size is fixed. Pass only an option name.');
 if(limited&&!M.options[limited])throw Error('Unknown layout option.');
 const out=JSON.parse(fs.readFileSync(dest));
 for(const opt of limited?[limited]:Object.keys(M.options)){
- const W=M.ROOM_WIDTH,res=optimize(W,opt,out[opt][W]);
+ const W=M.ROOM_WIDTH,res=optimize(W,opt,out[opt]&&out[opt][W]);
  out[opt]={[W]:res};
  fs.writeFileSync(dest,JSON.stringify(out));
 }

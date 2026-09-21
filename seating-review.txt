@@ -47,6 +47,10 @@ B: Longer-arm U head (8 sections). DOES NOT FIT at true scale: 3
    run. Shown for completeness; not recommended.
 C: Straight double-sided head (4 sections). BEST FIT: zero overlaps,
    0.5-ft minimum gap. 12 head seats face the band, 12 face away, 1 end.
+D: Same compact U as A, but the PARENTS’ TABLES (1 and 7) may sit into
+   the keep-open lane between the head table and dance floor — parents
+   front and centre of the couple. Zero overlaps, 1.1-ft minimum gap:
+   a meaningfully better fit than A while keeping the U head table.
 Boba: staff against the rear Monza wall, cart in front of them, tight
 to the rear-lobby doorway (0.5 ft clear of the door); queue runs along
 the wall away from the door. Cart may sit into the blue reserved space.
@@ -59,6 +63,8 @@ Kitchen, entrance and boba working areas clear in the model.
 B · Longer-arm U head table + all rounds: 3 overlaps; 28 gaps below target; closest guest-table gap -0.03 ft.
 Revise conflicts in kitchen, entrance or boba working areas.
 C · Straight head table + all rounds: 0 overlaps; 29 gaps below target; closest guest-table gap 0.49 ft.
+Kitchen, entrance and boba working areas clear in the model.
+D · Compact U + parents’ rounds in the open centre: 0 overlaps; 28 gaps below target; closest guest-table gap 1.06 ft.
 Kitchen, entrance and boba working areas clear in the model.
 
 FLORIST REVIEW — PROPOSED QUANTITIES
@@ -168,6 +174,40 @@ Opposite row · Meg / rear lobby
  24. James (O)
 Rear-lobby end · Oliver beside James
  25. Oliver (O)
+
+HEAD SEATS — D · Compact U + parents’ rounds in the open centre
+Wall row · faces the band
+ 1. Edward (C)
+ 2. Jacob G. (O)
+ 3. Mallory (C)
+ 4. Angela (O)
+ 5. Andrew V. (O)
+ 6. Eric (S)
+ 7. Meg (S)
+ 8. Mabelle (O)
+ 9. Maddy (O)
+ 10. Jesus (O)
+ 11. Camille (O)
+ 12. Drake (C)
+Front-lobby arm · Eric · outer
+ 15. Austin (O)
+ 16. Talia (V)
+ 14. Haley (O)
+Front-lobby arm · Eric · inner
+ 17. PJ (O)
+ 18. Anna (C)
+Front-lobby end · beside Haley
+ 13. Jason (O)
+Rear-lobby arm · Meg · outer
+ 19. Vivian (C)
+ 20. Tony (O)
+ 21. Lorraine (C)
+Rear-lobby arm · Meg · inner
+ 23. Merielle (MM) (O)
+ 24. James (O)
+ 25. Oliver (O)
+Rear-lobby end · beside Lorraine
+ 22. Fortune (O)
 
 GUEST SEATS — SAME GROUPS IN ALL THREE OPTIONS
 

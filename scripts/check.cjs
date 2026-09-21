@@ -24,7 +24,7 @@ const source = fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().c
 vm.runInContext(source,context);
 context.inputData=data;
 vm.runInContext('DATA=inputData;',context);
-for (const opt of ['u','wide','rounds']) {
+for (const opt of ['u','wide','rounds','d']) {
   const head=vm.runInContext(`headSeatPositions('${opt}',7,54*SeatingModel.ASPECT/2-12)`,context);
   assert.equal(head.length,25);
   assert.equal(new Set(head.map(p=>p.index)).size,25);
@@ -47,17 +47,19 @@ for (const opt of ['u','wide','rounds']) {
     assert.equal(audit.tight,l.audit.tight);
     const f=M.fixed(+w,opt);
     assert.equal(f.dance.x+f.dance.w,f.stage.x);
-    assert.equal(f.tables.length,opt==='u'?6:opt==='wide'?8:4);
+    assert.equal(f.tables.length,M.compactU(opt)?6:opt==='wide'?8:4);
     assert(f.tables.every(t=>Math.max(t.w,t.h)===6 && Math.min(t.w,t.h)===2.5));
     for(const t of data.groups.filter(t=>t.id!=='head'&&!M.long.has(t.id)))
       assert(t.guests.length<=8);
     if(+w>=50) {
       // Option B (wide) does not fit Meg's Sep 20 all-round layout; its overlaps are shown honestly.
       if(opt!=='wide') assert.equal(audit.hard,0);
+      const laneOK=new Set((M.options[opt]||{}).laneTables||[]);
       for(const t of data.groups.filter(t=>t.id!=='head'&&l.positions[t.id])) {
         const p=l.positions[t.id], b=M.bounds(M.shape(t.id,opt,p.x,p.y,p.rot));
-        if(t.side==='meg') assert(b.b<=f.cy-9+.1);
-        else assert(b.t>=f.cy+9-.1);
+        // Lane tables (option D parents) may enter the keep-open lane up to the centreline.
+        if(t.side==='meg') assert(b.b<=(laneOK.has(t.id)?f.cy+1.5:f.cy-9+.1));
+        else assert(b.t>=(laneOK.has(t.id)?f.cy-1.5:f.cy+9-.1));
       }
     }
   }
@@ -83,10 +85,10 @@ assert.equal(atTable('t14').guests.length,6);
 assert.equal(M.kind('t11','u'),'round');
 assert.equal(M.kind('t10','u'),'round');
 assert.deepEqual(data.groups.filter(g=>g.side==='meg'&&M.kind(g.id,'u')==='long').map(g=>g.id),[]);
-for(const opt of ['u','wide','rounds']){
+for(const opt of ['u','wide','rounds','d']){
  const head=vm.runInContext(`headSeatPositions('${opt}',7,15)`,context);
  assert.equal(head.filter(s=>s.angle===-90).length,12);
- assert.equal(head.filter(s=>s.angle===90).length,opt==='u'?2:opt==='wide'?0:12);
+ assert.equal(head.filter(s=>s.angle===90).length,M.compactU(opt)?2:opt==='wide'?0:12);
  const chair=s=>M.bounds({type:'rect',x:s.x-(Math.abs(s.angle)===90?.85:.8),y:s.y-(Math.abs(s.angle)===90?.8:.85),w:Math.abs(s.angle)===90?1.7:1.6,h:Math.abs(s.angle)===90?1.6:1.7});
  for(let i=0;i<head.length;i++)for(let j=i+1;j<head.length;j++){
   const a=chair(head[i]),b=chair(head[j]);
@@ -113,4 +115,4 @@ assert(boba.x>=900&&boba.y>=350);
 for(const opt of Object.keys(M.options)){const fixed=M.fixed(M.ROOM_WIDTH,opt);for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.wallRoute,fixed.serviceLane,fixed.catering,...fixed.doors])assert(M.distance(b,route)>=0,'Boba must not block an entrance or service route');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
 assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);
 assert.equal(V.stations.find(s=>s.id==='bar').x,792);
-console.log('PASS: 120 guests; fixed room size across 3 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');
+console.log('PASS: 120 guests; fixed room size across 4 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');

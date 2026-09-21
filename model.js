@@ -3,12 +3,14 @@
 const ASPECT=635/520,ROOM_WIDTH=50,R=4.5,GAP=3;
 const mix=new Set([]);
 const long=new Set(['t6']);
-const usesU=option=>option==='u'||option==='wide';
+const usesU=option=>option==='u'||option==='wide'||option==='d';
+const compactU=option=>option==='u'||option==='d';
 const kind=(id,option)=>long.has(id)?'long':'round';
 const options={
  u:{name:'A · Compact U head table + all rounds',short:'Compact U',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
  wide:{name:'B · Longer-arm U head table + all rounds',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A and squeezes the guest tables hardest.'},
- rounds:{name:'C · Straight head table + all rounds',short:'Straight head table',six:4,trade:'Smallest head-table footprint, which gives the 13 rounds the most breathing room \u2014 but twelve head seats face away from the band.'}
+ rounds:{name:'C · Straight head table + all rounds',short:'Straight head table',six:4,trade:'Smallest head-table footprint, which gives the 13 rounds the most breathing room \u2014 but twelve head seats face away from the band.'},
+ d:{name:'D · Compact U + parents\u2019 rounds in the open centre',short:'U + parents centred',six:6,laneTables:['t1','t7'],trade:'Same compact U as A, but the two parents\u2019 tables (1 and 7) may sit into the keep-open lane between the head table and the dance floor \u2014 parents front and centre of the couple, and the crowded side bands get breathing room.'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
 const optionSettings=(option,settings={})=>Object.assign({},(options[option]||{}).settings,settings);
@@ -21,7 +23,7 @@ function fixed(W,option,settings={}){
  const tables=[],headBlocks=[];
  for(let i=0;i<4;i++)tables.push(rect('H'+(i+1),wallX,wallTop+i*6,2.5,6));
  headBlocks.push(rect('head-back',wallX-2,wallTop-2,6.5,28,'Head table + chairs'));
- const armSections=option==='u'?1:2,armLength=armSections*6;
+ const armSections=compactU(option)?1:2,armLength=armSections*6;
  if(usesU(option)){
   for(let j=0;j<2;j++)for(let i=0;i<armSections;i++)tables.push(rect('H'+(5+j*2+i),wallX+2.5+i*6,wallTop+j*21.5,6,2.5));
   headBlocks.push(rect('head-rear',wallX+2.5,wallTop-2,armLength+2,6.5,'Rear-lobby arm + chairs'));
@@ -67,10 +69,11 @@ function distance(a,b){
 function audit(W,option,positions,settings={}){
  const f=fixed(W,option,settings),items=Object.entries(positions).map(([id,p])=>shape(id,option,p.x,p.y,p.rot,settings)),issues=[];
  const protectedIds=new Set([...f.protectedAreas.map(x=>x.id),'view-lane']);
+ const laneOK=new Set((options[option]||{}).laneTables||[]);
  for(let i=0;i<items.length;i++){
   const a=items[i],b=bounds(a),edge=Math.min(b.l,W-b.r,b.t,f.D-b.b);
   if(edge<-.05)issues.push({a:a.id,b:'wall',gap:edge,hard:true});
-  for(const ob of f.blocks){const d=distance(a,ob);if(d<-.05)issues.push({a:a.id,b:ob.id,gap:d,hard:true});else if(d<GAP-.05&&!protectedIds.has(ob.id))issues.push({a:a.id,b:ob.id,gap:d,hard:false});}
+  for(const ob of f.blocks){if(ob.id==='view-lane'&&laneOK.has(a.id))continue;const d=distance(a,ob);if(d<-.05)issues.push({a:a.id,b:ob.id,gap:d,hard:true});else if(d<GAP-.05&&!protectedIds.has(ob.id))issues.push({a:a.id,b:ob.id,gap:d,hard:false});}
   for(let j=i+1;j<items.length;j++){const d=distance(a,items[j]);if(d<GAP-.05)issues.push({a:a.id,b:items[j].id,gap:d,hard:d<-.05});}
  }
  for(const h of f.headBlocks)for(const ob of [f.dance,...f.protectedAreas]){const d=distance(h,ob);if(d<-.05)issues.push({a:h.id,b:ob.id,gap:d,hard:true});}
@@ -78,6 +81,6 @@ function audit(W,option,positions,settings={}){
  const routeClear=!issues.some(i=>i.hard&&['catering-apron','service-lane','wall-route','front-entry','rear-entry','boba-working'].includes(i.b));
  return {hard:issues.filter(x=>x.hard).length,tight:issues.filter(x=>!x.hard).length,minGap,routeClear,issues};
 }
-const api={ASPECT,ROOM_WIDTH,R,GAP,options,mix,long,usesU,kind,fixed,shape,bounds,distance,audit};
+const api={ASPECT,ROOM_WIDTH,R,GAP,options,mix,long,usesU,compactU,kind,fixed,shape,bounds,distance,audit};
 if(typeof module!=='undefined')module.exports=api;else root.SeatingModel=api;
 })(globalThis);
