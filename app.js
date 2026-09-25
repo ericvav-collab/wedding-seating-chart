@@ -1,6 +1,6 @@
 'use strict';
 const M=SeatingModel, $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const MEALS={O:'Beef · Osso Bucco',C:'Chicken Wellington',V:'Vegetarian',VG:'Vegan',S:'Special meal','?':'Meal pending'};
+const MEALS={O:'Beef · Osso Bucco',C:'Chicken Wellington',V:'Vegetarian',VG:'Vegan',S:'Special meal',K:'Kids meal', '?':'Meal pending'};
 const width=M.ROOM_WIDTH;
 let DATA,LAYOUTS,option='u',selected='head',space=true,venueView='all';
 const colors={eric:'#edf3ec',meg:'#f1ebe1',shared:'#e0e9de'};
@@ -167,11 +167,11 @@ function render(){
 function zoom(which){const container={room:'roomPlan',venue:'venuePlan',head:'headPlan'}[which];$('zoomDrawing').innerHTML=$(container).innerHTML.replaceAll('venue-crop','venue-crop-zoom');$('zoomTitle').textContent={room:'Monza layout · '+M.options[option].short,venue:VenuePlan.views[venueView].label,head:'Head table · 25 named seats'}[which];$('zoomKey').textContent=which==='venue'?VenuePlan.stations.filter(a=>venueView==='all'||(venueView==='arrival'?a.n<=4:venueView==='boba'?a.id==='boba':a.n>=6)).map(a=>a.n+' '+a.title).join(' · '):'';$('zoomDialog').classList.remove('zoomed');$('zoomScale').textContent='Zoom in';$('zoomDialog').showModal();}
 async function start(){
  const r=await Promise.all([fetch('seating-data.json',{cache:'no-store'}),fetch('layout-options.json',{cache:'no-store'})]);if(r.some(x=>!x.ok))throw Error('Could not load the seating plan');[DATA,LAYOUTS]=await Promise.all(r.map(x=>x.json()));
- const counts={O:0,C:0,V:0,VG:0,S:0,'?':0};for(const t of DATA.groups)for(const g of t.guests)counts[g.meal]++;
+ const counts={O:0,C:0,V:0,VG:0,S:0,K:0,'?':0};for(const t of DATA.groups)for(const g of t.guests)counts[g.meal]=(counts[g.meal]||0)+1;
  $('stats').innerHTML=[[DATA.guests,'Guests in the plan'],[group('head').guests.length,'At the head table'],[DATA.groups.length-1,'Guest groups outside the head table'],[counts['?'],'Meal choices pending']].map(([n,l])=>`<div class="stat"><strong>${n}</strong><span>${l}</span></div>`).join('');
  $('updated').textContent='Coordinator & florist review · Revised '+DATA.updated;
- $('mealCounts').innerHTML=Object.entries(counts).map(([m,n])=>`<div class="meal-chip ${m==='VG'?'vegan':''}"><b>${n}</b>${esc(MEALS[m])}</div>`).join('');
- $('unknownMeals').textContent=DATA.groups.flatMap(t=>t.guests).filter(g=>g.meal==='?').map(g=>g.name).join(' · ');
+ $('mealCounts').innerHTML=Object.entries(counts).filter(([,n])=>n).map(([m,n])=>`<div class="meal-chip ${m==='VG'?'vegan':''}"><b>${n}</b>${esc(MEALS[m])}</div>`).join('');
+ const unk=$('unknownMeals'); if(unk) unk.textContent=DATA.groups.flatMap(t=>t.guests).filter(g=>g.meal==='?').map(g=>g.name).join(' · ')||'None';
  $('flowerSummary').textContent='Floral proposal: 2 large arrangements, 4 compotes, 6 taper trios, a Table 6 runner and head-table garland. See the florist section for quantities and locations.';
  render();
  $('showSpace').addEventListener('change',e=>{space=e.target.checked;render();});$('search').addEventListener('input',renderTables);$('print').addEventListener('click',()=>window.print());

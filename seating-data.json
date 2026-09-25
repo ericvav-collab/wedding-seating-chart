@@ -1,5 +1,5 @@
 {
- "updated": "September 20, 2026",
+ "updated": "September 25, 2026",
  "guests": 120,
  "groups": [
   {
@@ -130,7 +130,7 @@
     },
     {
      "name": "Oliver",
-     "meal": "O",
+     "meal": "K",
      "id": "oliver"
     }
    ]
@@ -427,7 +427,7 @@
     {
      "name": "Irma",
      "id": "irma",
-     "meal": "?"
+     "meal": "O"
     },
     {
      "name": "Joe M.",
