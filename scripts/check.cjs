@@ -12,8 +12,8 @@ assert.equal(guests.length, 120);
 assert.equal(new Set(guests.map(g => g.id)).size, 120);
 assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,6,7,6,6,6]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
-assert.deepEqual(mealCounts, {C:38,O:75,S:2,V:3,VG:1,'?':1}); // '?' = Irma (meal pending)
-for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O'],['gerry-n','C'],['letty','C'],['irma','?']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
+assert.deepEqual(mealCounts, {C:38,O:75,S:2,V:3,VG:1,K:1}); // K = Oliver's kids meal
+for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O'],['gerry-n','C'],['letty','C'],['irma','O'],['oliver','K']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
 assert(!guests.some(g=>g.id==='pits')); // Pits removed in Meg's Sep 20 chart
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
 assert.equal(guests.find(g=>g.name==='Miranda').meal,'VG');
@@ -24,7 +24,7 @@ const source = fs.readFileSync(path.join(root,'app.js'),'utf8').split('start().c
 vm.runInContext(source,context);
 context.inputData=data;
 vm.runInContext('DATA=inputData;',context);
-for (const opt of ['u','wide','rounds','d']) {
+for (const opt of ['fay','u','wide','rounds','d']) {
   const head=vm.runInContext(`headSeatPositions('${opt}',7,54*SeatingModel.ASPECT/2-12)`,context);
   assert.equal(head.length,25);
   assert.equal(new Set(head.map(p=>p.index)).size,25);
@@ -47,7 +47,7 @@ for (const opt of ['u','wide','rounds','d']) {
     assert.equal(audit.tight,l.audit.tight);
     const f=M.fixed(+w,opt);
     assert.equal(f.dance.x+f.dance.w,f.stage.x);
-    assert.equal(f.tables.length,M.compactU(opt)?6:opt==='wide'?8:4);
+    assert.equal(f.tables.length,M.compactU(opt)?6:opt==='wide'||opt==='fay'?8:4);
     assert(f.tables.every(t=>Math.max(t.w,t.h)===6 && Math.min(t.w,t.h)===2.5));
     for(const t of data.groups.filter(t=>t.id!=='head'&&!M.long.has(t.id)))
       assert(t.guests.length<=8);
@@ -85,10 +85,15 @@ assert.equal(atTable('t14').guests.length,6);
 assert.equal(M.kind('t11','u'),'round');
 assert.equal(M.kind('t10','u'),'round');
 assert.deepEqual(data.groups.filter(g=>g.side==='meg'&&M.kind(g.id,'u')==='long').map(g=>g.id),[]);
-for(const opt of ['u','wide','rounds','d']){
+for(const opt of ['fay','u','wide','rounds','d']){
  const head=vm.runInContext(`headSeatPositions('${opt}',7,15)`,context);
  assert.equal(head.filter(s=>s.angle===-90).length,12);
- assert.equal(head.filter(s=>s.angle===90).length,M.compactU(opt)?2:opt==='wide'?0:12);
+ assert.equal(head.filter(s=>s.angle===90).length,M.compactU(opt)?2:opt==='wide'||opt==='fay'?0:12);
+ if(M.outsideOnly(opt)){
+  // Milano's plan: arm chairs sit only on the outside (above the rear arm, below the front arm).
+  assert.equal(head.filter(s=>s.angle===0&&s.y===14).length,7);
+  assert.equal(head.filter(s=>s.angle===180&&s.y===40).length,6);
+ }
  const chair=s=>M.bounds({type:'rect',x:s.x-(Math.abs(s.angle)===90?.85:.8),y:s.y-(Math.abs(s.angle)===90?.8:.85),w:Math.abs(s.angle)===90?1.7:1.6,h:Math.abs(s.angle)===90?1.6:1.7});
  for(let i=0;i<head.length;i++)for(let j=i+1;j<head.length;j++){
   const a=chair(head[i]),b=chair(head[j]);
@@ -108,14 +113,14 @@ for(let i=0;i<V.tables.length;i++)for(const b of V.tables.slice(i+1)){
 }
 for(const a of V.stations)for(const r of routeBlocks){const shape=a.shape==='round'?{type:'circle',x:a.x+a.w/2,y:a.y+a.h/2,r:a.w/2}:asRect(a);assert(M.distance(shape,r)>=0,'Station blocks a walking route: '+a.id);}
 for(const a of V.queues)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Queue blocks a walking route: '+a.id);
-const boba=V.stations.find(s=>s.id==='boba'),f=M.fixed(M.ROOM_WIDTH,'u');
-assert.equal(boba.x,900+f.boba.x*V.scale);
-assert.equal(boba.y,350+f.boba.y*V.scale);
-assert(boba.x>=900&&boba.y>=350);
-// Boba may intrude on the blue wall-route strip and the rear-entry approach by design
-// (staff in the corner, queue on the strip). It must still clear the kitchen, the other
-// doors and the head table.
-for(const opt of Object.keys(M.options)){const fixed=M.fixed(M.ROOM_WIDTH,opt);const otherDoors=fixed.doors.filter(d=>d.id!=='rear-entry');for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.serviceLane,fixed.catering,...otherDoors])assert(M.distance(b,route)>=0,'Boba must not block the kitchen or another entrance');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
-assert.equal(V.stations.find(s=>s.id==='trio').x<555,true);
+// Boba, photo booth and jazz trio all sit in the front lobby (x 558-840, y 905-1145) with the bar,
+// clear of the front door opening (x 665-739 on the bottom wall).
+const frontLobby={type:'rect',x:558,y:905,w:282,h:240},frontDoor={type:'rect',x:665,y:1105,w:74,h:40};
+for(const id of ['boba','booth','bar','trio']){const s=asRect(V.stations.find(a=>a.id===id)),b=M.bounds(s),z=M.bounds(frontLobby);assert(b.l>=z.l&&b.r<=z.r&&b.t>=z.t&&b.b<=z.b,id+' must be in the front lobby');assert(M.distance(s,frontDoor)>=0,id+' must clear the front door');}
+for(const q of V.queues)assert(M.distance(asRect(q),frontDoor)>=0,'Queue must clear the front door: '+q.id);
+for(let i=0;i<V.stations.length;i++)for(const b of V.stations.slice(i+1))assert(M.distance(asRect(V.stations[i]),asRect(b))>=0||V.stations[i].shape==='round'||b.shape==='round','Stations overlap: '+V.stations[i].id+'/'+b.id);
+assert.equal(M.fixed(M.ROOM_WIDTH,'fay').boba,null);
+// Earlier options kept boba inside Monza; it must still clear the kitchen, the other doors and the head table there.
+for(const opt of Object.keys(M.options).filter(M.bobaInMonza)){const fixed=M.fixed(M.ROOM_WIDTH,opt);const otherDoors=fixed.doors.filter(d=>d.id!=='rear-entry');for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.serviceLane,fixed.catering,...otherDoors])assert(M.distance(b,route)>=0,'Boba must not block the kitchen or another entrance');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
 assert.equal(V.stations.find(s=>s.id==='bar').x,792);
-console.log('PASS: 120 guests; fixed room size across 4 options; 25 head seats; kitchen routes; cocktail furniture and lobby paths.');
+console.log('PASS: 120 guests; fixed room size across 5 layouts (Milano plan selected); 25 head seats; kitchen routes; front lobby stations; cocktail furniture and lobby paths.');
