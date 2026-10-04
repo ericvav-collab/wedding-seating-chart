@@ -14,7 +14,7 @@ const options={
  u:{name:'A · Compact U head table + all rounds',short:'Compact U',six:6,trade:'Four 6-ft sections across the back and one per arm. Keeps 25 together; two end seats face away from the band. Check the arm-table supports and corner comfort.'},
  wide:{name:'B · Longer-arm U head table + all rounds',short:'Longer-arm U',six:8,trade:'Longer arms give the head-table guests more space. No head-table guests have their backs to the band; it needs six more feet of arm length than A and squeezes the guest tables hardest.'},
  rounds:{name:'C · Straight head table + all rounds',short:'Straight head table',six:4,trade:'Smallest head-table footprint, which gives the 13 rounds the most breathing room \u2014 but twelve head seats face away from the band.'},
- d:{name:'D · Compact U + parents\u2019 rounds in the open centre',short:'U + parents centred',six:6,laneTables:['t1','t7'],trade:'Same compact U as A, but BOTH parents\u2019 tables (1 and 7) sit in the keep-open lane, mirrored in front of the couple. The side bands breathe; the trade is one pinch point where Table 1\u2019s chairs pass the dance-floor edge (~0.5 ft in the model \u2014 confirm on site).'}
+ d:{name:'D · Compact U + Tables 1 and 7 in the open centre',short:'U + 1 and 7 centred',six:6,laneTables:['t1','t7'],trade:'Same compact U as A, but Tables 1 and 7 sit in the keep-open lane, mirrored in front of the couple. The side bands breathe; the trade is one pinch point where Table 1\u2019s chairs pass the dance-floor edge (~0.5 ft in the model \u2014 confirm on site).'}
 };
 function rect(id,x,y,w,h,label){return {id,type:'rect',x,y,w,h,label:label||id};}
 const optionSettings=(option,settings={})=>Object.assign({},(options[option]||{}).settings,settings);

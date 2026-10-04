@@ -10,7 +10,7 @@ const V = require('../venue.js');
 const guests = data.groups.flatMap(t => t.guests);
 assert.equal(guests.length, 120);
 assert.equal(new Set(guests.map(g => g.id)).size, 120);
-assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,7,6,7,6,10,7,7,7,6,7,6,6,6]);
+assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,6,7,6,7,10,6,6,7,7,6,6,7,7]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
 assert.deepEqual(mealCounts, {C:38,O:75,S:2,V:3,VG:1,K:1}); // K = Oliver's kids meal
 for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O'],['gerry-n','C'],['letty','C'],['irma','O'],['oliver','K']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
@@ -67,9 +67,12 @@ for (const opt of ['fay','u','wide','rounds','d']) {
 }
 
 const atTable=id=>data.groups.find(t=>t.id===id);
-assert(atTable('t7').guests.some(g=>g.id==='joe-m'));
-assert(atTable('t7').guests.some(g=>g.id==='diane-m'));
-assert(atTable('t7').guests.some(g=>g.id==='irma'));
+// Oct 4 renumbering: parents' tables sit closest to the head table (5 and 9).
+assert(atTable('t5').guests.some(g=>g.id==='susan')&&atTable('t5').guests.some(g=>g.id==='paul'));
+assert(atTable('t9').guests.some(g=>g.id==='nelia')&&atTable('t9').guests.some(g=>g.id==='noli'));
+assert(atTable('t9').guests.some(g=>g.id==='joe-m'));
+assert(atTable('t9').guests.some(g=>g.id==='diane-m'));
+assert(atTable('t9').guests.some(g=>g.id==='irma'));
 assert(!Object.hasOwn(data,'unseated'));
 {// Table 6 is the only long table (A&M group of ten).
  const t=atTable('t6'),ss=vm.runInContext("partySeats(group('t6'),'long')",context);
@@ -78,10 +81,10 @@ assert(!Object.hasOwn(data,'unseated'));
  const names=Object.fromEntries(t.guests.map((g,i)=>[g.name,ss.find(s=>s.index===i)]));
  assert.equal(Math.abs(names.Sam.x-names.Adelia.x),2.4);
 }
-assert.deepEqual(atTable('t11').guests.map(g=>g.id),['nathan','neal','mae','joseph-o','lan','miko','maynard']);
-assert.deepEqual(new Set(atTable('t13').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
-assert.deepEqual(new Set(atTable('t14').guests.map(g=>g.id)),new Set(atTable('t14').guests.map(g=>g.id)));
-assert.equal(atTable('t14').guests.length,6);
+assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','joseph-o','lan','miko','maynard']);
+assert.deepEqual(new Set(atTable('t12').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
+assert.equal(atTable('t8').guests[0].id,'andrew-d');
+assert.equal(atTable('t8').guests.length,6);
 assert.equal(M.kind('t11','u'),'round');
 assert.equal(M.kind('t10','u'),'round');
 assert.deepEqual(data.groups.filter(g=>g.side==='meg'&&M.kind(g.id,'u')==='long').map(g=>g.id),[]);

@@ -1,6 +1,6 @@
 COORDINATOR & FLORIST REVIEW — ERIC & MEG
 October 10, 2026 · The Milano
-Revised September 25, 2026 · Proposals pending vendor confirmation
+Revised October 4, 2026 · Proposals pending vendor confirmation
 Review website: https://ericvav-collab.github.io/wedding-seating-chart/
 
 120 guests: 25 at the head table; 95 at 14 guest tables (Meg's regrouped chart, Sep 20).
@@ -49,7 +49,7 @@ B: Longer-arm U head (8 sections). DOES NOT FIT at true scale: 3
    run. Shown for completeness; not recommended.
 C: Straight double-sided head (4 sections). BEST FIT: zero overlaps,
    0.5-ft minimum gap. 12 head seats face the band, 12 face away, 1 end.
-D: Same compact U as A, but BOTH PARENTS’ TABLES (1 and 7) sit in the
+D: Same compact U as A, but TABLES 1 AND 7 sit in the
    keep-open lane, mirrored in front of the couple. Zero overlaps and
    the side bands breathe; the trade is one pinch point where Table 1
    passes the dance-floor edge (~0.5 ft in the model; the dance floor
@@ -66,13 +66,13 @@ B · Longer-arm U head table + all rounds: 2 overlaps; 28 gaps below target; clo
 Revise conflicts in kitchen, entrance or boba working areas.
 C · Straight head table + all rounds: 0 overlaps; 26 gaps below target; closest guest-table gap 0.56 ft.
 Kitchen, entrance and boba working areas clear in the model.
-D · Compact U + parents’ rounds in the open centre: 0 overlaps; 33 gaps below target; closest guest-table gap 0.45 ft.
+D · Compact U + Tables 1 and 7 in the open centre: 0 overlaps; 33 gaps below target; closest guest-table gap 0.45 ft.
 Kitchen, entrance and boba working areas clear in the model.
 
 FLORIST REVIEW — PROPOSED QUANTITIES
-2 x Large: Table 1, Table 7.
-4 x Compote: Table 2, Table 5, Table 8, Table 9.
-6 x Taper trio: Table 3, Table 4, Table 10, Table 11, Table 12, Table 13.
+2 x Large: Table 5, Table 9.
+4 x Compote: Table 1, Table 4, Table 10, Table 14.
+6 x Taper trio: Table 2, Table 3, Table 7, Table 11, Table 12, Table 13.
 1 x Runner: Table 6.
 Head garland: Milano plan = 8 six-foot tables, 48 ft of tabletop (front edge faces the dance floor).
 Earlier options for comparison: A 36 ft, B 48 ft, C 24 ft; these are not garland order quantities.
@@ -207,7 +207,7 @@ Opposite row · Meg / rear lobby
 Rear-lobby end · Oliver beside James
  25. Oliver (K)
 
-HEAD SEATS — D · Compact U + parents’ rounds in the open centre
+HEAD SEATS — D · Compact U + Tables 1 and 7 in the open centre
 Wall row · faces the band
  1. Edward (C)
  2. Jacob G. (O)
@@ -245,17 +245,6 @@ GUEST SEATS — SAME GROUPS IN ALL THREE OPTIONS
 
 TABLE 1 — 7 guests
 60-inch round, up to 8
- 1. Susan (O)
- 2. Paul (C)
- 3. Julie (C)
- 4. Bob (O)
- 5. Marie (O)
- 6. Louise (O)
- 7. Dennis (O)
- Proposed flowers: Large
-
-TABLE 2 — 7 guests
-60-inch round, up to 8
  1. Pete (O)
  2. Yvonne (O)
  3. Steve (O)
@@ -265,7 +254,7 @@ TABLE 2 — 7 guests
  7. Jaclyn (O)
  Proposed flowers: Compote
 
-TABLE 3 — 6 guests
+TABLE 2 — 6 guests
 60-inch round, up to 8
  1. Dan H. (C)
  2. Teresa (O)
@@ -275,7 +264,7 @@ TABLE 3 — 6 guests
  6. Karen (O)
  Proposed flowers: Taper trio
 
-TABLE 4 — 7 guests
+TABLE 3 — 7 guests
 60-inch round, up to 8
  1. Sunny (O)
  2. Jacob M. (O)
@@ -286,7 +275,7 @@ TABLE 4 — 7 guests
  7. Beth (O)
  Proposed flowers: Taper trio
 
-TABLE 5 — 6 guests
+TABLE 4 — 6 guests
 60-inch round, up to 8
  1. Matt G. (O)
  2. Nancy (C)
@@ -295,6 +284,17 @@ TABLE 5 — 6 guests
  5. Pam (O)
  6. Frank (O)
  Proposed flowers: Compote
+
+TABLE 5 — 7 guests
+60-inch round, up to 8
+ 1. Susan (O)
+ 2. Paul (C)
+ 3. Julie (C)
+ 4. Bob (O)
+ 5. Marie (O)
+ 6. Louise (O)
+ 7. Dennis (O)
+ Proposed flowers: Large
 
 TABLE 6 — 10 guests
 Two joined 6-ft tables
@@ -310,7 +310,27 @@ Two joined 6-ft tables
  10. Matt W. (O)
  Proposed flowers: Runner
 
-TABLE 7 — 7 guests
+TABLE 7 — 6 guests
+60-inch round, up to 8
+ 1. Maria (O)
+ 2. William (O)
+ 3. Cristino (O)
+ 4. Loven (O)
+ 5. Gerry N. (C)
+ 6. Letty (C)
+ Proposed flowers: Taper trio
+
+TABLE 8 — 6 guests
+60-inch round, up to 8
+ 1. Andrew D. (O)
+ 2. Sue Ellen (O)
+ 3. Carlo (O)
+ 4. Nina (C)
+ 5. Paulo (O)
+ 6. Hannah (C)
+ Proposed flowers: To choose
+
+TABLE 9 — 7 guests
 60-inch round, up to 8
  1. Nelia (O)
  2. Noli (C)
@@ -321,7 +341,7 @@ TABLE 7 — 7 guests
  7. Diane M. (C)
  Proposed flowers: Large
 
-TABLE 8 — 7 guests
+TABLE 10 — 7 guests
 60-inch round, up to 8
  1. Jude (C)
  2. Cassie (O)
@@ -332,28 +352,27 @@ TABLE 8 — 7 guests
  7. Byanca (C)
  Proposed flowers: Compote
 
-TABLE 9 — 7 guests
+TABLE 11 — 6 guests
 60-inch round, up to 8
- 1. Reana (O)
- 2. Alfred (C)
- 3. Wincy (O)
- 4. Erika (O)
- 5. Christian (O)
- 6. Michelle (C)
- 7. Johnathan (O)
- Proposed flowers: Compote
-
-TABLE 10 — 6 guests
-60-inch round, up to 8
- 1. Maria (O)
- 2. William (O)
- 3. Cristino (O)
- 4. Loven (O)
- 5. Gerry N. (C)
- 6. Letty (C)
+ 1. Arby (C)
+ 2. JP (O)
+ 3. Alberta (C)
+ 4. Arnulfo (C)
+ 5. Paterno (O)
+ 6. Leonita (O)
  Proposed flowers: Taper trio
 
-TABLE 11 — 7 guests
+TABLE 12 — 6 guests
+60-inch round, up to 8
+ 1. Miranda (VG)
+ 2. Reina (O)
+ 3. Pablo (C)
+ 4. Meli (O)
+ 5. Joseph N. (O)
+ 6. Phung (C)
+ Proposed flowers: Taper trio
+
+TABLE 13 — 7 guests
 60-inch round, up to 8
  1. Nathan (C)
  2. Neal (C)
@@ -364,35 +383,16 @@ TABLE 11 — 7 guests
  7. Maynard (O)
  Proposed flowers: Taper trio
 
-TABLE 12 — 6 guests
+TABLE 14 — 7 guests
 60-inch round, up to 8
- 1. Arby (C)
- 2. JP (O)
- 3. Alberta (C)
- 4. Arnulfo (C)
- 5. Paterno (O)
- 6. Leonita (O)
- Proposed flowers: Taper trio
-
-TABLE 13 — 6 guests
-60-inch round, up to 8
- 1. Miranda (VG)
- 2. Reina (O)
- 3. Pablo (C)
- 4. Meli (O)
- 5. Joseph N. (O)
- 6. Phung (C)
- Proposed flowers: Taper trio
-
-TABLE 14 — 6 guests
-60-inch round, up to 8
- 1. Andrew D. (O)
- 2. Sue Ellen (O)
- 3. Carlo (O)
- 4. Nina (C)
- 5. Paulo (O)
- 6. Hannah (C)
- Proposed flowers: To choose
+ 1. Reana (O)
+ 2. Alfred (C)
+ 3. Wincy (O)
+ 4. Erika (O)
+ 5. Christian (O)
+ 6. Michelle (C)
+ 7. Johnathan (O)
+ Proposed flowers: Compote
 
 Preserve the displayed seat order.
 Meal choices: all resolved (Sep 25, 2026 — Irma beef, Oliver kids meal).

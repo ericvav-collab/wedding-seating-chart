@@ -56,7 +56,7 @@ const lines=[
 '   run. Shown for completeness; not recommended.',
 'C: Straight double-sided head (4 sections). BEST FIT: zero overlaps,',
 '   0.5-ft minimum gap. 12 head seats face the band, 12 face away, 1 end.',
-'D: Same compact U as A, but BOTH PARENTS\u2019 TABLES (1 and 7) sit in the',
+'D: Same compact U as A, but TABLES 1 AND 7 sit in the',
 '   keep-open lane, mirrored in front of the couple. Zero overlaps and',
 '   the side bands breathe; the trade is one pinch point where Table 1',
 '   passes the dance-floor edge (~0.5 ft in the model; the dance floor',

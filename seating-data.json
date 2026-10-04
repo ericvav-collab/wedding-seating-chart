@@ -1,5 +1,5 @@
 {
- "updated": "September 25, 2026",
+ "updated": "October 4, 2026",
  "guests": 120,
  "groups": [
   {
@@ -137,49 +137,6 @@
   },
   {
    "id": "t1",
-   "label": "Family table",
-   "side": "eric",
-   "flowers": "Large",
-   "guests": [
-    {
-     "name": "Susan",
-     "meal": "O",
-     "id": "susan"
-    },
-    {
-     "name": "Paul",
-     "meal": "C",
-     "id": "paul"
-    },
-    {
-     "name": "Julie",
-     "meal": "C",
-     "id": "julie"
-    },
-    {
-     "name": "Bob",
-     "meal": "O",
-     "id": "bob"
-    },
-    {
-     "name": "Marie",
-     "meal": "O",
-     "id": "marie"
-    },
-    {
-     "name": "Louise",
-     "meal": "O",
-     "id": "louise"
-    },
-    {
-     "name": "Dennis",
-     "meal": "O",
-     "id": "dennis"
-    }
-   ]
-  },
-  {
-   "id": "t2",
    "label": "Guest table",
    "side": "eric",
    "flowers": "Compote",
@@ -222,7 +179,7 @@
    ]
   },
   {
-   "id": "t3",
+   "id": "t2",
    "label": "Guest table",
    "side": "eric",
    "flowers": "Taper trio",
@@ -260,7 +217,7 @@
    ]
   },
   {
-   "id": "t4",
+   "id": "t3",
    "label": "Guest table",
    "side": "eric",
    "flowers": "Taper trio",
@@ -303,7 +260,7 @@
    ]
   },
   {
-   "id": "t5",
+   "id": "t4",
    "label": "Guest table",
    "side": "eric",
    "flowers": "Compote",
@@ -337,6 +294,49 @@
      "name": "Frank",
      "meal": "O",
      "id": "frank"
+    }
+   ]
+  },
+  {
+   "id": "t5",
+   "label": "Family table",
+   "side": "eric",
+   "flowers": "Large",
+   "guests": [
+    {
+     "name": "Susan",
+     "meal": "O",
+     "id": "susan"
+    },
+    {
+     "name": "Paul",
+     "meal": "C",
+     "id": "paul"
+    },
+    {
+     "name": "Julie",
+     "meal": "C",
+     "id": "julie"
+    },
+    {
+     "name": "Bob",
+     "meal": "O",
+     "id": "bob"
+    },
+    {
+     "name": "Marie",
+     "meal": "O",
+     "id": "marie"
+    },
+    {
+     "name": "Louise",
+     "meal": "O",
+     "id": "louise"
+    },
+    {
+     "name": "Dennis",
+     "meal": "O",
+     "id": "dennis"
     }
    ]
   },
@@ -400,6 +400,82 @@
   },
   {
    "id": "t7",
+   "label": "Guest table",
+   "side": "meg",
+   "flowers": "Taper trio",
+   "guests": [
+    {
+     "name": "Maria",
+     "meal": "O",
+     "id": "maria"
+    },
+    {
+     "name": "William",
+     "meal": "O",
+     "id": "william"
+    },
+    {
+     "name": "Cristino",
+     "meal": "O",
+     "id": "cristino"
+    },
+    {
+     "name": "Loven",
+     "meal": "O",
+     "id": "loven"
+    },
+    {
+     "name": "Gerry N.",
+     "id": "gerry-n",
+     "meal": "C"
+    },
+    {
+     "name": "Letty",
+     "id": "letty",
+     "meal": "C"
+    }
+   ]
+  },
+  {
+   "id": "t8",
+   "label": "Guest table",
+   "side": "meg",
+   "flowers": "To choose",
+   "guests": [
+    {
+     "name": "Andrew D.",
+     "meal": "O",
+     "id": "andrew-d"
+    },
+    {
+     "name": "Sue Ellen",
+     "meal": "O",
+     "id": "ellen"
+    },
+    {
+     "name": "Carlo",
+     "meal": "O",
+     "id": "carlo"
+    },
+    {
+     "name": "Nina",
+     "meal": "C",
+     "id": "nina"
+    },
+    {
+     "name": "Paulo",
+     "meal": "O",
+     "id": "paulo"
+    },
+    {
+     "name": "Hannah",
+     "meal": "C",
+     "id": "hannah"
+    }
+   ]
+  },
+  {
+   "id": "t9",
    "label": "Family table",
    "side": "meg",
    "flowers": "Large",
@@ -442,7 +518,7 @@
    ]
   },
   {
-   "id": "t8",
+   "id": "t10",
    "label": "Guest table",
    "side": "meg",
    "flowers": "Compote",
@@ -485,88 +561,83 @@
    ]
   },
   {
-   "id": "t9",
-   "label": "Guest table",
-   "side": "meg",
-   "flowers": "Compote",
-   "guests": [
-    {
-     "name": "Reana",
-     "meal": "O",
-     "id": "reana"
-    },
-    {
-     "name": "Alfred",
-     "meal": "C",
-     "id": "alfred"
-    },
-    {
-     "name": "Wincy",
-     "meal": "O",
-     "id": "wincy"
-    },
-    {
-     "name": "Erika",
-     "meal": "O",
-     "id": "erika"
-    },
-    {
-     "name": "Christian",
-     "meal": "O",
-     "id": "christian"
-    },
-    {
-     "name": "Michelle",
-     "meal": "C",
-     "id": "michelle"
-    },
-    {
-     "name": "Johnathan",
-     "meal": "O",
-     "id": "jonathan"
-    }
-   ]
-  },
-  {
-   "id": "t10",
+   "id": "t11",
    "label": "Guest table",
    "side": "meg",
    "flowers": "Taper trio",
    "guests": [
     {
-     "name": "Maria",
+     "name": "Arby",
+     "meal": "C",
+     "id": "arby"
+    },
+    {
+     "name": "JP",
      "meal": "O",
-     "id": "maria"
+     "id": "jp"
     },
     {
-     "name": "William",
+     "name": "Alberta",
+     "meal": "C",
+     "id": "elber"
+    },
+    {
+     "name": "Arnulfo",
+     "meal": "C",
+     "id": "arnulfo"
+    },
+    {
+     "name": "Paterno",
      "meal": "O",
-     "id": "william"
+     "id": "paterno"
     },
     {
-     "name": "Cristino",
+     "name": "Leonita",
      "meal": "O",
-     "id": "cristino"
-    },
-    {
-     "name": "Loven",
-     "meal": "O",
-     "id": "loven"
-    },
-    {
-     "name": "Gerry N.",
-     "id": "gerry-n",
-     "meal": "C"
-    },
-    {
-     "name": "Letty",
-     "id": "letty",
-     "meal": "C"
+     "id": "leonita"
     }
    ]
   },
   {
-   "id": "t11",
+   "id": "t12",
+   "label": "Guest table",
+   "side": "meg",
+   "flowers": "Taper trio",
+   "guests": [
+    {
+     "name": "Miranda",
+     "meal": "VG",
+     "id": "miranda"
+    },
+    {
+     "name": "Reina",
+     "meal": "O",
+     "id": "reina"
+    },
+    {
+     "name": "Pablo",
+     "meal": "C",
+     "id": "pablo"
+    },
+    {
+     "name": "Meli",
+     "meal": "O",
+     "id": "meli"
+    },
+    {
+     "name": "Joseph N.",
+     "meal": "O",
+     "id": "joseph-n"
+    },
+    {
+     "name": "Phung",
+     "meal": "C",
+     "id": "phung"
+    }
+   ]
+  },
+  {
+   "id": "t13",
    "label": "Guest table",
    "side": "meg",
    "flowers": "Taper trio",
@@ -609,116 +680,45 @@
    ]
   },
   {
-   "id": "t12",
-   "label": "Guest table",
-   "side": "meg",
-   "flowers": "Taper trio",
-   "guests": [
-    {
-     "name": "Arby",
-     "meal": "C",
-     "id": "arby"
-    },
-    {
-     "name": "JP",
-     "meal": "O",
-     "id": "jp"
-    },
-    {
-     "name": "Alberta",
-     "meal": "C",
-     "id": "elber"
-    },
-    {
-     "name": "Arnulfo",
-     "meal": "C",
-     "id": "arnulfo"
-    },
-    {
-     "name": "Paterno",
-     "meal": "O",
-     "id": "paterno"
-    },
-    {
-     "name": "Leonita",
-     "meal": "O",
-     "id": "leonita"
-    }
-   ]
-  },
-  {
-   "id": "t13",
-   "label": "Guest table",
-   "side": "meg",
-   "flowers": "Taper trio",
-   "guests": [
-    {
-     "name": "Miranda",
-     "meal": "VG",
-     "id": "miranda"
-    },
-    {
-     "name": "Reina",
-     "meal": "O",
-     "id": "reina"
-    },
-    {
-     "name": "Pablo",
-     "meal": "C",
-     "id": "pablo"
-    },
-    {
-     "name": "Meli",
-     "meal": "O",
-     "id": "meli"
-    },
-    {
-     "name": "Joseph N.",
-     "meal": "O",
-     "id": "joseph-n"
-    },
-    {
-     "name": "Phung",
-     "meal": "C",
-     "id": "phung"
-    }
-   ]
-  },
-  {
    "id": "t14",
    "label": "Guest table",
    "side": "meg",
-   "flowers": "To choose",
+   "flowers": "Compote",
    "guests": [
     {
-     "name": "Andrew D.",
+     "name": "Reana",
      "meal": "O",
-     "id": "andrew-d"
+     "id": "reana"
     },
     {
-     "name": "Sue Ellen",
-     "meal": "O",
-     "id": "ellen"
-    },
-    {
-     "name": "Carlo",
-     "meal": "O",
-     "id": "carlo"
-    },
-    {
-     "name": "Nina",
+     "name": "Alfred",
      "meal": "C",
-     "id": "nina"
+     "id": "alfred"
     },
     {
-     "name": "Paulo",
+     "name": "Wincy",
      "meal": "O",
-     "id": "paulo"
+     "id": "wincy"
     },
     {
-     "name": "Hannah",
+     "name": "Erika",
+     "meal": "O",
+     "id": "erika"
+    },
+    {
+     "name": "Christian",
+     "meal": "O",
+     "id": "christian"
+    },
+    {
+     "name": "Michelle",
      "meal": "C",
-     "id": "hannah"
+     "id": "michelle"
+    },
+    {
+     "name": "Johnathan",
+     "meal": "O",
+     "id": "jonathan"
     }
    ]
   }
