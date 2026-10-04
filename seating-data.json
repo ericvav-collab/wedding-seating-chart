@@ -357,6 +357,11 @@
      "id": "adelia"
     },
     {
+     "name": "Baley",
+     "meal": "O",
+     "id": "baley"
+    },
+    {
      "name": "April",
      "meal": "O",
      "id": "april"
@@ -367,9 +372,9 @@
      "id": "taylor"
     },
     {
-     "name": "Lauren",
-     "meal": "O",
-     "id": "lauren"
+     "name": "John",
+     "meal": "C",
+     "id": "john"
     },
     {
      "name": "Danielle",
@@ -382,14 +387,9 @@
      "id": "matt-w"
     },
     {
-     "name": "Baley",
+     "name": "Lauren",
      "meal": "O",
-     "id": "baley"
-    },
-    {
-     "name": "John",
-     "meal": "C",
-     "id": "john"
+     "id": "lauren"
     },
     {
      "name": "Trey",

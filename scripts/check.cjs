@@ -81,12 +81,19 @@ assert(atTable('t9').guests.some(g=>g.id==='joe-m'));
 assert(atTable('t9').guests.some(g=>g.id==='diane-m'));
 assert(atTable('t9').guests.some(g=>g.id==='irma'));
 assert(!Object.hasOwn(data,'unseated'));
-{// Table 6 is the only long table (A&M group of ten).
+{// Table 6 is the only long table (A&M group of ten): six chairs on one side, four across.
  const t=atTable('t6'),ss=vm.runInContext("partySeats(group('t6'),'long')",context);
- assert(t.guests.length<=10);
+ assert.equal(t.guests.length,10);
+ assert.equal(new Set(ss.map(s=>s.index)).size,10);
  assert(ss.every(s=>Math.abs(s.y)===2.3&&Math.abs(s.x)<6));
- const names=Object.fromEntries(t.guests.map((g,i)=>[g.name,ss.find(s=>s.index===i)]));
- assert.equal(Math.abs(names.Sam.x-names.Adelia.x),2.4);
+ assert.equal(ss.filter(s=>s.y<0).length,6);
+ const at=Object.fromEntries(t.guests.map((g,i)=>[g.id,ss.find(s=>s.index===i)]));
+ const beside=(a,b)=>at[a].y===at[b].y&&Math.abs(at[a].x-at[b].x)===2;
+ const across=(a,b)=>at[a].x===at[b].x&&at[a].y===-at[b].y;
+ for(const [a,b] of [['sam','adelia'],['april','baley'],['taylor','john'],['danielle','matt-w'],['lauren','trey']]) assert(beside(a,b),a+' and '+b+' sit side by side');
+ assert(beside('taylor','april'));
+ assert(across('sam','danielle')&&across('adelia','matt-w'));
+ assert(across('taylor','lauren')&&across('john','trey'));
 }
 assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan','joseph-o','miko','maynard']);
 {// Oct 4 seat requests.
@@ -94,8 +101,6 @@ assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan'
  assert.equal(Math.abs(idx('t5','marie')-idx('t5','dennis')),1);
  assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','lan')),1);
  assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','miko')),1);
- assert.equal(Math.abs(idx('t6','taylor')-idx('t6','april')),1);
- for(const [a,b] of [['sam','danielle'],['adelia','matt-w']]) assert.equal(idx('t6',b)-idx('t6',a),5); // directly across
 }
 assert.deepEqual(new Set(atTable('t12').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
 assert.equal(atTable('t8').guests[0].id,'andrew-d');

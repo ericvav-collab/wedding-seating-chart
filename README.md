@@ -1,15 +1,12 @@
-# Coordinator and florist review
+# Eric & Meg seating plan
 
 Live website: https://ericvav-collab.github.io/wedding-seating-chart/
 
-This is a static GitHub Pages site. Updates to `main` publish to the same address. Visitors can compare options; their selections do not edit the shared guest list.
+Static GitHub Pages site; pushing to `main` publishes it.
 
-`seating-data.json` contains setup references using first names, distinguishing initials, table assignments and meal codes. Keep contact details, RSVP history, surname-based group labels and private planning notes out of this repository. Eric and Meg use code `S` for Special meal. All guest meal-choice information remains part of the review website. `model.js` contains furniture assumptions and clearance checks. All three options use one fixed approximate 50 × 61-ft footprint, preserving the vendor outline. `layout-options.json` holds only this footprint. Keep dimensions marked approximate until confirmed by the venue.
+- `seating-data.json` — tables, seat order, meal codes and flowers. First names and initials only; keep contact details and private notes out of this repository.
+- `model.js`, `layout-options.json` — room footprint and table geometry. The site shows Milano's Sep 25 floorplan (`fay`); the earlier layout options remain in the model only for the checks.
+- `venue.js` — full-venue drawing: cocktail tables, stations, walking routes.
+- `countdown.html` — final countdown checklist.
 
-Run `node scripts/check.cjs` to check guest totals, corrections, group capacities, head seats, and the saved geometry audits. Run `node scripts/review.cjs` after guest changes to refresh the downloadable review. Preview with a local HTTP server before publishing.
-
-The full-venue schematic follows the vendor architecture: stage right, front lobby below. Rear arrival has three tables and the welcome mirror. From an entering guest’s viewpoint, a round guest-book/photo table is in the middle, the seating-chart/photo table is on the left, and the memory table is at the back right. Mirror 2 sits beside seating-chart station 1. Display inventory is two 6-ft tables and one round (4-ft diameter shown). Boba is inside Monza near the rear-lobby entry; its cart, staff and queue footprints share geometry between the room model and full-venue drawing. Keep those areas and all service routes free of guest seating. Doria, Alba and patio have 12 high tables, 10 low tables and 40 chairs in total. The trio is in Alba; the bar and photo booth are in the front lobby. Cake is beside the stage.
-
-118 guests, 13 guest tables plus the head table. Options A/B/C have compact U / longer-arm U / straight heads, with the same 7 rounds, 4 single guest rectangles and 2 joined guest rectangles. Guest rectangles use long-side seating. `node scripts/optimize.cjs` refines all three placements within the fixed footprint; pass an option only (for example `u`) to refine one. It rejects a room-size argument. Run the checks afterward. Do not resize the room to hide clashes. The florist section derives arrangement quantities from table data and head-table surface length from the selected option; garland order quantities require florist confirmation.
-
-Proposal D is a separate mirrored furniture study: ten rounds, two joined long guest tables and a straight 25-seat head. Meg’s round-table groups require regrouping into five tables of eight; current guest assignments are unchanged. Run `node scripts/round-proposal.cjs` to regenerate and check its diagram and geometry. The proposal retains the fixed room size and reserves a rotated boba cart near the rear Monza entry. Its sub-3-ft gaps remain explicitly marked for vendor review.
+Run `node scripts/check.cjs` after any change (guest totals, meals, seat requests, geometry). Run `node scripts/review.cjs` after seating changes to regenerate `seating-review.txt`, the plain-text notes linked from the site.
