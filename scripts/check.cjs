@@ -81,19 +81,20 @@ assert(atTable('t9').guests.some(g=>g.id==='joe-m'));
 assert(atTable('t9').guests.some(g=>g.id==='diane-m'));
 assert(atTable('t9').guests.some(g=>g.id==='irma'));
 assert(!Object.hasOwn(data,'unseated'));
-{// Table 6 is the only long table (A&M group of ten): six chairs on one side, four across.
+{// Table 6 is the only long table (A&M group of ten): four chairs per long side, Sam and John on the ends.
  const t=atTable('t6'),ss=vm.runInContext("partySeats(group('t6'),'long')",context);
  assert.equal(t.guests.length,10);
  assert.equal(new Set(ss.map(s=>s.index)).size,10);
- assert(ss.every(s=>Math.abs(s.y)===2.3&&Math.abs(s.x)<6));
- assert.equal(ss.filter(s=>s.y<0).length,6);
+ assert.equal(ss.filter(s=>s.y===-2.3&&Math.abs(s.x)<6).length,4);
+ assert.equal(ss.filter(s=>s.y===2.3&&Math.abs(s.x)<6).length,4);
  const at=Object.fromEntries(t.guests.map((g,i)=>[g.id,ss.find(s=>s.index===i)]));
- const beside=(a,b)=>at[a].y===at[b].y&&Math.abs(at[a].x-at[b].x)===2;
+ for(const id of ['sam','john']) assert(at[id].y===0&&Math.abs(at[id].x)>6,id+' sits on an end');
+ const next=(a,b)=>Math.hypot(at[a].x-at[b].x,at[a].y-at[b].y)<3.5; // side neighbours or around a corner
  const across=(a,b)=>at[a].x===at[b].x&&at[a].y===-at[b].y;
- for(const [a,b] of [['sam','adelia'],['april','baley'],['taylor','john'],['danielle','matt-w'],['lauren','trey']]) assert(beside(a,b),a+' and '+b+' sit side by side');
- assert(beside('taylor','april'));
- assert(across('sam','danielle')&&across('adelia','matt-w'));
- assert(across('taylor','lauren')&&across('john','trey'));
+ for(const [a,b] of [['sam','adelia'],['april','baley'],['taylor','john'],['danielle','matt-w'],['lauren','trey']]) assert(next(a,b),a+' and '+b+' sit together');
+ assert(next('taylor','april'));
+ assert(across('adelia','danielle')&&across('baley','matt-w')&&next('sam','danielle'));
+ assert(across('april','lauren')&&across('taylor','trey'));
 }
 assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan','joseph-o','miko','maynard']);
 {// Oct 4 seat requests.

@@ -61,7 +61,7 @@ function fixed(W,option,settings={}){
 function shape(id,option,x,y,rot=0,settings={}){
  settings=optionSettings(option,settings);
  const k=settings.roundGuests&&!long.has(id)?'round':kind(id,option);
- // Banquet guests sit on long sides only. No chairs project past the table ends.
+ // Long-side chairs only. Table 6's two end chairs are not in this footprint; check end clearance in the real room.
  if(k!=='round'){const w=k==='long'?12:6,h=6.5;return rect(id,x-(rot?h:w)/2,y-(rot?w:h)/2,rot?h:w,rot?w:h,'Table '+id.slice(1)+' + chairs');}
  return {id,type:'circle',x,y,r:R,label:'Table '+id.slice(1)+' + chairs'};
 }

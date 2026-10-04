@@ -377,14 +377,9 @@
      "id": "john"
     },
     {
-     "name": "Danielle",
+     "name": "Trey",
      "meal": "O",
-     "id": "danielle"
-    },
-    {
-     "name": "Matt W.",
-     "meal": "O",
-     "id": "matt-w"
+     "id": "trey"
     },
     {
      "name": "Lauren",
@@ -392,9 +387,14 @@
      "id": "lauren"
     },
     {
-     "name": "Trey",
+     "name": "Matt W.",
      "meal": "O",
-     "id": "trey"
+     "id": "matt-w"
+    },
+    {
+     "name": "Danielle",
+     "meal": "O",
+     "id": "danielle"
     }
    ]
   },

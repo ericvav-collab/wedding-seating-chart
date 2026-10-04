@@ -21,8 +21,8 @@ function florals(x,y,kind,scale=1){
 function partySeats(t,kind){
  if(kind==='round')return Array.from({length:8},(_,i)=>{const a=i*Math.PI/4-Math.PI/2+Math.PI/8;return {x:3.6*Math.cos(a),y:3.6*Math.sin(a),angle:a*180/Math.PI+90,index:i};});
  if(kind==='small'&&t.guests.length===4)return [0,1,2,3].map(i=>({index:i,x:i%2?-1.5:1.5,y:i<2?-2.3:2.3,angle:i<2?0:180}));
- // Six chairs on one side and four across, so all five couples sit side by side; 7-10 face 1, 2, 5 and 6.
- if(kind==='long')return [...[0,1,2,3,4,5].map(i=>({index:i,x:(i-2.5)*2,y:-2.3,angle:0})),...[-5,-3,3,5].map((x,j)=>({index:6+j,x,y:2.3,angle:180}))];
+ // Four chairs per long side plus one on each end, numbered around the table: 1 and 6 are the ends; 7-10 face 5, 4, 3, 2.
+ if(kind==='long'){const side=[-4.5,-1.5,1.5,4.5];return [{index:0,x:-7.05,y:0,angle:-90},...side.map((x,j)=>({index:1+j,x,y:-2.3,angle:0})),{index:5,x:7.05,y:0,angle:90},...side.slice().reverse().map((x,j)=>({index:6+j,x,y:2.3,angle:180}))];}
  return Array.from({length:6},(_,i)=>({index:i,x:((i%3)-1)*2,y:i<3?-2.3:2.3,angle:i<3?0:180}));
 }
 function kindOf(t){return M.kind(t.id,option);}
@@ -145,9 +145,9 @@ function headSVG(){const x=17,y=8;let s=svgText(43,20,'BAND',.9)+`<path d="M39 2
 function badge(g){return `<span title="${esc(MEALS[g.meal])}" aria-label="${esc(MEALS[g.meal])}" class="badge ${g.meal==='?'?'unknown':g.meal==='VG'?'vegan':''}">${esc(g.meal==='?'?'TBD':g.meal)}</span>`;}
 function headRoster(){const seats=headSeatPositions(option,0,0),parts=new Map();for(const s of seats){if(!parts.has(s.section))parts.set(s.section,[]);parts.get(s.section).push({...group('head').guests[s.index],seat:s.index+1});}return [...parts].map(([title,gs])=>`<div><h3>${esc(title)}</h3><ol>${gs.map(g=>`<li value="${g.seat}">${esc(g.name)} ${badge(g)}${g.id==='andrew-v'?' · Best man':g.id==='mabelle'?' · Maid of honor':''}</li>`).join('')}</ol></div>`).join('');}
 function tableCard(t){
- const k=kindOf(t),rot=LAYOUTS[option][width].positions[t.id].rot,kind=k==='round'?'60-inch round':'Two 6-ft tables joined · 6 chairs on one side, 4 across';
- const view=k==='long'?(rot?'-5.5 -7 11 14':'-7 -5.5 14 11'):'-5.5 -5.5 11 11';
- const note=t.id==='t6'?'Every couple sits side by side. Danielle and Matt face Sam and Adelia; Lauren and Trey face Taylor and John.':'';
+ const k=kindOf(t),rot=LAYOUTS[option][width].positions[t.id].rot,kind=k==='round'?'60-inch round':'Two 6-ft tables joined · 4 chairs per side, 1 on each end';
+ const view=k==='long'?(rot?'-5.5 -8.4 11 16.8':'-8.4 -5.5 16.8 11'):'-5.5 -5.5 11 11';
+ const note=t.id==='t6'?'Sam and John sit on the ends, next to Adelia and Taylor. Danielle and Matt face Adelia and Baley; Lauren and Trey face April and Taylor.':'';
  return `<article class="table-card" id="card-${t.id}"><header><div><h3>${label(t.id)} · ${esc(t.label)}</h3><small>${esc(kind)}</small></div><span class="badge">${t.guests.length} guests</span></header><div class="body"><svg viewBox="${view}" style="width:100%;max-height:235px" role="img" aria-label="${esc(label(t.id))} numbered seats, vendor orientation and floral arrangement">${tableDrawing(t,0,0,rot,true)}</svg><ul>${t.guests.map((g,i)=>`<li class="seatrow"><span><span class="num">${i+1}</span>${esc(g.name)}</span>${badge(g)}</li>`).join('')}</ul><p class="flower">Flowers: ${esc(t.flowers)}</p>${note?`<p class="flower">${esc(note)}</p>`:''}</div></article>`;
 }
 function renderTables(){const query=$('search').value.trim().toLowerCase();$('guestTables').innerHTML=DATA.groups.filter(t=>t.id!=='head'&&(!query||[label(t.id),t.label,...t.guests.map(g=>g.name)].join(' ').toLowerCase().includes(query))).map(tableCard).join('');}

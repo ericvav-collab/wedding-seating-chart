@@ -36,7 +36,7 @@ lines.push('HEAD TABLE (seat numbers match the website drawing)');
  for(const s of ss){if(!sections.has(s.section))sections.set(s.section,[]);const g=head.guests[s.index];sections.get(s.section).push(` ${s.index+1}. ${g.name} (${g.meal})`);}
  for(const [title,seats]of sections)lines.push(title,...seats);}
 lines.push('','GUEST TABLES','');
-for(const t of data.groups.slice(1)){const long=M.kind(t.id,'fay')==='long';lines.push(`TABLE ${t.id.slice(1)} — ${t.guests.length} guests`,long?'Two 6-ft tables joined: seats 1-6 on one side, 7-10 across (7 faces 1, 8 faces 2, 9 faces 5, 10 faces 6).':'60-inch round',...t.guests.map((g,i)=>` ${i+1}. ${g.name} (${g.meal})`),` Flowers: ${t.flowers}`,'');}
+for(const t of data.groups.slice(1)){const long=M.kind(t.id,'fay')==='long';lines.push(`TABLE ${t.id.slice(1)} — ${t.guests.length} guests`,long?'Two 6-ft tables joined: seats 1 and 6 on the ends, 2-5 on one side, 7-10 on the other going around (7 faces 5, 8 faces 4, 9 faces 3, 10 faces 2).':'60-inch round',...t.guests.map((g,i)=>` ${i+1}. ${g.name} (${g.meal})`),` Flowers: ${t.flowers}`,'');}
 lines.push('Keep the seat order as listed; couples sit side by side.','');
 fs.writeFileSync(path.join(root,'seating-review.txt'),lines.join('\n'));
 console.log('Seating notes generated.');
