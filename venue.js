@@ -10,19 +10,19 @@
  function add(room,kind,points){for(const [x,y] of points)tables.push({room,kind,x,y,id:room+'-'+kind+'-'+(tables.length+1)});}
  add('doria','high',[[326,238],[498,238],[326,342],[498,342]]);
  add('doria','low',[[326,436],[498,436],[326,536],[498,536]]);
- add('alba','high',[[326,760],[326,878],[498,878],[326,988]]);
- add('alba','low',[[498,988],[326,1105],[498,1105]]);
+ add('alba','high',[[326,760],[326,830],[498,760],[498,878]]);
+ add('alba','low',[[326,1030],[498,988],[312,1106]]);
  add('patio','high',[[1475,448],[1586,448],[1475,760],[1586,760]]);
  add('patio','low',[[1475,604],[1586,604],[1586,898]]);
  const stations=[
-  {id:'welcome',n:1,x:807,y:304,w:26,h:62,title:'SEATING CHART',lines:['Left as you enter','Eric & Meg photos'],detail:'One 6-ft table on your left as you enter, with the seating chart and photos of Eric and Meg. This is the right side of the drawing.'},
-  {id:'mirror',n:2,x:814,y:269,w:13,h:29,title:'WELCOME MIRROR',lines:['Beside station 1'],detail:'Freestanding welcome mirror beside seating-chart table 1 in the rear welcome lobby. Allow space for its stand and guests viewing the seating chart.'},
-  {id:'memorial',n:3,x:584,y:402,w:62,h:26,title:'MEMORY TABLE',lines:['Back right as you enter'],detail:'One 6-ft memory table at the back right as you enter, in the quieter far corner. This is the lower-left corner of the drawing.'},
-  {id:'guestbook',n:4,x:676.2,y:303.2,w:41.6,h:41.6,shape:'round',title:'GUEST BOOK',lines:['Round table in the middle','Eric & Meg photos'],detail:'One round table in the middle of the entrance lobby for the guest book, photos of Eric and Meg, and the Polaroid camera, film and pens. A 4-ft diameter is shown; the walking routes pass around it.'},
-  {id:'boba',n:5,x:562,y:1075,w:26,h:62.4,title:'BOBA CART',lines:['With the bar','Front lobby'],detail:'Boba cart with the bar in the front lobby. Staff stand against the wall behind the cart; the queue lines up beside it, clear of the front door.'},
-  {id:'booth',n:6,x:568,y:916,w:83.2,h:83.2,title:'PHOTO BOOTH',lines:['8 × 8 ft working area'],detail:'Photo booth in the front entrance lobby near the bar, with an 8 × 8-ft working area and a 4 × 6-ft queue.'},
-  {id:'bar',n:7,x:792,y:992,w:43,h:86,title:'BAR',lines:['Existing location'],detail:'Bar in the front lobby, with the boba cart beside it. Keep its queue against this side of the lobby.'},
-  {id:'trio',n:8,x:757,y:1082,w:80,h:60,title:'JAZZ TRIO',lines:['Front lobby · cocktail hour'],detail:'Jazz trio in the front entrance lobby for cocktail hour, below the bar and clear of the front door.'}
+  {id:'welcome',n:1,x:807,y:304,w:26,h:62,title:'SEATING CHART',lines:['Left as you enter','Eric & Meg photos'],detail:'Seating chart and photos of Eric and Meg, on the left as guests walk in.'},
+  {id:'mirror',n:2,x:814,y:269,w:13,h:29,title:'WELCOME MIRROR',lines:['Beside station 1'],detail:'Welcome mirror beside the seating-chart table.'},
+  {id:'memorial',n:3,x:584,y:402,w:62,h:26,title:'MEMORY TABLE',lines:['Back right as you enter'],detail:'Memory table at the back right as guests walk in.'},
+  {id:'guestbook',n:4,x:676.2,y:303.2,w:41.6,h:41.6,shape:'round',title:'GUEST BOOK',lines:['Round table in the middle','Eric & Meg photos'],detail:'Round table in the middle with the guest book, photos of Eric and Meg, and the Instax camera, film and pens.'},
+  {id:'bar',n:5,x:274,y:880,w:43,h:86,title:'BAR',lines:['Far wall of Alba'],detail:'Bar on the far wall of Alba, across from the door to the front lobby.'},
+  {id:'boba',n:6,x:381,y:1099,w:62.4,h:26,title:'BOBA CART',lines:['Front of Alba','By the windows'],detail:'Boba cart at the front of Alba by the windows. Staff stand behind the cart; the line forms beside it.'},
+  {id:'booth',n:7,x:568,y:916,w:83.2,h:83.2,title:'PHOTO BOOTH',lines:['8 × 8 ft working area'],detail:'Photo booth in the front lobby.'},
+  {id:'trio',n:8,x:562,y:1082,w:80,h:60,title:'JAZZ TRIO',lines:['Front lobby corner · cocktail hour'],detail:'Jazz trio in the corner of the front lobby for cocktail hour.'}
  ];
  // Blue routes and amber queues are kept separate from station furniture.
  const routes=[
@@ -34,12 +34,12 @@
   {id:'bar-lobby',points:'555,1046 726,1046 726,940 840,940',width:40}
  ];
  const queues=[
-  {id:'boba-queue',x:592,y:1075,w:36,h:62.4},
+  {id:'boba-queue',x:449,y:1093,w:62.4,h:36},
   {id:'booth-queue',x:662,y:936,w:41.6,h:62.4},
-  {id:'bar-queue',x:750,y:992,w:38,h:86}
+  {id:'bar-queue',x:321,y:880,w:38,h:86}
  ];
  const counts=Object.fromEntries(Object.keys(rooms).map(id=>[id,{high:tables.filter(t=>t.room===id&&t.kind==='high').length,low:tables.filter(t=>t.room===id&&t.kind==='low').length}]));
- const views={all:{label:'Whole venue',box:'225 155 1440 1045'},arrival:{label:'Welcome lobby',box:'540 170 320 290'},boba:{label:'Front lobby · bar, boba, booth & trio',box:'540 890 320 270'},alba:{label:'Alba & bar',box:'245 675 660 525'}};
+ const views={all:{label:'Whole venue',box:'225 155 1440 1045'},arrival:{label:'Welcome lobby',box:'540 170 320 290'},alba:{label:'Alba · bar & boba',box:'245 680 330 490'},lobby:{label:'Front lobby · photo booth & trio',box:'540 890 320 270'}};
  const api={scale,rooms,tables,stations,routes,queues,counts,views};
  if(typeof module!=='undefined')module.exports=api;else root.VenuePlan=api;
 })(globalThis);

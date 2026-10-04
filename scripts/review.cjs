@@ -14,29 +14,21 @@ const lines=[
 '',
 `${guests.length} guests: ${head.guests.length} at the head table; ${guests.length-head.guests.length} at ${data.groups.length-1} guest tables (13 60-inch rounds + Table 6, two 6-ft tables joined).`,
 `Meals: ${meals.O} beef (O), ${meals.C} chicken (C), ${meals.V} vegetarian (V), ${meals.VG} vegan (VG), ${meals.S} couple's meals (S)${meals.K?`, ${meals.K} kids meal (K)`:''}.`,
-'Seat names use first names, with initials where two guests share a name.',
 '',
 'LAYOUT — MILANO\u2019S SEP 25 FLOORPLAN',
-'Stage on the right; head table on the left; rear main entrance at the top; front lobby at the bottom.',
-`Head table: ${six} six-ft tables in a U (4 along the wall, 2 per arm), chairs on the outside only, so all 25 face the dance floor.`,
+`Head table: ${six} six-ft tables in a U (4 along the wall, 2 per arm), chairs on the outside only.`,
 'Parents: Table 5 (Paul & Susan) and Table 9 (Noli & Nelia), closest to the head table.',
-'Front lobby: bar, boba cart, photo booth and jazz trio (cocktail hour). Reception band on the Monza stage.',
-'Cake: beside the stage on the front-lobby side, on its own low table.',
+'Alba: bar on the far wall; boba cart at the front by the windows.',
+'Front lobby: photo booth; jazz trio in the corner for cocktail hour.',
 'Rear welcome lobby: guest-book table in the middle, seating-chart table on the left with the welcome mirror beside it, memory table at the back right.',
 ...Object.entries(V.counts).map(([id,c])=>`${V.rooms[id].name}: ${c.high} high + ${c.low} low cocktail tables; ${c.low*4} chairs.`),
-'Cocktail total: 12 high + 10 low tables + 40 chairs, separate from dinner seating.',
-'Exit 9:00 pm; everyone out by 10:00 pm.',
-'',
-'FLOWERS'
+''
 ];
-for(const kind of ['Large','Compote','Taper trio','Runner','To choose']){const ts=data.groups.slice(1).filter(t=>t.flowers===kind);if(ts.length)lines.push(`${kind==='To choose'?'Still to choose':ts.length+' x '+kind}: ${ts.map(t=>'Table '+t.id.slice(1)).join(', ')}.`);}
-lines.push(`Head table garland: all ${six} six-ft tables (${six*6} ft of tabletop). Table 6 runner: 12-ft top.`,'');
 lines.push('HEAD TABLE (seat numbers match the website drawing)');
 {const f=M.fixed(M.ROOM_WIDTH,'fay'),ss=vm.runInContext(`headSeatPositions('fay',${f.wallX},${f.wallTop})`,ctx),sections=new Map();
  for(const s of ss){if(!sections.has(s.section))sections.set(s.section,[]);const g=head.guests[s.index];sections.get(s.section).push(` ${s.index+1}. ${g.name} (${g.meal})`);}
  for(const [title,seats]of sections)lines.push(title,...seats);}
 lines.push('','GUEST TABLES','');
-for(const t of data.groups.slice(1)){const long=M.kind(t.id,'fay')==='long';lines.push(`TABLE ${t.id.slice(1)} — ${t.guests.length} guests`,long?'Two 6-ft tables joined: seats 1 and 6 on the ends, 2-5 on one side, 7-10 on the other going around (7 faces 5, 8 faces 4, 9 faces 3, 10 faces 2).':'60-inch round',...t.guests.map((g,i)=>` ${i+1}. ${g.name} (${g.meal})`),` Flowers: ${t.flowers}`,'');}
-lines.push('Keep the seat order as listed; couples sit side by side.','');
+for(const t of data.groups.slice(1)){const long=M.kind(t.id,'fay')==='long';lines.push(`TABLE ${t.id.slice(1)} — ${t.guests.length} guests`,long?'Two 6-ft tables joined: seats 1 and 6 on the ends, 2-5 on one side, 7-10 on the other going around (7 faces 5, 8 faces 4, 9 faces 3, 10 faces 2).':'60-inch round',...t.guests.map((g,i)=>` ${i+1}. ${g.name} (${g.meal})`),'');}
 fs.writeFileSync(path.join(root,'seating-review.txt'),lines.join('\n'));
 console.log('Seating notes generated.');

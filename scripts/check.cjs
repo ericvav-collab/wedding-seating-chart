@@ -137,14 +137,21 @@ for(let i=0;i<V.tables.length;i++)for(const b of V.tables.slice(i+1)){
 }
 for(const a of V.stations)for(const r of routeBlocks){const shape=a.shape==='round'?{type:'circle',x:a.x+a.w/2,y:a.y+a.h/2,r:a.w/2}:asRect(a);assert(M.distance(shape,r)>=0,'Station blocks a walking route: '+a.id);}
 for(const a of V.queues)for(const r of routeBlocks)assert(M.distance(asRect(a),r)>=0,'Queue blocks a walking route: '+a.id);
-// Boba, photo booth and jazz trio all sit in the front lobby (x 558-840, y 905-1145) with the bar,
-// clear of the front door opening (x 665-739 on the bottom wall).
+// Photo booth and jazz trio sit in the front lobby (x 558-840, y 905-1145), clear of the front door opening
+// (x 665-739 on the bottom wall); the trio is in the lower-left corner. Bar and boba are in Alba.
 const frontLobby={type:'rect',x:558,y:905,w:282,h:240},frontDoor={type:'rect',x:665,y:1105,w:74,h:40};
-for(const id of ['boba','booth','bar','trio']){const s=asRect(V.stations.find(a=>a.id===id)),b=M.bounds(s),z=M.bounds(frontLobby);assert(b.l>=z.l&&b.r<=z.r&&b.t>=z.t&&b.b<=z.b,id+' must be in the front lobby');assert(M.distance(s,frontDoor)>=0,id+' must clear the front door');}
+const inside=(s,room)=>{const b=M.bounds(s),z=M.bounds(room);return b.l>=z.l&&b.r<=z.r&&b.t>=z.t&&b.b<=z.b;};
+const station=id=>asRect(V.stations.find(a=>a.id===id));
+for(const id of ['booth','trio']){assert(inside(station(id),frontLobby),id+' must be in the front lobby');assert(M.distance(station(id),frontDoor)>=0,id+' must clear the front door');}
+assert(station('trio').x-frontLobby.x<=6&&frontLobby.y+frontLobby.h-(station('trio').y+station('trio').h)<=6,'trio sits in the front lobby corner');
+const alba={type:'rect',...V.rooms.alba};
+for(const id of ['bar','boba']) assert(inside(station(id),alba),id+' must be in Alba');
+assert(station('bar').x-alba.x<=6,'bar is on the far wall of Alba');
+assert(alba.y+alba.h-(station('boba').y+station('boba').h)<=25,'boba is at the front of Alba');
+for(const t of V.tables){const s={type:'circle',x:t.x,y:t.y,r:(t.kind==='low'?3.5:3)*V.scale};for(const a of [...V.stations.filter(a=>a.shape!=='round').map(asRect),...V.queues.map(asRect)])assert(M.distance(s,a)>=0,'Cocktail table '+t.id+' overlaps a station or line');}
 for(const q of V.queues)assert(M.distance(asRect(q),frontDoor)>=0,'Queue must clear the front door: '+q.id);
 for(let i=0;i<V.stations.length;i++)for(const b of V.stations.slice(i+1))assert(M.distance(asRect(V.stations[i]),asRect(b))>=0||V.stations[i].shape==='round'||b.shape==='round','Stations overlap: '+V.stations[i].id+'/'+b.id);
 assert.equal(M.fixed(M.ROOM_WIDTH,'fay').boba,null);
 // Earlier options kept boba inside Monza; it must still clear the kitchen, the other doors and the head table there.
 for(const opt of Object.keys(M.options).filter(M.bobaInMonza)){const fixed=M.fixed(M.ROOM_WIDTH,opt);const otherDoors=fixed.doors.filter(d=>d.id!=='rear-entry');for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.serviceLane,fixed.catering,...otherDoors])assert(M.distance(b,route)>=0,'Boba must not block the kitchen or another entrance');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
-assert.equal(V.stations.find(s=>s.id==='bar').x,792);
-console.log('PASS: 120 guests; fixed room size across 5 layouts (Milano plan selected); 25 head seats; kitchen routes; front lobby stations; cocktail furniture and lobby paths.');
+console.log('PASS: 120 guests; fixed room size across 5 layouts (Milano plan selected); 25 head seats; kitchen routes; bar and boba in Alba; photo booth and trio in the front lobby; cocktail furniture and paths.');

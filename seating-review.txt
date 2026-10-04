@@ -5,28 +5,16 @@ Website: https://ericvav-collab.github.io/wedding-seating-chart/
 
 120 guests: 25 at the head table; 95 at 14 guest tables (13 60-inch rounds + Table 6, two 6-ft tables joined).
 Meals: 75 beef (O), 38 chicken (C), 3 vegetarian (V), 1 vegan (VG), 2 couple's meals (S), 1 kids meal (K).
-Seat names use first names, with initials where two guests share a name.
 
 LAYOUT — MILANO’S SEP 25 FLOORPLAN
-Stage on the right; head table on the left; rear main entrance at the top; front lobby at the bottom.
-Head table: 8 six-ft tables in a U (4 along the wall, 2 per arm), chairs on the outside only, so all 25 face the dance floor.
+Head table: 8 six-ft tables in a U (4 along the wall, 2 per arm), chairs on the outside only.
 Parents: Table 5 (Paul & Susan) and Table 9 (Noli & Nelia), closest to the head table.
-Front lobby: bar, boba cart, photo booth and jazz trio (cocktail hour). Reception band on the Monza stage.
-Cake: beside the stage on the front-lobby side, on its own low table.
+Alba: bar on the far wall; boba cart at the front by the windows.
+Front lobby: photo booth; jazz trio in the corner for cocktail hour.
 Rear welcome lobby: guest-book table in the middle, seating-chart table on the left with the welcome mirror beside it, memory table at the back right.
 Doria: 4 high + 4 low cocktail tables; 16 chairs.
 Alba: 4 high + 3 low cocktail tables; 12 chairs.
 Patio: 4 high + 3 low cocktail tables; 12 chairs.
-Cocktail total: 12 high + 10 low tables + 40 chairs, separate from dinner seating.
-Exit 9:00 pm; everyone out by 10:00 pm.
-
-FLOWERS
-2 x Large: Table 5, Table 9.
-4 x Compote: Table 1, Table 4, Table 10, Table 14.
-6 x Taper trio: Table 2, Table 3, Table 7, Table 11, Table 12, Table 13.
-1 x Runner: Table 6.
-Still to choose: Table 8.
-Head table garland: all 8 six-ft tables (48 ft of tabletop). Table 6 runner: 12-ft top.
 
 HEAD TABLE (seat numbers match the website drawing)
 Wall row · faces the band
@@ -69,7 +57,6 @@ TABLE 1 — 7 guests
  5. Tim (C)
  6. Joe V. (O)
  7. Jaclyn (O)
- Flowers: Compote
 
 TABLE 2 — 6 guests
 60-inch round
@@ -79,7 +66,6 @@ TABLE 2 — 6 guests
  4. Kira (O)
  5. Joe H. (C)
  6. Karen (O)
- Flowers: Taper trio
 
 TABLE 3 — 7 guests
 60-inch round
@@ -90,7 +76,6 @@ TABLE 3 — 7 guests
  5. Yongchao (O)
  6. Dan V. (C)
  7. Beth (O)
- Flowers: Taper trio
 
 TABLE 4 — 6 guests
 60-inch round
@@ -100,7 +85,6 @@ TABLE 4 — 6 guests
  4. Nick (O)
  5. Pam (O)
  6. Frank (O)
- Flowers: Compote
 
 TABLE 5 — 7 guests
 60-inch round
@@ -111,7 +95,6 @@ TABLE 5 — 7 guests
  5. Louise (O)
  6. Marie (O)
  7. Dennis (O)
- Flowers: Large
 
 TABLE 6 — 10 guests
 Two 6-ft tables joined: seats 1 and 6 on the ends, 2-5 on one side, 7-10 on the other going around (7 faces 5, 8 faces 4, 9 faces 3, 10 faces 2).
@@ -125,7 +108,6 @@ Two 6-ft tables joined: seats 1 and 6 on the ends, 2-5 on one side, 7-10 on the 
  8. Lauren (O)
  9. Matt W. (O)
  10. Danielle (O)
- Flowers: Runner
 
 TABLE 7 — 6 guests
 60-inch round
@@ -135,7 +117,6 @@ TABLE 7 — 6 guests
  4. Loven (O)
  5. Gerry N. (C)
  6. Letty (C)
- Flowers: Taper trio
 
 TABLE 8 — 6 guests
 60-inch round
@@ -145,7 +126,6 @@ TABLE 8 — 6 guests
  4. Nina (C)
  5. Paulo (O)
  6. Hannah (C)
- Flowers: To choose
 
 TABLE 9 — 7 guests
 60-inch round
@@ -156,7 +136,6 @@ TABLE 9 — 7 guests
  5. Irma (O)
  6. Joe M. (C)
  7. Diane M. (C)
- Flowers: Large
 
 TABLE 10 — 7 guests
 60-inch round
@@ -167,7 +146,6 @@ TABLE 10 — 7 guests
  5. Tes (O)
  6. Jessica (O)
  7. Byanca (C)
- Flowers: Compote
 
 TABLE 11 — 6 guests
 60-inch round
@@ -177,7 +155,6 @@ TABLE 11 — 6 guests
  4. Arnulfo (C)
  5. Paterno (O)
  6. Leonita (O)
- Flowers: Taper trio
 
 TABLE 12 — 6 guests
 60-inch round
@@ -187,7 +164,6 @@ TABLE 12 — 6 guests
  4. Meli (O)
  5. Joseph N. (O)
  6. Phung (C)
- Flowers: Taper trio
 
 TABLE 13 — 7 guests
 60-inch round
@@ -198,7 +174,6 @@ TABLE 13 — 7 guests
  5. Joseph O. (O)
  6. Miko (C)
  7. Maynard (O)
- Flowers: Taper trio
 
 TABLE 14 — 7 guests
 60-inch round
@@ -209,6 +184,3 @@ TABLE 14 — 7 guests
  5. Christian (O)
  6. Michelle (C)
  7. Johnathan (O)
- Flowers: Compote
-
-Keep the seat order as listed; couples sit side by side.

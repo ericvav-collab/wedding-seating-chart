@@ -12,14 +12,8 @@ function seat(x,y,angle,n,g,small=false,textRotation=0){
  const fill=g?'#e4e9e0':'#fff',dash=g?'':'stroke-dasharray=".15 .12"';
  return `<g transform="translate(${x} ${y}) rotate(${angle})"><rect x="-.8" y="-.85" width="1.6" height="1.7" rx=".22" fill="${fill}" stroke="#91a28f" stroke-width=".07" ${dash}/><path d="M-.68 -.62H.68" stroke="#526e57" stroke-width=".1"/></g>${small?'':svgText(x,y+.24,n,.64,'middle','#435b50',`transform="rotate(${-textRotation} ${x} ${y})"`)}`;
 }
-function florals(x,y,kind,scale=1){
- let out='';if(kind==='Taper trio'){out='<path d="M-.6 .6V-.5 M0 .6V-.9 M.6 .6V-.25" stroke="#a48455" stroke-width=".13"/><path d="M-.6 -.7v-.2 M0 -1.1v-.2 M.6 -.45v-.2" stroke="#b97937" stroke-width=".12"/>';}
- else if(kind==='To choose')out='<circle r=".6" fill="none" stroke="#b2a997" stroke-dasharray=".15 .12" stroke-width=".1"/>';
- else{out='<path d="M-1 .4Q0-.5 1 .2 M-.8-.4Q0 .6 .8-.5" fill="none" stroke="#82927b" stroke-width=".16"/>';for(const [cx,cy,r] of [[0,0,.4],[-.55,-.22,.27],[.5,.2,.28],[.25,-.5,.26]])out+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fbf4e8" stroke="#a1ae93" stroke-width=".07"/>`;}
- return `<g transform="translate(${x} ${y}) scale(${scale})">${out}</g>`;
-}
 function partySeats(t,kind){
- if(kind==='round')return Array.from({length:8},(_,i)=>{const a=i*Math.PI/4-Math.PI/2+Math.PI/8;return {x:3.6*Math.cos(a),y:3.6*Math.sin(a),angle:a*180/Math.PI+90,index:i};});
+ if(kind==='round'){const n=t.guests.length;return Array.from({length:n},(_,i)=>{const a=(i+.5)*2*Math.PI/n-Math.PI/2;return {x:3.6*Math.cos(a),y:3.6*Math.sin(a),angle:a*180/Math.PI+90,index:i};});}
  if(kind==='small'&&t.guests.length===4)return [0,1,2,3].map(i=>({index:i,x:i%2?-1.5:1.5,y:i<2?-2.3:2.3,angle:i<2?0:180}));
  // Four chairs per long side plus one on each end, numbered around the table: 1 and 6 are the ends; 7-10 face 5, 4, 3, 2.
  if(kind==='long'){const side=[-4.5,-1.5,1.5,4.5];return [{index:0,x:-7.05,y:0,angle:-90},...side.map((x,j)=>({index:1+j,x,y:-2.3,angle:0})),{index:5,x:7.05,y:0,angle:90},...side.slice().reverse().map((x,j)=>({index:6+j,x,y:2.3,angle:180}))];}
@@ -30,8 +24,7 @@ function tableDrawing(t,x,y,rot=0,detail=false){
  const k=kindOf(t),angle=rot?90:0;
  let shape=k==='round'?`<circle class="surface" r="2.5" fill="${colors[t.side]}" stroke="${selected===t.id?'#355f48':'#9cac99'}" stroke-width="${selected===t.id?.16:.09}"/>`:rect(k==='long'?-6:-3,-1.25,k==='long'?12:6,2.5,colors[t.side],'#9cac99','class="surface"');
  if(k==='long')shape+='<path d="M0 -1.25V1.25" stroke="#98aa99" stroke-width=".1"/>';
- shape+=florals(0,k==='round'?0:0,t.flowers,k==='round'?.72:.55);
- if(!detail)shape+=svgText(0,k==='round'?1.75:.35,t.id.slice(1),k==='round'?1.1:.8,'middle','#263b36',`font-weight="650" transform="rotate(${-angle} 0 ${k==='round'?1.75:.35})"`);
+ if(!detail)shape+=svgText(0,k==='round'?.4:.35,t.id.slice(1),k==='round'?1.3:.8,'middle','#263b36',`font-weight="650" transform="rotate(${-angle} 0 ${k==='round'?.4:.35})"`);
  const chairs=partySeats(t,k).map(s=>seat(s.x,s.y,s.angle,s.index+1,t.guests[s.index],!detail,angle)).join('');
  return `<g class="table-click" data-table="${t.id}" tabindex="0" role="button" aria-label="${esc(label(t.id)+', '+t.label+', '+t.guests.length+' guests')}" transform="translate(${x} ${y}) rotate(${angle})"><title>${esc(label(t.id)+': '+t.guests.map(g=>g.name).join(', '))}</title>${chairs}${shape}</g>`;
 }
@@ -62,8 +55,8 @@ function headSeatPositions(opt,wallX,top){
  }
  return out;
 }
-function headTables(opt,x,y){let s='';for(let i=0;i<4;i++)s+=rect(x,y+i*6,2.5,6,'#e4ecdf','#94a589')+florals(x+1.25,y+3+i*6,'Garland',.7);
- if(M.usesU(opt))for(let j=0;j<2;j++)for(let i=0;i<(M.compactU(opt)?1:2);i++)s+=rect(x+2.5+i*6,y+j*21.5,6,2.5,'#e4ecdf','#94a589')+florals(x+5.5+i*6,y+1.25+j*21.5,'Garland',.6);return s;}
+function headTables(opt,x,y){let s='';for(let i=0;i<4;i++)s+=rect(x,y+i*6,2.5,6,'#e4ecdf','#94a589');
+ if(M.usesU(opt))for(let j=0;j<2;j++)for(let i=0;i<(M.compactU(opt)?1:2);i++)s+=rect(x+2.5+i*6,y+j*21.5,6,2.5,'#e4ecdf','#94a589');return s;}
 function headDrawing(opt,x,y,detail=false){
  const gs=group('head').guests,sp=headSeatPositions(opt,x,y);let s=headTables(opt,x,y);
  for(const p of sp){const g=gs[p.index];s+=seat(p.x,p.y,p.angle,p.index+1,g,!detail);if(detail){let nx=p.x,ny=p.y,anchor='middle';const far=M.outsideOnly(opt)?(p.angle===0?Math.round((p.x-x-2.5)*7/12-.5):Math.round((p.x-x-3.5)/2))%2===0:M.compactU(opt)?Math.round((p.x-x-3.5)/2)%2===0:p.index%2===0;if(p.angle===90){nx+=1.5;ny+=.25;anchor='start';}else if(p.angle===-90){nx-=1.5;ny+=.25;anchor='end';}else if(p.angle===0){ny-=M.usesU(opt)&&far?3.2:1.5;}else{ny+=M.usesU(opt)&&far?3.5:1.9;}if(M.usesU(opt)&&(p.angle===0||p.angle===180))s+=`<path d="M${p.x} ${p.y+(p.angle===0?-.95:.95)}V${ny+(p.angle===0?.3:-.9)}" stroke="#b3beb2" stroke-width=".07"/>`;if(M.compactU(opt)&&p.index===18)anchor='end';if(M.compactU(opt)&&p.index===20)anchor='start';let name=g.name==='Merielle (MM)'?'MM':g.name;s+=svgText(nx,ny,`${name} · ${g.meal}`,.83,anchor,'#334a40',g.id==='eric'||g.id==='meg'?'font-weight="700"':'');}}
@@ -93,7 +86,7 @@ function roomContent(mini=false){
  if(space&&!mini)for(const h of f.headBlocks)s+=footprint(h,'#b3bda5');
  const doorWidth=width*40/520;s+=`<path d="M${f.kitchenX-doorWidth/2} ${D}h${doorWidth}" stroke="#fff" stroke-width=".5"/>`;
  s+=`<path d="M${f.kitchenX} ${D+1}V${D-2}H2.5V${D*.22}" fill="none" stroke="#5b8998" stroke-width="${mini?.2:.15}" stroke-dasharray=".4 .35"/>`;
- if(!mini){s+=svgText(f.kitchenX,D+3,'KITCHEN / CATERING',.85);s+=svgText(2.6,f.cy,'5-ft route behind chairs',.76,'middle','#476e80',`transform="rotate(-90 2.6 ${f.cy})"`);s+=svgText(10,D-1.1,'4-ft serving route',.72,'middle','#476e80');s+=svgText(f.boba?8:11,D+5.7,f.boba?'Bar + photo booth · front lobby':'Bar, boba, photo booth + jazz trio · front lobby',.7);s+=`<path d="M${width-8} ${D+5}h6 M${width-8} ${D+4.7}v.6 M${width-2} ${D+4.7}v.6" stroke="#71816e" stroke-width=".15"/>`+svgText(width-5,D+6.3,'6-ft reference',.7);}
+ if(!mini){s+=svgText(f.kitchenX,D+3,'KITCHEN / CATERING',.85);s+=svgText(2.6,f.cy,'5-ft route behind chairs',.76,'middle','#476e80',`transform="rotate(-90 2.6 ${f.cy})"`);s+=svgText(10,D-1.1,'4-ft serving route',.72,'middle','#476e80');s+=svgText(11,D+5.7,'Photo booth + jazz trio · front lobby',.7);s+=`<path d="M${width-8} ${D+5}h6 M${width-8} ${D+4.7}v.6 M${width-2} ${D+4.7}v.6" stroke="#71816e" stroke-width=".15"/>`+svgText(width-5,D+6.3,'6-ft reference',.7);}
  return s;
 }
 function roomSVG(){const f=M.fixed(width,option);return `<svg viewBox="${-f.extra-11} -6 ${width+f.extra+14} ${f.D+14}" role="img" aria-label="${esc(M.options[option].short)} in vendor orientation: stage right, head left, kitchen route at bottom">${roomContent()}</svg>`;}
@@ -126,17 +119,16 @@ function venueSVG(){
   s+=`<circle cx="${cx}" cy="${cy}" r="9" fill="#47695a"/>`+tx(cx,cy+3.6,a.n,10,'#fff')+'</g>';
  }
  s+=tx(686,366,'WELCOME LOBBY',10)+tx(686,380,'3 tables + welcome mirror',8);
- s+=tx(699,1110,'FRONT LOBBY',17)+tx(711,1178,'FRONT BUILDING ENTRY',13)+tx(699,183,'MAIN ENTRANCE · REAR OF BUILDING',12);
+ s+=tx(770,1100,'FRONT LOBBY',17)+tx(711,1178,'FRONT BUILDING ENTRY',13)+tx(699,183,'MAIN ENTRANCE · REAR OF BUILDING',12);
  s+='<path d="M697 214V279H747V395H838" fill="none" stroke="#628a96" stroke-width="2" stroke-dasharray="6 4"/><path d="M697 258l-5-9h10z M838 395l-9-5v10z" fill="#628a96"/>';
  s+=tx(1160,326,'MONZA · RECEPTION',19);
  const view=VenuePlan.views[venueView].box,[vx,vy,vw,vh]=view.split(' ').map(Number);
- return `<svg viewBox="${view}" style="overflow:hidden" role="img" aria-label="${esc(VenuePlan.views[venueView].label)}: rear main entrance with three display tables and welcome mirror; cocktail tables in Doria, Alba and patio; bar, boba cart, photo booth and jazz trio in the front lobby"><defs><clipPath id="venue-crop"><rect x="${vx}" y="${vy}" width="${vw}" height="${vh}"/></clipPath></defs><g clip-path="url(#venue-crop)">${s}</g></svg>`;
+ return `<svg viewBox="${view}" style="overflow:hidden" role="img" aria-label="${esc(VenuePlan.views[venueView].label)}: rear main entrance with three display tables and welcome mirror; cocktail tables in Doria, Alba and patio; bar and boba cart in Alba; photo booth and jazz trio in the front lobby"><defs><clipPath id="venue-crop"><rect x="${vx}" y="${vy}" width="${vw}" height="${vh}"/></clipPath></defs><g clip-path="url(#venue-crop)">${s}</g></svg>`;
 }
 function renderVenue(){
  $('venuePlan').innerHTML=venueSVG();
  $('venueViews').innerHTML=Object.entries(VenuePlan.views).map(([id,v])=>`<button type="button" class="quiet ${venueView===id?'active':''}" data-venue="${id}" aria-pressed="${venueView===id}">${esc(v.label)}</button>`).join('');
  $('venueStations').innerHTML=VenuePlan.stations.map(a=>`<li><span class="station-number">${a.n}</span><div><strong>${esc(a.title)}</strong><p>${esc(a.detail)}</p></div></li>`).join('');
- $('cocktailCounts').innerHTML=Object.entries(VenuePlan.counts).map(([id,c])=>`<article><h3>${esc(VenuePlan.rooms[id].name)}</h3><p><strong>${c.high} high · ${c.low} low</strong><br>${c.low*4} cocktail-hour chairs</p></article>`).join('');
 }
 function headSVG(){const x=17,y=8;let s=svgText(43,20,'BAND',.9)+`<path d="M39 21H45l-1-1 M45 21l-1 1" stroke="#789089" stroke-width=".18" fill="none"/>`;
  s+=svgText(24,2.5,'MEG / REAR-LOBBY SIDE',.88)+svgText(24,39,'ERIC / FRONT-LOBBY SIDE',.88)+headDrawing(option,x,y,true);
@@ -147,27 +139,19 @@ function headRoster(){const seats=headSeatPositions(option,0,0),parts=new Map();
 function tableCard(t){
  const k=kindOf(t),rot=LAYOUTS[option][width].positions[t.id].rot,kind=k==='round'?'60-inch round':'Two 6-ft tables joined · 4 chairs per side, 1 on each end';
  const view=k==='long'?(rot?'-5.5 -8.4 11 16.8':'-8.4 -5.5 16.8 11'):'-5.5 -5.5 11 11';
- const note=t.id==='t6'?'Sam and John sit on the ends, next to Adelia and Taylor. Danielle and Matt face Adelia and Baley; Lauren and Trey face April and Taylor.':'';
- return `<article class="table-card" id="card-${t.id}"><header><div><h3>${label(t.id)} · ${esc(t.label)}</h3><small>${esc(kind)}</small></div><span class="badge">${t.guests.length} guests</span></header><div class="body"><svg viewBox="${view}" style="width:100%;max-height:235px" role="img" aria-label="${esc(label(t.id))} numbered seats, vendor orientation and floral arrangement">${tableDrawing(t,0,0,rot,true)}</svg><ul>${t.guests.map((g,i)=>`<li class="seatrow"><span><span class="num">${i+1}</span>${esc(g.name)}</span>${badge(g)}</li>`).join('')}</ul><p class="flower">Flowers: ${esc(t.flowers)}</p>${note?`<p class="flower">${esc(note)}</p>`:''}</div></article>`;
+ return `<article class="table-card" id="card-${t.id}"><header><div><h3>${label(t.id)} · ${esc(t.label)}</h3><small>${esc(kind)}</small></div><span class="badge">${t.guests.length} guests</span></header><div class="body"><svg viewBox="${view}" style="width:100%;max-height:235px" role="img" aria-label="${esc(label(t.id))} numbered seats">${tableDrawing(t,0,0,rot,true)}</svg><ul>${t.guests.map((g,i)=>`<li class="seatrow"><span><span class="num">${i+1}</span>${esc(g.name)}</span>${badge(g)}</li>`).join('')}</ul></div></article>`;
 }
 function renderTables(){const query=$('search').value.trim().toLowerCase();$('guestTables').innerHTML=DATA.groups.filter(t=>t.id!=='head'&&(!query||[label(t.id),t.label,...t.guests.map(g=>g.name)].join(' ').toLowerCase().includes(query))).map(tableCard).join('');}
 function inventory(opt=option){const pos=LAYOUTS[opt][width].positions;const ks=Object.keys(pos).map(id=>M.kind(id,opt));const rounds=ks.filter(k=>k==='round').length,small=ks.filter(k=>k==='small').length,long=ks.filter(k=>k==='long').length;return {rounds,small,long,six:M.options[opt].six+small+2*long};}
-function renderFlorals(){
- const kinds=['Large','Compote','Taper trio','Runner','To choose'];
- $('floralCounts').innerHTML=kinds.map(kind=>{const tables=DATA.groups.filter(t=>t.id!=='head'&&t.flowers===kind);return tables.length?`<article><h3>${kind==='To choose'?'Still to choose':tables.length+' × '+esc(kind)}</h3><p>${tables.map(t=>esc(label(t.id))).join(' · ')}</p></article>`:'';}).join('');
- const sections=M.options[option].six;
- $('floralHead').textContent=`Head table: garland along all ${sections} six-foot tables (${sections*6} ft of tabletop). Table 6: runner along its 12-ft top.`;
-}
 function summaryHTML(){const o=M.options[option],inv=inventory(),t=group(selected);
- const roster=`<div class="selected-roster"><h3>${esc(label(t.id))} · ${t.guests.length} guests</h3><p>${esc(t.label)}</p><ul>${t.guests.map(g=>`<li>${esc(g.name)} · ${esc(MEALS[g.meal])}</li>`).join('')}</ul><p><a href="${t.id==='head'?'#head':'#card-'+t.id}">See seats &amp; flowers</a></p></div>`;
- return `<span class="eyebrow">Click any table to see who sits there</span>${roster}<dl><dt>Head table</dt><dd>${o.six} six-ft tables · 25 seats</dd><dt>Guest rounds (60-inch)</dt><dd>${inv.rounds}</dd><dt>Table 6</dt><dd>2 six-ft tables joined</dd><dt>Total 6-ft tables</dt><dd>${inv.six}</dd></dl><p class="caption">The drawing is approximate. Use Fay\u2019s Sep 25 floorplan for exact table placement and this page for who sits where.</p>`;
+ const roster=`<div class="selected-roster"><h3>${esc(label(t.id))} · ${t.guests.length} guests</h3><p>${esc(t.label)}</p><ul>${t.guests.map(g=>`<li>${esc(g.name)} · ${esc(MEALS[g.meal])}</li>`).join('')}</ul><p><a href="${t.id==='head'?'#head':'#card-'+t.id}">See seat numbers</a></p></div>`;
+ return `<span class="eyebrow">Click any table to see who sits there</span>${roster}<dl><dt>Head table</dt><dd>${o.six} six-ft tables · 25 seats</dd><dt>Guest rounds (60-inch)</dt><dd>${inv.rounds}</dd><dt>Table 6</dt><dd>2 six-ft tables joined</dd><dt>Total 6-ft tables</dt><dd>${inv.six}</dd></dl><p class="caption">The drawing is approximate; Fay\u2019s floorplan has the exact table placement.</p>`;
 }
 function render(){
- $('roomPlan').innerHTML=roomSVG();renderVenue();renderFlorals();$('layoutSummary').innerHTML=summaryHTML();$('headPlan').innerHTML=headSVG();$('headRoster').innerHTML=headRoster();
- $('headTrade').textContent='All 25 seats are on the outside of the U, so everyone at the head table faces the dance floor and band. Eric and Meg sit in the middle of the wall row with Andrew and Mabelle beside them. Meg\u2019s arm seats 7 (one table of 4) and Eric\u2019s arm seats 6.';
+ $('roomPlan').innerHTML=roomSVG();renderVenue();$('layoutSummary').innerHTML=summaryHTML();$('headPlan').innerHTML=headSVG();$('headRoster').innerHTML=headRoster();
  renderTables();
 }
-function zoom(which){const container={room:'roomPlan',venue:'venuePlan',head:'headPlan'}[which];$('zoomDrawing').innerHTML=$(container).innerHTML.replaceAll('venue-crop','venue-crop-zoom');$('zoomTitle').textContent={room:'Monza layout · '+M.options[option].short,venue:VenuePlan.views[venueView].label,head:'Head table · 25 named seats'}[which];$('zoomKey').textContent=which==='venue'?VenuePlan.stations.filter(a=>venueView==='all'||(venueView==='arrival'?a.n<=4:venueView==='boba'?['bar','boba','booth','trio'].includes(a.id):a.n>=6)).map(a=>a.n+' '+a.title).join(' · '):'';$('zoomDialog').classList.remove('zoomed');$('zoomScale').textContent='Zoom in';$('zoomDialog').showModal();}
+function zoom(which){const container={room:'roomPlan',venue:'venuePlan',head:'headPlan'}[which];$('zoomDrawing').innerHTML=$(container).innerHTML.replaceAll('venue-crop','venue-crop-zoom');$('zoomTitle').textContent={room:'Monza layout · '+M.options[option].short,venue:VenuePlan.views[venueView].label,head:'Head table · 25 named seats'}[which];$('zoomKey').textContent=which==='venue'?VenuePlan.stations.filter(a=>venueView==='all'||(venueView==='arrival'?a.n<=4:venueView==='alba'?['bar','boba'].includes(a.id):['booth','trio'].includes(a.id))).map(a=>a.n+' '+a.title).join(' · '):'';$('zoomDialog').classList.remove('zoomed');$('zoomScale').textContent='Zoom in';$('zoomDialog').showModal();}
 async function start(){
  const r=await Promise.all([fetch('seating-data.json',{cache:'no-store'}),fetch('layout-options.json',{cache:'no-store'})]);if(r.some(x=>!x.ok))throw Error('Could not load the seating plan');[DATA,LAYOUTS]=await Promise.all(r.map(x=>x.json()));
  const counts={O:0,C:0,V:0,VG:0,S:0,K:0,'?':0};for(const t of DATA.groups)for(const g of t.guests)counts[g.meal]=(counts[g.meal]||0)+1;
