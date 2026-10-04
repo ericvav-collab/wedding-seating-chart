@@ -95,16 +95,16 @@ Wall row · faces the band
  11. Camille (O)
  12. Drake (C)
 Rear-lobby arm · Meg · faces the dance floor
- 23. Merielle (MM) (O)
  24. James (O)
  25. Oliver (K)
- 19. Vivian (C)
+ 23. Merielle (MM) (O)
  20. Tony (O)
+ 19. Vivian (C)
  21. Lorraine (C)
  22. Fortune (O)
 Front-lobby arm · Eric · faces the dance floor
- 17. PJ (O)
  18. Anna (C)
+ 17. PJ (O)
  15. Austin (O)
  16. Talia (V)
  13. Jason (O)
@@ -291,8 +291,8 @@ TABLE 5 — 7 guests
  2. Paul (C)
  3. Julie (C)
  4. Bob (O)
- 5. Marie (O)
- 6. Louise (O)
+ 5. Louise (O)
+ 6. Marie (O)
  7. Dennis (O)
  Proposed flowers: Large
 
@@ -301,13 +301,13 @@ Two joined 6-ft tables
  1. Sam (C)
  2. Adelia (V)
  3. April (O)
- 4. Baley (O)
- 5. Danielle (O)
- 6. John (C)
- 7. Taylor (C)
- 8. Lauren (O)
- 9. Trey (O)
- 10. Matt W. (O)
+ 4. Taylor (C)
+ 5. Lauren (O)
+ 6. Danielle (O)
+ 7. Matt W. (O)
+ 8. Baley (O)
+ 9. John (C)
+ 10. Trey (O)
  Proposed flowers: Runner
 
 TABLE 7 — 6 guests
@@ -377,8 +377,8 @@ TABLE 13 — 7 guests
  1. Nathan (C)
  2. Neal (C)
  3. Mae (O)
- 4. Joseph O. (O)
- 5. Lan (C)
+ 4. Lan (C)
+ 5. Joseph O. (O)
  6. Miko (C)
  7. Maynard (O)
  Proposed flowers: Taper trio

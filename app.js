@@ -39,8 +39,9 @@ function headSeatPositions(opt,wallX,top){
  for(let i=0;i<12;i++)out.push({x:wallX-1,y:top+23-i*2,angle:-90,index:i,section:'Wall row · faces the band'});
  if(M.outsideOnly(opt)){
   // Two 6-ft tables per arm, chairs on the outside only: Meg's arm seats 7 (one table of 4), Eric's arm seats 6.
-  ['Merielle (MM)','James','Oliver','Vivian','Tony','Lorraine','Fortune'].forEach((n,i)=>out.push({x:wallX+2.5+12/7*(i+.5),y:top-1,angle:0,index:find(n),section:'Rear-lobby arm · Meg · faces the dance floor'}));
-  ['PJ','Anna','Austin','Talia','Jason','Haley'].forEach((n,i)=>out.push({x:wallX+2.5+2*i+1,y:top+25,angle:180,index:find(n),section:'Front-lobby arm · Eric · faces the dance floor'}));
+  // James sits at the corner beside Drake (end of the wall row); Oliver between James and MM.
+  ['James','Oliver','Merielle (MM)','Tony','Vivian','Lorraine','Fortune'].forEach((n,i)=>out.push({x:wallX+2.5+12/7*(i+.5),y:top-1,angle:0,index:find(n),section:'Rear-lobby arm · Meg · faces the dance floor'}));
+  ['Anna','PJ','Austin','Talia','Jason','Haley'].forEach((n,i)=>out.push({x:wallX+2.5+2*i+1,y:top+25,angle:180,index:find(n),section:'Front-lobby arm · Eric · faces the dance floor'}));
  }else if(M.compactU(opt)){
   const add=(name,x,y,angle,section)=>out.push({x:wallX+x,y:top+y,angle,index:find(name),section});
   [['Austin',3.5],['Talia',5.5],['Haley',7.5]].forEach(([n,x])=>add(n,x,25,180,'Front-lobby arm · Eric · outer'));
@@ -145,7 +146,7 @@ function headRoster(){const seats=headSeatPositions(option,0,0),parts=new Map();
 function tableCard(t){
  const k=kindOf(t),pos=LAYOUTS[option][width].positions[t.id],rot=pos?pos.rot:0,kind=k==='round'?'Round · up to 8':k==='small'?'One 6-ft table · long-side seating':'Two 6-ft tables · long-side seating';
  const view=k==='long'?(rot?'-5.5 -7 11 14':'-7 -5.5 14 11'):'-5.5 -5.5 11 11';
- let note=t.id==='t6'?'Sam and Adelia sit side by side. Danielle and Matt sit across from each other. Only joined table in the room (A&M group of ten).':t.id==='t8'?'Formed in Meg\u2019s Sep 20 regrouping; arrangement still to choose.':'';
+ let note=t.id==='t6'?'Sam and Adelia sit side by side with Danielle and Matt right across from them. Taylor sits between April and Lauren. Only joined table in the room (A&M group of ten).':t.id==='t8'?'Formed in Meg\u2019s Sep 20 regrouping; arrangement still to choose.':'';
  if(!pos)note='Not placed in this option \u2014 see the layout audit.';
  return `<article class="table-card" id="card-${t.id}"><header><div><h3>${label(t.id)} · ${esc(t.label)}</h3><small>${esc(pos?kind:'Regrouping pending in Option C')}</small></div><span class="badge">${t.guests.length} guests</span></header><div class="body"><svg viewBox="${view}" style="width:100%;max-height:235px" role="img" aria-label="${esc(label(t.id))} numbered seats, vendor orientation and floral arrangement">${tableDrawing(t,0,0,rot,true)}</svg><ul>${t.guests.map((g,i)=>`<li class="seatrow"><span><span class="num">${i+1}</span>${esc(g.name)}</span>${badge(g)}</li>`).join('')}</ul><p class="flower">Flowers: ${esc(t.flowers)}</p>${note?`<p class="flower">${esc(note)}</p>`:''}</div></article>`;
 }

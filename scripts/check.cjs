@@ -38,6 +38,13 @@ for (const opt of ['fay','u','wide','rounds','d']) {
   assert(at('Jason').y>at('Eric').y);
   assert(at('Haley').y>at('Eric').y);
   for(const name of ['Merielle (MM)','James','Oliver']) assert(at(name).y<at('Meg').y);
+  if(opt==='fay'){// Oct 4 seat requests on the head-table arms.
+    const gap=(a,b)=>Math.hypot(at(a).x-at(b).x,at(a).y-at(b).y);
+    assert(gap('PJ','Austin')<=2.01);
+    assert(gap('Vivian','Lorraine')<=1.72);
+    assert(gap('Oliver','James')<=1.72&&gap('Oliver','Merielle (MM)')<=1.72);
+    assert(['Merielle (MM)','Oliver','Tony','Vivian','Lorraine','Fortune'].every(n=>gap('James','Drake')<gap(n,'Drake')));
+  }
   for (const [w,l] of Object.entries(layouts[opt])) {
     const expected=data.groups.filter(t=>t.id!=='head').map(t=>t.id).sort();
     assert.equal(Object.keys(l.positions).length,14);
@@ -81,7 +88,15 @@ assert(!Object.hasOwn(data,'unseated'));
  const names=Object.fromEntries(t.guests.map((g,i)=>[g.name,ss.find(s=>s.index===i)]));
  assert.equal(Math.abs(names.Sam.x-names.Adelia.x),2.4);
 }
-assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','joseph-o','lan','miko','maynard']);
+assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan','joseph-o','miko','maynard']);
+{// Oct 4 seat requests.
+ const idx=(t,id)=>atTable(t).guests.findIndex(g=>g.id===id);
+ assert.equal(Math.abs(idx('t5','marie')-idx('t5','dennis')),1);
+ assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','lan')),1);
+ assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','miko')),1);
+ assert.equal(Math.abs(idx('t6','taylor')-idx('t6','april')),1);
+ for(const [a,b] of [['sam','danielle'],['adelia','matt-w']]) assert.equal(idx('t6',b)-idx('t6',a),5); // directly across
+}
 assert.deepEqual(new Set(atTable('t12').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
 assert.equal(atTable('t8').guests[0].id,'andrew-d');
 assert.equal(atTable('t8').guests.length,6);

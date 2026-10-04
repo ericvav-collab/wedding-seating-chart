@@ -324,14 +324,14 @@
      "id": "bob"
     },
     {
-     "name": "Marie",
-     "meal": "O",
-     "id": "marie"
-    },
-    {
      "name": "Louise",
      "meal": "O",
      "id": "louise"
+    },
+    {
+     "name": "Marie",
+     "meal": "O",
+     "id": "marie"
     },
     {
      "name": "Dennis",
@@ -362,21 +362,6 @@
      "id": "april"
     },
     {
-     "name": "Baley",
-     "meal": "O",
-     "id": "baley"
-    },
-    {
-     "name": "Danielle",
-     "meal": "O",
-     "id": "danielle"
-    },
-    {
-     "name": "John",
-     "meal": "C",
-     "id": "john"
-    },
-    {
      "name": "Taylor",
      "meal": "C",
      "id": "taylor"
@@ -387,14 +372,29 @@
      "id": "lauren"
     },
     {
-     "name": "Trey",
+     "name": "Danielle",
      "meal": "O",
-     "id": "trey"
+     "id": "danielle"
     },
     {
      "name": "Matt W.",
      "meal": "O",
      "id": "matt-w"
+    },
+    {
+     "name": "Baley",
+     "meal": "O",
+     "id": "baley"
+    },
+    {
+     "name": "John",
+     "meal": "C",
+     "id": "john"
+    },
+    {
+     "name": "Trey",
+     "meal": "O",
+     "id": "trey"
     }
    ]
   },
@@ -658,14 +658,14 @@
      "id": "mae"
     },
     {
-     "name": "Joseph O.",
-     "meal": "O",
-     "id": "joseph-o"
-    },
-    {
      "name": "Lan",
      "meal": "C",
      "id": "lan"
+    },
+    {
+     "name": "Joseph O.",
+     "meal": "O",
+     "id": "joseph-o"
     },
     {
      "name": "Miko",
