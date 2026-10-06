@@ -8,11 +8,11 @@ const layouts = JSON.parse(fs.readFileSync(path.join(root, 'layout-options.json'
 const M = require('../model.js');
 const V = require('../venue.js');
 const guests = data.groups.flatMap(t => t.guests);
-assert.equal(guests.length, 120);
-assert.equal(new Set(guests.map(g => g.id)).size, 120);
-assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,6,7,6,7,10,6,6,7,7,6,6,7,7]);
+assert.equal(guests.length, 118); // Julie and Bob Delia out Oct 6
+assert.equal(new Set(guests.map(g => g.id)).size, 118);
+assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,6,7,6,5,10,6,6,7,7,6,6,7,7]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
-assert.deepEqual(mealCounts, {C:38,O:75,S:2,V:3,VG:1,K:1}); // K = Oliver's kids meal
+assert.deepEqual(mealCounts, {C:37,O:74,S:2,V:3,VG:1,K:1}); // K = Oliver's kids meal
 for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O'],['gerry-n','C'],['letty','C'],['irma','O'],['oliver','K']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
 assert(!guests.some(g=>g.id==='pits')); // Pits removed in Meg's Sep 20 chart
 for (const name of ['Jason','Haley']) assert.equal(guests.find(g=>g.name===name).meal,'O');
@@ -154,4 +154,4 @@ for(let i=0;i<V.stations.length;i++)for(const b of V.stations.slice(i+1))assert(
 assert.equal(M.fixed(M.ROOM_WIDTH,'fay').boba,null);
 // Earlier options kept boba inside Monza; it must still clear the kitchen, the other doors and the head table there.
 for(const opt of Object.keys(M.options).filter(M.bobaInMonza)){const fixed=M.fixed(M.ROOM_WIDTH,opt);const otherDoors=fixed.doors.filter(d=>d.id!=='rear-entry');for(const b of [fixed.boba,fixed.bobaService,fixed.bobaQueue]){for(const route of [fixed.serviceLane,fixed.catering,...otherDoors])assert(M.distance(b,route)>=0,'Boba must not block the kitchen or another entrance');for(const h of fixed.headBlocks)assert(M.distance(b,h)>=0,'Boba must clear head chairs');}}
-console.log('PASS: 120 guests; fixed room size across 5 layouts (Milano plan selected); 25 head seats; kitchen routes; bar and boba in Alba; photo booth and trio in the front lobby; cocktail furniture and paths.');
+console.log('PASS: 118 guests; fixed room size across 5 layouts (Milano plan selected); 25 head seats; kitchen routes; bar and boba in Alba; photo booth and trio in the front lobby; cocktail furniture and paths.');
