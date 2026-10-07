@@ -10,7 +10,7 @@ const V = require('../venue.js');
 const guests = data.groups.flatMap(t => t.guests);
 assert.equal(guests.length, 118); // Julie and Bob Delia out Oct 6
 assert.equal(new Set(guests.map(g => g.id)).size, 118);
-assert.deepEqual(data.groups.map(t => t.guests.length), [25,7,6,7,6,5,10,6,6,7,7,6,6,7,7]);
+assert.deepEqual(data.groups.map(t => t.guests.length), [25,6,6,7,6,6,10,6,6,7,7,6,6,7,7]);
 const mealCounts = guests.reduce((a,g) => (a[g.meal]=(a[g.meal]||0)+1,a), {});
 assert.deepEqual(mealCounts, {C:37,O:74,S:2,V:3,VG:1,K:1}); // K = Oliver's kids meal
 for (const [id,meal] of [['joe-m','C'],['diane-m','C'],['pablo','C'],['meli','O'],['reina','O'],['gerry-n','C'],['letty','C'],['irma','O'],['oliver','K']]) assert.equal(guests.find(g=>g.id===id).meal,meal);
@@ -102,6 +102,11 @@ assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan'
  assert.equal(Math.abs(idx('t5','marie')-idx('t5','dennis')),1);
  assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','lan')),1);
  assert.equal(Math.abs(idx('t13','joseph-o')-idx('t13','miko')),1);
+}
+{// Oct 7: Jaclyn sits beside her mom Louise, not beside Deacon Dennis (round table wraps).
+ const g=atTable('t5').guests.map(x=>x.id), n=g.length, at=id=>g.indexOf(id);
+ const beside=(a,b)=>[1,n-1].includes((at(a)-at(b)+n)%n);
+ assert(beside('jaclyn','louise')&&!beside('jaclyn','dennis'));
 }
 assert.deepEqual(new Set(atTable('t12').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
 assert.equal(atTable('t8').guests[0].id,'andrew-d');
