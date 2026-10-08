@@ -107,6 +107,7 @@ assert.deepEqual(atTable('t13').guests.map(g=>g.id),['nathan','neal','mae','lan'
  const g=atTable('t5').guests.map(x=>x.id), n=g.length, at=id=>g.indexOf(id);
  const beside=(a,b)=>[1,n-1].includes((at(a)-at(b)+n)%n);
  assert(beside('jaclyn','louise')&&!beside('jaclyn','dennis'));
+ assert(beside('dennis','paul')&&beside('dennis','marie')&&beside('paul','susan'));
 }
 assert.deepEqual(new Set(atTable('t12').guests.map(g=>g.id)),new Set(['miranda','reina','pablo','meli','joseph-n','phung']));
 assert.equal(atTable('t8').guests[0].id,'andrew-d');

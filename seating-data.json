@@ -309,14 +309,9 @@
      "id": "paul"
     },
     {
-     "name": "Louise",
+     "name": "Dennis",
      "meal": "O",
-     "id": "louise"
-    },
-    {
-     "name": "Jaclyn",
-     "meal": "O",
-     "id": "jaclyn"
+     "id": "dennis"
     },
     {
      "name": "Marie",
@@ -324,9 +319,14 @@
      "id": "marie"
     },
     {
-     "name": "Dennis",
+     "name": "Jaclyn",
      "meal": "O",
-     "id": "dennis"
+     "id": "jaclyn"
+    },
+    {
+     "name": "Louise",
+     "meal": "O",
+     "id": "louise"
     }
    ]
   },
