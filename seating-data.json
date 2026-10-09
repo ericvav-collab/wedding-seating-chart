@@ -1,6 +1,6 @@
 {
- "updated": "October 7, 2026",
- "guests": 118,
+ "updated": "October 9, 2026",
+ "guests": 116,
  "groups": [
   {
    "id": "head",
@@ -150,16 +150,6 @@
      "name": "Yvonne",
      "meal": "O",
      "id": "yvonne"
-    },
-    {
-     "name": "Steve",
-     "meal": "O",
-     "id": "steve"
-    },
-    {
-     "name": "Diane",
-     "meal": "V",
-     "id": "diane"
     },
     {
      "name": "Tim",
